@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Math, Algorithms, Data Structures</string>
+
+    <string name="FirstButton">Dijkstra\'s Algorithm</string>
+</resources>
