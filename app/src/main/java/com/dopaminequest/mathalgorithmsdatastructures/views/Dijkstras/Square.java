@@ -23,73 +23,38 @@ public class Square extends GameObject implements Comparator<Square> {
         return 0;
     }
 
-
-
     enum State
     {
         Start, End, Blocked, Explored, Unexplored, Path;
     }
 
-
-
-    Paint color;
     private Rect mRectSquare;
-
     public Paint mPaintSquare;
-    int x;
-
     int padding;
     State state;
     State editState;
-
     public Boolean kvKnown;
     public int dvLength;
     public int pvPrevious;
-
     public int index;
-
     public Vector<Square> neighbors;
 
-
-
-
-
-
-
-
-
-
-
-
-    Square() {
-
-
-
+    Square()
+    {
 
     }
 
 
-    Square(int w, int h, int x, int y, int index ) {
-
-
-        //x = 0;
+    Square(int w, int h, int x, int y, int index )
+    {
         init(h,w,x,y,index);
-
-
     }
-
 
     @Override
     public void update() {
-        //x++;
 
         if(isPressed())
         {
-
-            //state = State.Blocked;
-
-
-
             switch (DijkstraView.editState)
             {
                 case Blocked:
@@ -103,16 +68,13 @@ public class Square extends GameObject implements Comparator<Square> {
                         DijkstraView.g.endIndex = -1;
                     }
 
-
                     for(int i = 0; i < neighbors.size();i++)
-
                     {
                         Square s = neighbors.get(i);
                         s.neighbors.remove(this);
                     }
 
                     neighbors.clear();
-
                     state = State.Blocked;
                     mPaintSquare.setColor(getColor());
                     break;
@@ -123,22 +85,10 @@ public class Square extends GameObject implements Comparator<Square> {
                     break;
 
                 case Start:
-                    //state = State.Start;
                     DijkstraView.g.setStart(position.x, position.y);
-
-//                    System.out.println("------------------------------- ");
-//                    for(int i = 0; i < neighbors.size(); i++)
-//                    {
-//                        System.out.println("------------------------------- NEIGHBOR: " + neighbors.get(i).index);
-//
-//                    }
-//                    System.out.println("------------------------------- \n");
-                    //mPaintSquare.setColor(getColor());
                     break;
 
                 case End:
-
-
                     DijkstraView.g.setEnd(position.x, position.y);
                     break;
 
@@ -151,11 +101,8 @@ public class Square extends GameObject implements Comparator<Square> {
                     state = State.Path;
                     mPaintSquare.setColor(getColor());
                     break;
-
-
             }
         }
-
     }
 
     @Override
@@ -165,17 +112,7 @@ public class Square extends GameObject implements Comparator<Square> {
         mRectSquare.right = mRectSquare.left + scale.x-padding;
         mRectSquare.top = position.y+padding;
         mRectSquare.bottom = mRectSquare.top + scale.y-padding;
-
-        ///
-        if(DijkstraView.actionDown)
-        {
-            //mPaintSquare.setColor(getColor());
-
-        }
-
-
         canvas.drawRect(mRectSquare,mPaintSquare);
-
     }
 
 
@@ -206,13 +143,10 @@ public class Square extends GameObject implements Comparator<Square> {
 
         this.index = index;
         neighbors = new Vector<Square>();
-
-
     }
 
     public int getColor()
     {
-
         int c = 0;
         switch (state)
         {
@@ -238,22 +172,14 @@ public class Square extends GameObject implements Comparator<Square> {
 
             case Path:
                 c = Color.GREEN;
-                System.out.println("----  --  -  -------=--========-=-=-=-=-========-=-=--=-=-=test");
                 break;
-
-
         }
-
-
         return c;
-
     }
 
 
     public Boolean isPressed()
     {
-
-
         if(!DijkstraView.actionDown)
         {
             return false;
@@ -263,24 +189,15 @@ public class Square extends GameObject implements Comparator<Square> {
             if(DijkstraView.input.y >= position.y &&DijkstraView.input.y <= position.y+scale.y )
             {
                 return true;
-
             }
-
         }
 
         return false;
-
     }
-
 
     public void setPath()
         {
-
-
             state = State.Path;
             mPaintSquare.setColor(getColor());
-            System.out.println("------- -- -- --        -------=--======= =-=-=-=-=-==== ==    ==-=-=--=-=-=test" + position.x + " " + position.y);
         }
-
-
 }

@@ -20,8 +20,6 @@ import androidx.annotation.Nullable;
 
 public class DijkstraView extends View implements Runnable{
 
-
-
     enum State
     {
         Start, End, Blocked, Explored, Unexplored, Path;
@@ -30,32 +28,18 @@ public class DijkstraView extends View implements Runnable{
     Thread ourThread = null;
     long lastFrameTime;
     int fps;
-    Button button;
-
     public static Grid g;
     int numTiles;
-
-
-
     Boolean initialized = false;
-
+    Boolean running = true;
     public static Point dimensions;
-
     public static long downTime;
     public static long eventTime;
     public static int action;
     public static Point input;
-
     public static Boolean actionDown;
-
     public static int metaState;
-
     public static State editState;
-
-
-
-
-
 
 
     public DijkstraView(Context context) {
@@ -82,63 +66,30 @@ public class DijkstraView extends View implements Runnable{
     private void  init(@Nullable AttributeSet set)
     {
 
-
-
-
         ourThread = new Thread(this);
         ourThread.start();
-        //Button button = (Button) findViewById(R.id.test);
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-
-
-
         if(initialized)
         {
             g.draw(canvas);
         }
-
-
     }
 
     @Override
     public void run() {
-
-
-
-
-
-
-
-
-        while(true)
+        while(running)
         {
-
-
-            //System.out.println("--------------=--========-=-=-=-=-========-=-=--=-=-=test");
             if(!initialized)
             {
-
                 if(getWidth() == 0 && getHeight() == 0)
                 {
                     continue;
                 }
                 else
                 {
-
-
                     dimensions = new Point();
                     dimensions.x = getWidth();
                     dimensions.y = getHeight();
@@ -150,26 +101,14 @@ public class DijkstraView extends View implements Runnable{
                     actionDown = false;
 
                 }
-
-
-
             }
             else
             {
-
                 g.update();
-
                 controlFPS();
-
                 invalidate();
             }
-
-
         }
-
-
-
-
     }
 
     public void controlFPS() {
@@ -190,60 +129,35 @@ public class DijkstraView extends View implements Runnable{
 
     public void resetX()
     {
-
-
         g.init();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
 
-
         if(!initialized)
         {
             return true;
         }
-
-//        MotionEvent.ACTION_POINTER_DOWN:
-//        MotionEvent.ACTION_MASK
-//                (int) motionEvent.getX(0)
-
-//        (motionEvent.getAction()
-
-
-        //action = motionEvent.getAction();
-
 
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_POINTER_DOWN:
                 actionDown = true;
                 break;
             case MotionEvent.ACTION_POINTER_UP:
-
-
-
                 actionDown = false;
                 break;
             case MotionEvent.ACTION_DOWN:
                 actionDown = true;
-
                 break;
             case MotionEvent.ACTION_UP:
-
-
                 actionDown = false;
                 break;
         }
 
-
-
-
-
         int numPoints = motionEvent.getPointerCount();
         for (int n = 0; n < numPoints; n ++)
         {
-
-
             input.x  = (int) motionEvent.getX(0);
             input.y  = (int) motionEvent.getY(0);
             break;
@@ -256,7 +170,6 @@ public class DijkstraView extends View implements Runnable{
         else if(input.x > (dimensions.x))
         {
             input.x = (dimensions.x/numTiles)*numTiles;
-
         }
 
         if(input.y < 0)
@@ -273,21 +186,13 @@ public class DijkstraView extends View implements Runnable{
         {
             input.x = -1;
             input.y = -1;
-
         }
-
-
         return true;
-
     }
-
 
     public void editStart()
     {
         editState = State.Start;
-        //g.setStart();
-
-        //System.out.println("----  --  -  -------=--========-=-=-=-=-========-=-=--=-=-=test" );
     }
 
     public void editEnd()
@@ -313,24 +218,15 @@ public class DijkstraView extends View implements Runnable{
     public void findShortestPath()
     {
         boolean rVal = g.findShortestPath();
-
-
-//        if(rVal)
-//        {
-//
-//
-//        }
-
-        //System.out.println("--------------=--======= =-=-=-=-=-==== ==    ==-=-=--=-=-=test");
     }
-
 
     public Grid getGrid()
     {
-
         return g;
     }
 
-
-
+    public void terminateThread()
+    {
+        running = false;
+    }
 }

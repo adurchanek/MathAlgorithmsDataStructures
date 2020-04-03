@@ -12,15 +12,10 @@ package com.dopaminequest.mathalgorithmsdatastructures.views;
         import android.util.Log;
         import android.view.View;
         import android.widget.Button;
-
-
         import com.dopaminequest.mathalgorithmsdatastructures.R;
         import com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.Grid;
-
         import androidx.annotation.Nullable;
-
         import static java.sql.DriverManager.println;
-
 
 public class MainView extends View implements Runnable{
 
@@ -30,11 +25,6 @@ public class MainView extends View implements Runnable{
     long lastFrameTime;
     int fps;
     Button button;
-
-
-
-
-
 
     private Rect mRectSquare;
     private Paint mPaintSquare;
@@ -63,64 +53,35 @@ public class MainView extends View implements Runnable{
 
     private void  init(@Nullable AttributeSet set)
     {
-
         mRectSquare = new Rect();
         mPaintSquare = new Paint();
         ourThread = new Thread(this);
         ourThread.start();
-        //Button button = (Button) findViewById(R.id.test);
-
-
-
-
-
-
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-
         canvas.drawColor(Color.RED);
-
-        //Rect rect = new Rect();
-
         mRectSquare.left = x+ 100;
         mRectSquare.right = mRectSquare.left + 100;
         mRectSquare.top = x+100;
         mRectSquare.bottom = mRectSquare.top + 100;
         mPaintSquare.setColor(Color.GREEN);
-
         canvas.drawRect(mRectSquare,mPaintSquare);
-
-
     }
 
     @Override
     public void run() {
 
-
         x = 100;
-        System.out.println("--------------=--========-=-=-=-=-========-=-=--=-=-=test");
-
-
 
         while(true)
         {
-
-
             x += 1;
             controlFPS();
-
             invalidate();
-
-
         }
-
-
-
-
     }
 
     public void controlFPS() {
@@ -141,13 +102,6 @@ public class MainView extends View implements Runnable{
 
     public void resetX()
     {
-
-
         x = 0;
     }
-
-
-
-
-
 }

@@ -25,7 +25,6 @@ public class DijkstrasActivity extends AppCompatActivity {
             }
         });
 
-
         findViewById(R.id.find_path).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,20 +39,6 @@ public class DijkstrasActivity extends AppCompatActivity {
             }
         });
 
-//        findViewById(R.id.explored).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dijkstraView.editExplored();
-//            }
-//        });
-//
-//        findViewById(R.id.unexplored).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dijkstraView.editUnexplored();
-//            }
-//        });
-
         findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +52,12 @@ public class DijkstrasActivity extends AppCompatActivity {
                 dijkstraView.editEnd();
             }
         });
+    }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dijkstraView.terminateThread();
+        finish();
     }
 }

@@ -11,9 +11,6 @@ import com.dopaminequest.mathalgorithmsdatastructures.views.MainView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private Button btn0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
