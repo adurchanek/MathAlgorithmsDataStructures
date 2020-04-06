@@ -48,8 +48,6 @@ public class Grid extends GameObject{
             return;
         }
 
-
-
         if(DijkstraView.dimensions.x == 0)
         {
 
@@ -256,6 +254,7 @@ public class Grid extends GameObject{
         for(int i = 0; i < returnPath.size(); i++)
         {
             squares.get(returnPath.get(i)).setPath();
+            squares.get(returnPath.get(i)).animate(.4f);
         }
 
         if(returnPath.size() > 0)

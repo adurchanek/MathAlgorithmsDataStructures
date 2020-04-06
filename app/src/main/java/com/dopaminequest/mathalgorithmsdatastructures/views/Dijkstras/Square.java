@@ -12,7 +12,8 @@ import java.util.Vector;
 public class Square extends GameObject implements Comparator<Square> {
 
 //    public int node;
-    public int cost;
+
+
 
     @Override
     public int compare(Square square1, Square square2) {
@@ -28,11 +29,15 @@ public class Square extends GameObject implements Comparator<Square> {
         Start, End, Blocked, Explored, Unexplored, Path;
     }
 
+    public int cost;
+    public boolean animating;
+    public float animatingStep;
+    public float speed;
     private Rect mRectSquare;
     public Paint mPaintSquare;
-    int padding;
-    State state;
-    State editState;
+    public int padding;
+    public State state;
+    public State editState;
     public Boolean kvKnown;
     public int dvLength;
     public int pvPrevious;
@@ -53,8 +58,23 @@ public class Square extends GameObject implements Comparator<Square> {
     @Override
     public void update() {
 
+        if(animating)
+        {
+
+            animatingStep -= speed*1f;
+
+            if(animatingStep <= 0)
+            {
+                animatingStep = 0;
+                animating = false;
+            }
+
+        }
+
         if(isPressed())
         {
+            animate(1f);
+
             switch (DijkstraView.editState)
             {
                 case Blocked:
@@ -108,11 +128,18 @@ public class Square extends GameObject implements Comparator<Square> {
     @Override
     public void draw(Canvas canvas) {
 
-        mRectSquare.left = position.x+padding;
-        mRectSquare.right = mRectSquare.left + scale.x-padding;
-        mRectSquare.top = position.y+padding;
-        mRectSquare.bottom = mRectSquare.top + scale.y-padding;
+        //mRectSquare.left = position.x+(int)animatingStep+padding;
+        mRectSquare.left = position.x + (int)animatingStep+padding;
+        mRectSquare.right = position.x - (int)animatingStep + scale.x - padding;
+        mRectSquare.top = position.y + (int)animatingStep+ padding;
+        mRectSquare.bottom = position.y  - (int)animatingStep + scale.y - padding;
+        //mPaintSquare.setColor(getColor(),);
+        //mPaintSquare.setAlpha((int)(255*((scale.x - animatingStep)/scale.x)));
+
+        mPaintSquare.setAlpha((int)(55 + (200*((scale.x/2 - animatingStep)/(scale.x/2 )))));
         canvas.drawRect(mRectSquare,mPaintSquare);
+
+        System.out.println("------------------------------- animatingStep: " + animatingStep + " "   );
     }
 
 
@@ -136,6 +163,9 @@ public class Square extends GameObject implements Comparator<Square> {
         cost = 1;
         this.index = index;
         neighbors = new Vector<Square>();
+        animating = false;
+        animatingStep = 0;
+        speed = 1f;
     }
 
     public int getColor()
@@ -189,8 +219,16 @@ public class Square extends GameObject implements Comparator<Square> {
     }
 
     public void setPath()
-        {
-            state = State.Path;
-            mPaintSquare.setColor(getColor());
-        }
+    {
+        state = State.Path;
+        mPaintSquare.setColor(getColor());
+    }
+
+    public void animate(float s)
+    {
+        animating = true;
+        animatingStep = (float)scale.x/2f;
+        speed = s;
+    }
+
 }
