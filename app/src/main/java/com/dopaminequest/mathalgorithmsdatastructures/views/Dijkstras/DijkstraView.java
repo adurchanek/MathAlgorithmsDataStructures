@@ -12,11 +12,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-
 import androidx.annotation.Nullable;
-
 
 public class DijkstraView extends View implements Runnable{
 
@@ -41,7 +38,6 @@ public class DijkstraView extends View implements Runnable{
     public static int metaState;
     public static State editState;
 
-
     public DijkstraView(Context context) {
         super(context);
 
@@ -65,7 +61,6 @@ public class DijkstraView extends View implements Runnable{
 
     private void  init(@Nullable AttributeSet set)
     {
-
         ourThread = new Thread(this);
         ourThread.start();
     }
@@ -99,14 +94,21 @@ public class DijkstraView extends View implements Runnable{
                     input = new Point();
                     editState = State.Start;
                     actionDown = false;
-
                 }
             }
             else
             {
-                g.update();
-                controlFPS();
-                invalidate();
+                try
+                {
+                    g.update();
+                    controlFPS();
+                    invalidate();
+                }
+                catch(Exception e)
+                {
+
+                }
+
             }
         }
     }

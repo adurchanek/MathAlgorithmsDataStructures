@@ -18,7 +18,7 @@ public class Grid extends GameObject{
     int rows;
     int columns;
     Boolean dim = false;
-    int x = 10;
+
     final public int PADDING = 1;
     private Paint mPaintSquare;
     private Paint textPaint;
@@ -40,7 +40,6 @@ public class Grid extends GameObject{
         init();
     }
 
-
     @Override
     public void update() {
 
@@ -49,7 +48,7 @@ public class Grid extends GameObject{
             return;
         }
 
-        x += 1;
+
 
         if(DijkstraView.dimensions.x == 0)
         {
@@ -88,21 +87,16 @@ public class Grid extends GameObject{
     }
 
 
-    public void init() {
-
+    public void init()
+    {
         this.canvasDimensions = new Point();
         squares = new Vector<Square>();
         mPaintSquare = new Paint();
-
         mPaintSquare = new Paint();
         textPaint = new Paint();
         textPaint.setTextSize(45);
         textPaint.setColor(Color.RED);
-
-        x = 100;
-
         createGrid(numSquares);
-
         position = new Point();
         scale = new Point();
         pathFound = false;
@@ -133,8 +127,7 @@ public class Grid extends GameObject{
                 int posX = j * width;
                 int posY = i * height;
                 int currentSquareIndex = (int)(posX/(float)width + (numSquares*posY)/(float)height);
-                Square s = new Square(height, width, j * width, i * height,currentSquareIndex);
-
+                Square s = new Square(height, width, j * width, i * height, currentSquareIndex);
                 squares.add(s);
             }
         }
@@ -150,36 +143,36 @@ public class Grid extends GameObject{
 
                 if(j != 0)
                 {
-                    int posXN = (j-1) * width;
+                    int posXN = (j - 1) * width;
                     int posYN = (i) * height;
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-                    squares.get( currentSquareIndex).neighbors.add(squares.get( currentNeighbor));
+                    squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
                 }
                 if(j != numSquares - 1)
                 {
-                    int posXN = (j+1) * width;
+                    int posXN = (j + 1) * width;
                     int posYN = (i) * height;
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-                    squares.get( currentSquareIndex).neighbors.add(squares.get( currentNeighbor));
+                    squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
                 }
 
                 if(i != 0)
                 {
                     int posXN = (j) * width;
-                    int posYN = (i-1) * height;
+                    int posYN = (i - 1) * height;
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-                    squares.get( currentSquareIndex).neighbors.add(squares.get( currentNeighbor));
+                    squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
                 }
                 if(i != numSquares - 1)
                 {
                     int posXN = (j) * width;
-                    int posYN = (i+1) * height;
+                    int posYN = (i + 1) * height;
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-                    squares.get( currentSquareIndex).neighbors.add(squares.get( currentNeighbor));
+                    squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
                 }
             }
         }
@@ -195,7 +188,7 @@ public class Grid extends GameObject{
         Vector<Integer> returnPath;
         returnPath = new Vector<Integer>();
 
-        if(startIndex > 0)
+        if(startIndex >= 0)
         {
             squares.get(startIndex).pvPrevious = -2;
             pQ.add(squares.get(startIndex));
@@ -222,7 +215,7 @@ public class Grid extends GameObject{
             }
         }
 
-        if(endIndex > 0)
+        if(endIndex >= 0)
         {
             Square currentS = squares.get( endIndex);
             while(true)
@@ -244,8 +237,10 @@ public class Grid extends GameObject{
                     break;
                 }
             }
-
         }
+
+        System.out.println("------------------------------- TEST: " + returnPath.size() );
+
         return returnPath;
     }
 

@@ -120,27 +120,20 @@ public class Square extends GameObject implements Comparator<Square> {
 
         mRectSquare = new Rect();
         mPaintSquare = new Paint();
-
         position = new Point();
         scale = new Point();
-
         position.x = x;
         position.y = y;
         scale.x = h;
         scale.y = w;
         padding = 1;
-
         state = State.Unexplored;
         editState = State.Blocked;
-
         mPaintSquare.setColor(getColor());
-
         kvKnown = false;
         dvLength = Integer.MAX_VALUE;
         pvPrevious = -1;
-
         cost = 1;
-
         this.index = index;
         neighbors = new Vector<Square>();
     }
@@ -184,9 +177,9 @@ public class Square extends GameObject implements Comparator<Square> {
         {
             return false;
         }
-        if(DijkstraView.input.x >= position.x &&DijkstraView.input.x <= position.x+scale.x )
+        if(DijkstraView.input.x >= position.x && DijkstraView.input.x <= position.x+scale.x )
         {
-            if(DijkstraView.input.y >= position.y &&DijkstraView.input.y <= position.y+scale.y )
+            if(DijkstraView.input.y >= position.y && DijkstraView.input.y <= position.y+scale.y )
             {
                 return true;
             }
