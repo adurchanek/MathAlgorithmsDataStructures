@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/DijkstraView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/DijkstraView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" afterDir="false" />
     </list>
@@ -19,7 +19,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Android_ARMv7a_Nougat" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="374a4f344c313098" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -32,8 +32,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/DijkstrasActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+            <state relative-caret-position="229">
+              <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+              <folding>
+                <element signature="e#638#796#0" expanded="true" />
+                <element signature="e#795#796#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/DijkstraView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="956">
-              <caret line="188" column="14" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
+            <state relative-caret-position="586">
+              <caret line="142" column="17" lean-forward="true" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,10 +91,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="243" lean-forward="true" selection-start-line="243" selection-end-line="243" />
+            <state relative-caret-position="439">
+              <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3381#3382#0" expanded="true" />
+                <element signature="e#3419#3420#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,8 +105,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="131" column="48" selection-start-line="131" selection-start-column="48" selection-end-line="131" selection-end-column="48" />
+            <state relative-caret-position="2094">
+              <caret line="192" column="32" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/GameObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="90">
+              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -136,12 +142,16 @@
       <find>dij</find>
       <find>dim</find>
       <find>reset</find>
-      <find>returnpath</find>
       <find>findsh</find>
       <find>mainv</find>
-      <find>system</find>
       <find>compa</find>
+      <find>system</find>
+      <find>-2</find>
+      <find>returnpath</find>
       <find>getcolo</find>
+      <find>path</find>
+      <find>returnp</find>
+      <find>resetti</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,9 +164,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/MainView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/DijkstrasActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/DijkstraView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" />
       </list>
     </option>
   </component>
@@ -251,6 +261,15 @@
               <item name="mathalgorithmsdatastructures" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="Dijkstras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MathAlgorithmsDataStructures" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="MathAlgorithmsDataStructures" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
@@ -409,11 +428,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="1" />
+    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.12193823" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12193823" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -422,7 +441,7 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.3843318" />
+      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.27281106" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3299539" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3299539" />
@@ -439,13 +458,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/DijkstrasActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -476,35 +488,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="90">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/DijkstrasActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="243" lean-forward="true" selection-start-line="243" selection-end-line="243" />
+        <state relative-caret-position="229">
+          <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#638#796#0" expanded="true" />
+            <element signature="e#795#796#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/DijkstraView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="956">
-          <caret line="188" column="14" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
+        <state relative-caret-position="586">
+          <caret line="142" column="17" lean-forward="true" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
+            <element signature="e#3419#3420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="131" column="48" selection-start-line="131" selection-start-column="48" selection-end-line="131" selection-end-column="48" />
+        <state relative-caret-position="2094">
+          <caret line="192" column="32" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

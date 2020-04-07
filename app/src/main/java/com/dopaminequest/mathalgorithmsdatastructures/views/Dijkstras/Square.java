@@ -190,7 +190,7 @@ public class Square extends GameObject implements Comparator<Square> {
                 break;
 
             case Explored:
-                c = Color.MAGENTA;
+                c = Color.LTGRAY;
                 break;
 
             case Path:

@@ -17,8 +17,7 @@ public class Grid extends GameObject{
 
     int rows;
     int columns;
-    Boolean dim = false;
-
+    //Boolean dim = false;
     final public int PADDING = 1;
     private Paint mPaintSquare;
     private Paint textPaint;
@@ -26,10 +25,14 @@ public class Grid extends GameObject{
     public int endIndex;
     public boolean pathFound;
     public boolean resettingGrid = true;
-    Square s;
-    int numSquares;
-    Vector<Square> squares;
-    Point canvasDimensions;
+    public Square s;
+    public int numSquares;
+    public Vector<Square> squares;
+    public Point canvasDimensions;
+    public int pathSequenceIndex;
+    public int exploredSequenceIndex;
+    public Vector<Integer> exploredSquares;
+    public Vector<Integer> returnPath;
 
     public Grid(int numSquares)
     {
@@ -50,13 +53,47 @@ public class Grid extends GameObject{
 
         if(DijkstraView.dimensions.x == 0)
         {
+            //dim = true;
+        }
 
-            dim = true;
+        if(exploredSequenceIndex != -1)
+        {
+            if(exploredSequenceIndex < exploredSquares.size())
+            {
+                int current = exploredSquares.get(exploredSequenceIndex);
+                if(squares.get(current).state != Square.State.Start && squares.get(current).state != Square.State.End)
+                {
+                    squares.get(current).state = Square.State.Explored;
+                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
+                    squares.get(current).animate(.7f);
+                }
+                exploredSequenceIndex++;
+            }
+            else
+            {
+                exploredSequenceIndex = -1;
+            }
+        }
+        else if(pathSequenceIndex != -1)
+        {
+            if(pathSequenceIndex >= returnPath.size()/2)
+            {
+                squares.get(returnPath.get(pathSequenceIndex)).setPath();
+                squares.get(returnPath.get(pathSequenceIndex)).animate(.4f);
+
+                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).setPath();
+                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).animate(.4f);
+
+                pathSequenceIndex--;
+            }
+            else
+            {
+                pathSequenceIndex = -1;
+            }
         }
 
         for(int i = 0; i < squares.size(); i++)
         {
-
             squares.get(i).update();
         }
     }
@@ -72,7 +109,7 @@ public class Grid extends GameObject{
         if(DijkstraView.dimensions.x == 0)
         {
 
-            dim = true;
+            //dim = true;
         }
 
         mPaintSquare.setTextSize(45);
@@ -82,6 +119,8 @@ public class Grid extends GameObject{
         {
             squares.get(i).draw(canvas);
         }
+
+
     }
 
 
@@ -99,6 +138,8 @@ public class Grid extends GameObject{
         scale = new Point();
         pathFound = false;
         resettingGrid = false;
+        pathSequenceIndex = -1;
+        exploredSequenceIndex = -1;
     }
 
     public void reset() {
@@ -183,13 +224,14 @@ public class Grid extends GameObject{
     public Vector<Integer> findPath()
     {
         ArrayList<Square> pQ =  new ArrayList<>();
-        Vector<Integer> returnPath;
+        exploredSquares = new Vector<Integer>();
         returnPath = new Vector<Integer>();
 
         if(startIndex >= 0)
         {
             squares.get(startIndex).pvPrevious = -2;
             pQ.add(squares.get(startIndex));
+
         }
 
         while(!pQ.isEmpty())
@@ -208,6 +250,7 @@ public class Grid extends GameObject{
                         s.neighbors.get(i).dvLength = s.dvLength + 1;
                         s.neighbors.get(i).pvPrevious = s.index;
                         pQ.add(s.neighbors.get(i));
+                        exploredSquares.add(s.neighbors.get(i).index);
                     }
                 }
             }
@@ -221,6 +264,7 @@ public class Grid extends GameObject{
                 if(currentS.index != endIndex)
                 {
                     returnPath.add(currentS.index);
+                    //exploredSquares.remove(currentS.index);
                 }
 
                 if(currentS.pvPrevious == -1)
@@ -251,15 +295,21 @@ public class Grid extends GameObject{
 
         Vector<Integer> returnPath = findPath();
 
-        for(int i = 0; i < returnPath.size(); i++)
-        {
-            squares.get(returnPath.get(i)).setPath();
-            squares.get(returnPath.get(i)).animate(.4f);
-        }
+//        for(int i = 0; i < returnPath.size(); i++)
+//        {
+//            squares.get(returnPath.get(i)).setPath();
+//            squares.get(returnPath.get(i)).animate(.4f);
+//        }
 
         if(returnPath.size() > 0)
         {
             pathFound = true;
+            pathSequenceIndex = returnPath.size() - 1;
+        }
+
+        if(exploredSquares.size() > 0)
+        {
+            exploredSequenceIndex = 0;
         }
 
         return pathFound;
@@ -367,7 +417,7 @@ public class Grid extends GameObject{
 
                 if(j != 0)
                 {
-                    int posXN = (j-1) * width;
+                    int posXN = (j - 1) * width;
                     int posYN = (i) * height;
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
@@ -380,7 +430,7 @@ public class Grid extends GameObject{
                 }
                 if(j != numSquares - 1)
                 {
-                    int posXN = (j+1) * width;
+                    int posXN = (j + 1) * width;
                     int posYN = (i) * height;
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
 
@@ -406,7 +456,7 @@ public class Grid extends GameObject{
                 if(i != numSquares - 1)
                 {
                     int posXN = (j) * width;
-                    int posYN = (i+1) * height;
+                    int posYN = (i + 1) * height;
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
                     if(squares.get(currentNeighbor).state != Square.State.Blocked) {

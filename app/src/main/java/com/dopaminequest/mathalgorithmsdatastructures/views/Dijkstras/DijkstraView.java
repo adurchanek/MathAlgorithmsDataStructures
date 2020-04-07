@@ -69,7 +69,15 @@ public class DijkstraView extends View implements Runnable{
     protected void onDraw(Canvas canvas) {
         if(initialized)
         {
-            g.draw(canvas);
+            try
+            {
+                g.draw(canvas);
+            }
+            catch(Exception e)
+            {
+
+            }
+
         }
     }
 
@@ -131,6 +139,7 @@ public class DijkstraView extends View implements Runnable{
 
     public void resetX()
     {
+        g.resettingGrid = true;
         g.init();
     }
 
@@ -219,7 +228,7 @@ public class DijkstraView extends View implements Runnable{
 
     public void findShortestPath()
     {
-        boolean rVal = g.findShortestPath();
+        boolean returnVal = g.findShortestPath();
     }
 
     public Grid getGrid()
