@@ -19,7 +19,7 @@ public class DijkstraView extends View implements Runnable{
 
     enum State
     {
-        Start, End, Blocked, Explored, Unexplored, Path;
+        Start, End, Blocked, Explored, Unexplored, Path, Found;
     }
 
     Thread ourThread = null;
@@ -37,6 +37,9 @@ public class DijkstraView extends View implements Runnable{
     public static Boolean actionDown;
     public static int metaState;
     public static State editState;
+    public boolean paused = false;
+    float time = 0f;
+    int count = 0;
 
     public DijkstraView(Context context) {
         super(context);
@@ -77,14 +80,30 @@ public class DijkstraView extends View implements Runnable{
             {
 
             }
-
         }
     }
 
     @Override
     public void run() {
+
+        long start = (System.currentTimeMillis()/1000);
         while(running)
         {
+            //long current =   (long)(System.currentTimeMillis()/1000 - start);
+            //System.out.println("------------------------------- time: " + current );
+            if(paused)
+            {
+
+                try
+                {
+                    ourThread.sleep(100);
+                }
+                catch (InterruptedException e)
+                {
+                }
+                continue;
+            }
+
             if(!initialized)
             {
                 if(getWidth() == 0 && getHeight() == 0)
@@ -116,13 +135,17 @@ public class DijkstraView extends View implements Runnable{
                 {
 
                 }
-
             }
         }
     }
 
     public void controlFPS() {
+        count++;
         long timeThisFrame = (System.currentTimeMillis() - lastFrameTime);
+        time += timeThisFrame;
+
+        //time = time/count;
+
         long timeToSleep = 15 - timeThisFrame;
         if (timeThisFrame > 0) {
             fps = (int) (1000 / timeThisFrame);
@@ -190,7 +213,6 @@ public class DijkstraView extends View implements Runnable{
         else if(input.y > (dimensions.y))
         {
             input.y = (dimensions.y/numTiles)*numTiles;
-
         }
 
         if(!actionDown)
@@ -239,5 +261,30 @@ public class DijkstraView extends View implements Runnable{
     public void terminateThread()
     {
         running = false;
+    }
+
+    public void resumeThread()
+    {
+        paused = false;
+
+//        if(running && initialized)
+//        {
+//            ourThread.notify();
+//        }
+
+    }
+    public void pauseThread()
+    {
+        paused = true;
+
+//        if(running)
+//        {
+//            try {
+//                ourThread.wait();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
     }
 }

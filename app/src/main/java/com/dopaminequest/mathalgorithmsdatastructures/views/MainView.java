@@ -1,5 +1,5 @@
 
-
+/*
 package com.dopaminequest.mathalgorithmsdatastructures.views;
 
         import android.content.Context;
@@ -105,3 +105,4 @@ public class MainView extends View implements Runnable{
         x = 0;
     }
 }
+*/

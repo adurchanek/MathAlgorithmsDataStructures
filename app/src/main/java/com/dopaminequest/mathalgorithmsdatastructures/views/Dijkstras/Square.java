@@ -26,7 +26,7 @@ public class Square extends GameObject implements Comparator<Square> {
 
     enum State
     {
-        Start, End, Blocked, Explored, Unexplored, Path;
+        Start, End, Blocked, Explored, Unexplored, Path, Found;
     }
 
     public int cost;
@@ -60,7 +60,6 @@ public class Square extends GameObject implements Comparator<Square> {
 
         if(animating)
         {
-
             animatingStep -= speed*1f;
 
             if(animatingStep <= 0)
@@ -68,7 +67,6 @@ public class Square extends GameObject implements Comparator<Square> {
                 animatingStep = 0;
                 animating = false;
             }
-
         }
 
         if(isPressed())
@@ -121,6 +119,9 @@ public class Square extends GameObject implements Comparator<Square> {
                     state = State.Path;
                     mPaintSquare.setColor(getColor());
                     break;
+                case Found:
+                    DijkstraView.g.setEnd(position.x, position.y);
+                    break;
             }
         }
     }
@@ -128,18 +129,15 @@ public class Square extends GameObject implements Comparator<Square> {
     @Override
     public void draw(Canvas canvas) {
 
-        //mRectSquare.left = position.x+(int)animatingStep+padding;
+        canvas.save();
+        canvas.rotate(animatingStep*16, position.x + scale.x/2f,position.y+ scale.x/2f);
         mRectSquare.left = position.x + (int)animatingStep+padding;
         mRectSquare.right = position.x - (int)animatingStep + scale.x - padding;
         mRectSquare.top = position.y + (int)animatingStep+ padding;
         mRectSquare.bottom = position.y  - (int)animatingStep + scale.y - padding;
-        //mPaintSquare.setColor(getColor(),);
-        //mPaintSquare.setAlpha((int)(255*((scale.x - animatingStep)/scale.x)));
-
         mPaintSquare.setAlpha((int)(55 + (200*((scale.x/2 - animatingStep)/(scale.x/2 )))));
         canvas.drawRect(mRectSquare,mPaintSquare);
-
-        System.out.println("------------------------------- animatingStep: " + animatingStep + " "   );
+        canvas.restore();
     }
 
 
@@ -195,6 +193,9 @@ public class Square extends GameObject implements Comparator<Square> {
 
             case Path:
                 c = Color.GREEN;
+                break;
+            case Found:
+                c = Color.YELLOW;
                 break;
         }
         return c;

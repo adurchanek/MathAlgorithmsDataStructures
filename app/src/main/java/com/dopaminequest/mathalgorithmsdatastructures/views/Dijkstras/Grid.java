@@ -6,8 +6,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.renderscript.ScriptC;
-
-
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Vector;
@@ -67,6 +65,11 @@ public class Grid extends GameObject{
                     squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
                     squares.get(current).animate(.7f);
                 }
+                else if(squares.get(current).state == Square.State.End)
+                {
+                    squares.get(current).state = Square.State.Found;
+                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
+                }
                 exploredSequenceIndex++;
             }
             else
@@ -119,8 +122,6 @@ public class Grid extends GameObject{
         {
             squares.get(i).draw(canvas);
         }
-
-
     }
 
 
@@ -156,7 +157,6 @@ public class Grid extends GameObject{
 
     public void createGrid(int numSquares)
     {
-
         int width = DijkstraView.dimensions.x/numSquares;
         int height = DijkstraView.dimensions.y/numSquares;
         for(int i = 0; i < numSquares; i++)
@@ -281,7 +281,7 @@ public class Grid extends GameObject{
             }
         }
 
-        System.out.println("------------------------------- TEST: " + returnPath.size() );
+        //System.out.println("------------------------------- TEST: " + returnPath.size() );
 
         return returnPath;
     }
@@ -400,7 +400,6 @@ public class Grid extends GameObject{
 
         int width = DijkstraView.dimensions.x/numSquares;
         int height = DijkstraView.dimensions.y/numSquares;
-
         int currentSquareIndex = (int)(posX/(float)width + (numSquares*posY)/(float)height);
 
         if(endIndex == -1)

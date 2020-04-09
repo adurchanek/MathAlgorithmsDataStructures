@@ -57,7 +57,30 @@ public class DijkstrasActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        //dijkstraView.terminateThread();
+        System.out.println("------------------------------- OnStop() DijkstrasActivity: " );
+        //finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+        dijkstraView.pauseThread();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+        dijkstraView.resumeThread();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         dijkstraView.terminateThread();
+        System.out.println("------------------------------- OnStop() DijkstrasActivity: " );
         finish();
     }
 }
