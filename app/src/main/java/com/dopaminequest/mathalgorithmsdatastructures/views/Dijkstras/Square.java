@@ -103,11 +103,11 @@ public class Square extends GameObject implements Comparator<Square> {
                     break;
 
                 case Start:
-                    DijkstraView.g.setStart(position.x, position.y);
+                    DijkstraView.g.startIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.startIndex, State.Start);
                     break;
 
                 case End:
-                    DijkstraView.g.setEnd(position.x, position.y);
+                    DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
                     break;
 
                 case Explored:
@@ -120,7 +120,7 @@ public class Square extends GameObject implements Comparator<Square> {
                     mPaintSquare.setColor(getColor());
                     break;
                 case Found:
-                    DijkstraView.g.setEnd(position.x, position.y);
+                    DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
                     break;
             }
         }
@@ -130,11 +130,16 @@ public class Square extends GameObject implements Comparator<Square> {
     public void draw(Canvas canvas) {
 
         canvas.save();
-        canvas.rotate(animatingStep*16, position.x + scale.x/2f,position.y+ scale.x/2f);
+        canvas.rotate(animatingStep*6, position.x + scale.x/2,position.y + scale.x);
         mRectSquare.left = position.x + (int)animatingStep+padding;
         mRectSquare.right = position.x - (int)animatingStep + scale.x - padding;
         mRectSquare.top = position.y + (int)animatingStep+ padding;
         mRectSquare.bottom = position.y  - (int)animatingStep + scale.y - padding;
+        //TODO increase color ++ or *animating speed * 2 also slow down speed and delete scale.x/2 for one so it slides down and change alpha to be apparent
+        //mPaintSquare.setColor((int) (getColor()+ animatingStep*1600*3000));
+        //mPaintSquare.setColor((int) (getColor()+ animatingStep*3000*8));
+        //mPaintSquare.setColor((int) (getColor()+ animatingStep*16));
+        mPaintSquare.setColor((int) (getColor()+ animatingStep*10));
         mPaintSquare.setAlpha((int)(55 + (200*((scale.x/2 - animatingStep)/(scale.x/2 )))));
         canvas.drawRect(mRectSquare,mPaintSquare);
         canvas.restore();

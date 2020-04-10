@@ -4,10 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
-import android.renderscript.ScriptC;
+
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 import java.util.Vector;
 
 
@@ -242,7 +240,7 @@ public class Grid extends GameObject{
             {
                 s.kvKnown = true;
 
-                for(int i = 0; i < s.neighbors.size(); i++)
+                for(int i = 0; i < s.neighbors.size(); i++) //TODO change + 1 to cost
                 {
 
                     if(s.neighbors.get(i).dvLength > s.dvLength + 1)
@@ -315,16 +313,16 @@ public class Grid extends GameObject{
         return pathFound;
     }
 
-    public void setStart(int posX, int posY)
+    public int setStartOrEnd(int posX, int posY, int index, Square.State state)
     {
         int width = DijkstraView.dimensions.x/numSquares;
         int height = DijkstraView.dimensions.y/numSquares;
         int currentSquareIndex = (int)(posX/(float)width + (numSquares*posY)/(float)height);
 
-        if(startIndex == -1)
+        if(index == -1)
         {
-            squares.get(currentSquareIndex).state = Square.State.Start;
-            startIndex = currentSquareIndex;
+            squares.get(currentSquareIndex).state = state;
+            index = currentSquareIndex;
         }
         else
         {
@@ -386,90 +384,12 @@ public class Grid extends GameObject{
                 }
             }
 
-            squares.get(startIndex).state = Square.State.Unexplored;
-            squares.get(startIndex).mPaintSquare.setColor(squares.get(startIndex).getColor());
-            squares.get(currentSquareIndex).state = Square.State.Start;
+            squares.get(index).state = Square.State.Unexplored;
+            squares.get(index).mPaintSquare.setColor(squares.get(index).getColor());
+            squares.get(currentSquareIndex).state = state;
             squares.get(currentSquareIndex).mPaintSquare.setColor(squares.get(currentSquareIndex).getColor());
-            startIndex = currentSquareIndex;
+            index = currentSquareIndex;
         }
-    }
-
-
-    public void setEnd(int posX, int posY)
-    {
-
-        int width = DijkstraView.dimensions.x/numSquares;
-        int height = DijkstraView.dimensions.y/numSquares;
-        int currentSquareIndex = (int)(posX/(float)width + (numSquares*posY)/(float)height);
-
-        if(endIndex == -1)
-        {
-            squares.get(currentSquareIndex).state = Square.State.End;
-            endIndex = currentSquareIndex;
-        }
-        else
-        {
-            if(squares.get(currentSquareIndex).state == Square.State.Blocked)
-            {
-                int i = (int)((float)posY/(float)height);
-                int j = (int)((float)posX/(float)width);
-
-                if(j != 0)
-                {
-                    int posXN = (j - 1) * width;
-                    int posYN = (i) * height;
-
-                    int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-
-                    if(squares.get(currentNeighbor).state != Square.State.Blocked)
-                    {
-                        squares.get( currentSquareIndex).neighbors.add(squares.get( currentNeighbor));
-                        squares.get( currentNeighbor).neighbors.add(squares.get( currentSquareIndex));
-                    }
-                }
-                if(j != numSquares - 1)
-                {
-                    int posXN = (j + 1) * width;
-                    int posYN = (i) * height;
-                    int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-
-                    if(squares.get(currentNeighbor).state != Square.State.Blocked)
-                    {
-                        squares.get(currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-                        squares.get( currentNeighbor).neighbors.add(squares.get( currentSquareIndex));
-                    }
-                }
-
-                if(i != 0)
-                {
-                    int posXN = (j) * width;
-                    int posYN = (i-1) * height;
-
-                    int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-                    if(squares.get(currentNeighbor).state != Square.State.Blocked)
-                    {
-                        squares.get(currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-                        squares.get( currentNeighbor).neighbors.add(squares.get( currentSquareIndex));
-                    }
-                }
-                if(i != numSquares - 1)
-                {
-                    int posXN = (j) * width;
-                    int posYN = (i + 1) * height;
-
-                    int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
-                    if(squares.get(currentNeighbor).state != Square.State.Blocked) {
-                        squares.get(currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-                        squares.get( currentNeighbor).neighbors.add(squares.get( currentSquareIndex));
-                    }
-                }
-            }
-
-            squares.get(endIndex).state = Square.State.Unexplored;
-            squares.get(endIndex).mPaintSquare.setColor(squares.get(endIndex).getColor());
-            squares.get(currentSquareIndex).state = Square.State.End;
-            squares.get(currentSquareIndex).mPaintSquare.setColor(squares.get(currentSquareIndex).getColor());
-            endIndex = currentSquareIndex;
-        }
+        return index;
     }
 }
