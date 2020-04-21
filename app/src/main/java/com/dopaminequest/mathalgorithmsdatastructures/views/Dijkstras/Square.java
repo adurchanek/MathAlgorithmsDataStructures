@@ -71,7 +71,12 @@ public class Square extends GameObject implements Comparator<Square> {
 
         if(isPressed())
         {
-            animate(1f);
+
+
+            if(state == Square.State.Start || state == Square.State.End)
+            {
+                return;
+            }
 
             switch (DijkstraView.editState)
             {
@@ -95,6 +100,8 @@ public class Square extends GameObject implements Comparator<Square> {
                     neighbors.clear();
                     state = State.Blocked;
                     mPaintSquare.setColor(getColor());
+
+                    System.out.println("------------------------------- switch: " );
                     break;
 
                 case Unexplored:
@@ -123,6 +130,8 @@ public class Square extends GameObject implements Comparator<Square> {
                     DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
                     break;
             }
+
+            animate(1f);
         }
     }
 
@@ -130,7 +139,7 @@ public class Square extends GameObject implements Comparator<Square> {
     public void draw(Canvas canvas) {
 
         canvas.save();
-        canvas.rotate(animatingStep*6, position.x + scale.x/2,position.y + scale.x);
+        canvas.rotate(animatingStep*6, position.x + scale.x/2,position.y + scale.x/2);
         mRectSquare.left = position.x + (int)animatingStep+padding;
         mRectSquare.right = position.x - (int)animatingStep + scale.x - padding;
         mRectSquare.top = position.y + (int)animatingStep+ padding;
@@ -163,7 +172,7 @@ public class Square extends GameObject implements Comparator<Square> {
         kvKnown = false;
         dvLength = Integer.MAX_VALUE;
         pvPrevious = -1;
-        cost = 1;
+        cost = 10;
         this.index = index;
         neighbors = new Vector<Square>();
         animating = false;
@@ -235,6 +244,11 @@ public class Square extends GameObject implements Comparator<Square> {
         animating = true;
         animatingStep = (float)scale.x/2f;
         speed = s;
+    }
+
+    public void setCost(int c)
+    {
+        cost = c;
     }
 
 }

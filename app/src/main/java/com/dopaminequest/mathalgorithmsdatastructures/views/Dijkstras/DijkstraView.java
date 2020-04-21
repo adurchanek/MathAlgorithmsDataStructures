@@ -115,7 +115,7 @@ public class DijkstraView extends View implements Runnable{
                     dimensions = new Point();
                     dimensions.x = getWidth();
                     dimensions.y = getHeight();
-                    numTiles = 32;
+                    numTiles = 16;
                     g = new Grid(numTiles);
                     initialized = true;
                     input = new Point();
