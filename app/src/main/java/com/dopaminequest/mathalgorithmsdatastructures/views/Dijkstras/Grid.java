@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -98,7 +97,7 @@ public class Grid extends GameObject{
             squares.get(i).update();
         }
 
-        System.out.println("------------------------------- TEST # 2: " + squares.get(2).neighbors.size() + " #3: " +  squares.get(3).neighbors.size() +  " - state: " +  squares.get(3).state);
+        //System.out.println("------------------------------- TEST # 2: " + squares.get(2).neighbors.size() + " #3: " +  squares.get(3).neighbors.size() +  " - state: " +  squares.get(3).state);
     }
 
     @Override
@@ -187,6 +186,7 @@ public class Grid extends GameObject{
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
                     squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
+
 
 //                    if(i != 0)
 //                    {
@@ -353,12 +353,8 @@ public class Grid extends GameObject{
             index = currentSquareIndex;
         }
 
-        //System.out.println("------------------------------- Status: " + squares.get(currentSquareIndex).state );
-
         if(squares.get(currentSquareIndex).state == Square.State.Blocked)
         {
-            //System.out.println("------------------------------- Blocked: " + currentSquareIndex );
-
             int i = (int)((float)posY/(float)height);
             int j = (int)((float)posX/(float)width);
 

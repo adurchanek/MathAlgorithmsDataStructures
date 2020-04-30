@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Math, Algorithms, Data Structures</string>
-
     <string name="FirstButton">Dijkstra\'s Algorithm</string>
+    <string name="SecondButton">A* Search Algorithm</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="DataStructuresFragment">Data Structures Fragment</string>
+
+    <string name="MathFragment">Math Fragment</string>
 </resources>
