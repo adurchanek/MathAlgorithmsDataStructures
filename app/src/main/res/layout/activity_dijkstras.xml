@@ -7,21 +7,13 @@
     android:background="@color/offwhite"
     tools:context=".DijkstrasActivity">
 
-
-
-
-
     <com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.DijkstraView
         android:id="@+id/DijkstraView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-
-
-
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
@@ -29,94 +21,68 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/reset"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-
-
         android:layout_marginStart="272dp"
         android:layout_marginTop="80dp"
         android:insetTop="0dp"
-
-
         android:insetBottom="0dp"
         android:text="Reset"
-
-
         android:textColor="@android:color/black"
         app:backgroundTint="@android:color/white"
         app:cornerRadius="0dp"
-
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DijkstraView" />
 
     <Button
         android:id="@+id/start"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="48dp"
         android:layout_marginTop="32dp"
-
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="Start"
-
-
         android:textColor="@android:color/white"
         app:backgroundTint="@color/blue"
-
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DijkstraView"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/DijkstraView" />
 
     <Button
         android:id="@+id/blocked"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-
         android:text="Obstacle"
         android:textColor="@android:color/white"
         app:backgroundTint="@color/black"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/end"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/end" />
 
     <Button
         android:id="@+id/end"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="48dp"
-
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="End"
         android:textColor="@android:color/white"
         app:backgroundTint="@color/red"
-
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/start" />
 
     <Button
         android:id="@+id/find_path"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="272dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
@@ -124,10 +90,7 @@
         android:textColor="@android:color/white"
         app:backgroundTint="@color/orange"
         app:cornerRadius="0dp"
-
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,11 +21,10 @@
             android:backgroundTint="@color/mainMenuBtnColor"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="@string/FirstButton"
+            android:text="@string/AlforithmsTabFirstButton"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
             app:cornerRadius="0dp">
-
         </Button>
 
 
@@ -37,15 +36,11 @@
             android:backgroundTint="@color/mainMenuBtnColor"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="@string/SecondButton"
+            android:text="@string/AlforithmsTabSecondButton"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
             app:cornerRadius="0dp">
 
         </Button>
-
-
-
     </LinearLayout>
-
 </ScrollView>

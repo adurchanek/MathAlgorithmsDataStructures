@@ -52,6 +52,8 @@ public class DijkstrasActivity extends AppCompatActivity {
                 dijkstraView.editEnd();
             }
         });
+
+
     }
 
     @Override

@@ -2,9 +2,11 @@ package com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.Shader;
 
 import java.util.Comparator;
 import java.util.Vector;
@@ -148,6 +150,8 @@ public class Square extends GameObject implements Comparator<Square> {
         //mPaintSquare.setColor((int) (getColor()+ animatingStep*1600*3000));
         //mPaintSquare.setColor((int) (getColor()+ animatingStep*3000*8));
         //mPaintSquare.setColor((int) (getColor()+ animatingStep*16));
+
+
         mPaintSquare.setColor((int) (getColor()+ animatingStep*10));
         mPaintSquare.setAlpha((int)(55 + (200*((scale.x/2 - animatingStep)/(scale.x/2 )))));
         canvas.drawRect(mRectSquare,mPaintSquare);

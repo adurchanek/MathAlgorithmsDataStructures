@@ -2,8 +2,11 @@ package com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Shader;
+
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -129,7 +132,6 @@ public class Grid extends GameObject{
         this.canvasDimensions = new Point();
         squares = new Vector<Square>();
         mPaintSquare = new Paint();
-        mPaintSquare = new Paint();
         textPaint = new Paint();
         textPaint.setTextSize(45);
         textPaint.setColor(Color.RED);
@@ -140,6 +142,8 @@ public class Grid extends GameObject{
         resettingGrid = false;
         pathSequenceIndex = -1;
         exploredSequenceIndex = -1;
+
+
     }
 
     public void reset() {

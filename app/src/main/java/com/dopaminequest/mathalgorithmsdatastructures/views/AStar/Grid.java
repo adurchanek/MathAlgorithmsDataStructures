@@ -52,11 +52,6 @@ public class Grid extends GameObject{
             return;
         }
 
-        if(AStarView.dimensions.x == 0)
-        {
-            //dim = true;
-        }
-
         if(exploredSequenceIndex != -1)
         {
             if(exploredSequenceIndex < exploredSquares.size())
@@ -112,12 +107,6 @@ public class Grid extends GameObject{
             return;
         }
 
-        if(AStarView.dimensions.x == 0)
-        {
-
-            //dim = true;
-        }
-
         mPaintSquare.setTextSize(45);
         mPaintSquare.setColor(Color.GREEN);
 
@@ -126,7 +115,6 @@ public class Grid extends GameObject{
             squares.get(i).draw(canvas);
         }
     }
-
 
     public void init()
     {
@@ -149,8 +137,6 @@ public class Grid extends GameObject{
     }
 
     public void reset() {
-
-        //createGrid(numSquares);
         //TODO place bool to pause update and draw
         init();
 
@@ -272,7 +258,6 @@ public class Grid extends GameObject{
             }
         }
 
-
         PriorityQueue<Square> pQ = new PriorityQueue<Square>(new StudentComparator());
 
         exploredSquares = new Vector<Integer>();
@@ -281,13 +266,9 @@ public class Grid extends GameObject{
         if(startIndex >= 0)
         {
             squares.get(startIndex).pvPrevious = -2;
-            //squares.get(startIndex).dvLength = 0;
             squares.get(startIndex).dvLength = 0;
             int hCost = (int) Math.sqrt(Math.pow(squares.get(endIndex).getPosition().x - squares.get(startIndex).getPosition().x,2)+ Math.pow(squares.get(endIndex).getPosition().y - squares.get(startIndex).getPosition().y,2));
-
             squares.get(startIndex).fCost = hCost;
-
-            //source.f_cost = source.h_cost;
             pQ.add(squares.get(startIndex));
         }
 
@@ -369,12 +350,6 @@ public class Grid extends GameObject{
 
         Vector<Integer> returnPath = findPath();
 
-//        for(int i = 0; i < returnPath.size(); i++)
-//        {
-//            squares.get(returnPath.get(i)).setPath();
-//            squares.get(returnPath.get(i)).animate(.4f);
-//        }
-
         if(returnPath.size() > 0)
         {
             pathFound = true;
@@ -386,14 +361,11 @@ public class Grid extends GameObject{
             exploredSequenceIndex = 0;
         }
 
-
-
         return pathFound;
     }
 
     public int setStartOrEnd(int posX, int posY, int index, Square.State state)
     {
-        //System.out.println("------------------------------- TEST: " + index + " x:  " + posX + " y " + posY );
 
         int width = AStarView.dimensions.x/numSquares;
         int height = AStarView.dimensions.y/numSquares;
