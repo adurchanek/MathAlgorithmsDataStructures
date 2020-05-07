@@ -218,11 +218,37 @@ public class MainCanvas extends GameObject{
         canvas.drawLine(p2.x, p2.y ,p3.x, p3.y, generalPaint);
         canvas.drawLine(p3.x, p3.y ,p4.x, p4.y, generalPaint);
 
-        if(!animate)
+        if(animate)
         {
-            return;
+            animateCurves(canvas);
         }
 
+        generalPaint.setColor((Color.RED));
+
+        for(int i = 0;  i < controlPoints.size(); i++)
+        {
+            canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y,CIRCLE_RADIUS,generalPaint);
+        }
+
+        generalPaint.setColor((Color.MAGENTA));
+        generalPaint.setAlpha(55);
+
+        for(int i = 0;  i < controlPoints.size(); i++)
+        {
+            if(i == currentControlPointIndex)
+            {
+                generalPaint.setAlpha(currentTouchControlPointAlpha);
+                canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y, currentTouchControlPointRadius, generalPaint);
+            }
+            else
+            {
+                generalPaint.setAlpha(55);
+                canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y,CIRCLE_RADIUS*3, generalPaint);
+            }
+        }
+    }
+
+    private void animateCurves(Canvas canvas) {
         generalPaint.setColor((Color.RED));
 
         float animationPercentage = (float)currentAnimationIndex/numLinePoints;
@@ -250,30 +276,6 @@ public class MainCanvas extends GameObject{
         generalPaint.setAlpha(255);
         generalPaint.setColor((Color.YELLOW));
         canvas.drawCircle(linePoints[currentAnimationIndex].x, linePoints[currentAnimationIndex].y, CIRCLE_RADIUS, generalPaint);
-
-        generalPaint.setColor((Color.RED));
-
-        for(int i = 0;  i < controlPoints.size(); i++)
-        {
-            canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y,CIRCLE_RADIUS,generalPaint);
-        }
-
-        generalPaint.setColor((Color.MAGENTA));
-        generalPaint.setAlpha(55);
-
-        for(int i = 0;  i < controlPoints.size(); i++)
-        {
-            if(i == currentControlPointIndex)
-            {
-                generalPaint.setAlpha(currentTouchControlPointAlpha);
-                canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y, currentTouchControlPointRadius, generalPaint);
-            }
-            else
-            {
-                generalPaint.setAlpha(55);
-                canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y,CIRCLE_RADIUS*3, generalPaint);
-            }
-        }
     }
 
     private void drawBorder(Canvas canvas) {

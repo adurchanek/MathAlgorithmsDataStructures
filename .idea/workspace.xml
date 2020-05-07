@@ -11,32 +11,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/BezierCurvesActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bezier_curves.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/DijkstrasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/DijkstrasActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/MathTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/MathTabFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/AStar/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/AStar/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_a_star.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_a_star.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dijkstras.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dijkstras.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/BezierCurvesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/BezierCurvesView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/MainCanvas.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,6 +105,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
   </component>

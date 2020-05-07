@@ -74,7 +74,6 @@ public class BezierCurvesView extends View implements Runnable{
     @Override
     public void run() {
 
-        long start = (System.currentTimeMillis()/1000);
         while(running)
         {
             if(paused)
@@ -145,6 +144,8 @@ public class BezierCurvesView extends View implements Runnable{
     public void resetX()
     {
         mc.resettingMainCanvas = true;
+        input = new Point();
+        actionDown = false;
         mc.init();
     }
 
