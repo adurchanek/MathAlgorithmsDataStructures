@@ -25,23 +25,5 @@
                 android:textColor="@android:color/white"
                 app:cornerRadius="0dp">
             </Button>
-
-            <Button
-                android:id="@+id/second_btn"
-                android:layout_width="match_parent"
-                android:layout_height="99dp"
-                android:layout_margin="3dp"
-                android:backgroundTint="@color/mainMenuBtnColor"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="@string/MathTabSecondButton"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@android:color/white"
-                app:cornerRadius="0dp">
-
-            </Button>
-
-
-
         </LinearLayout>
 </ScrollView>

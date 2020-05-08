@@ -2,8 +2,9 @@
     <string name="app_name">Math, Algorithms, Data Structures</string>
     <string name="AlforithmsTabFirstButton">Dijkstra\'s Algorithm</string>
     <string name="AlforithmsTabSecondButton">A* Search Algorithm</string>
-    <string name="MathTabFirstButton">Bezier Curves</string>
+    <string name="MathTabFirstButton">Bézier Curves</string>
     <string name="MathTabSecondButton">Template</string>
+    <string name="DataStructuresTabFirstButton">Stacks</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="DataStructuresFragment">Data Structures Fragment</string>

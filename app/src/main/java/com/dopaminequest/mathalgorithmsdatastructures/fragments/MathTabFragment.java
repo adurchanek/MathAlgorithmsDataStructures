@@ -80,15 +80,6 @@ public class MathTabFragment extends Fragment {
             }
         });
 
-        btn2 = (Button) v.findViewById(R.id.second_btn);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =  new Intent(getContext(), TemplateActivity.class);
-                startActivity(intent);
-            }
-        });
-
         return v;
     }
 }
