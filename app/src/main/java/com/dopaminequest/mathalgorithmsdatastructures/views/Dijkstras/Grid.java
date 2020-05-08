@@ -2,35 +2,30 @@ package com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Shader;
 
 import java.util.ArrayList;
 import java.util.Vector;
 
 
-public class Grid extends GameObject{
+public class Grid extends Object {
 
-    int rows;
-    int columns;
-    //Boolean dim = false;
-    final public int PADDING = 1;
+    private int rows;
+    private int columns;
     private Paint mPaintSquare;
     private Paint textPaint;
-    public int startIndex;
-    public int endIndex;
-    public boolean pathFound;
-    public boolean resettingGrid = true;
-    public Square s;
-    public int numSquares;
-    public Vector<Square> squares;
-    public Point canvasDimensions;
-    public int pathSequenceIndex;
-    public int exploredSequenceIndex;
-    public Vector<Integer> exploredSquares;
-    public Vector<Integer> returnPath;
+    int startIndex;
+    int endIndex;
+    private boolean pathFound;
+    boolean resettingGrid = true;
+    private int numSquares;
+    private Vector<Square> squares;
+    private Point canvasDimensions;
+    private int pathSequenceIndex;
+    private int exploredSequenceIndex;
+    private Vector<Integer> exploredSquares;
+    private Vector<Integer> returnPath;
 
     public Grid(int numSquares)
     {
@@ -47,11 +42,6 @@ public class Grid extends GameObject{
         if(resettingGrid)
         {
             return;
-        }
-
-        if(DijkstraView.dimensions.x == 0)
-        {
-            //dim = true;
         }
 
         if(exploredSequenceIndex != -1)
@@ -83,7 +73,6 @@ public class Grid extends GameObject{
             {
                 squares.get(returnPath.get(pathSequenceIndex)).setPath();
                 squares.get(returnPath.get(pathSequenceIndex)).animate(.4f);
-
                 squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).setPath();
                 squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).animate(.4f);
 
@@ -99,8 +88,6 @@ public class Grid extends GameObject{
         {
             squares.get(i).update();
         }
-
-        //System.out.println("------------------------------- TEST # 2: " + squares.get(2).neighbors.size() + " #3: " +  squares.get(3).neighbors.size() +  " - state: " +  squares.get(3).state);
     }
 
     @Override
@@ -109,12 +96,6 @@ public class Grid extends GameObject{
         if(resettingGrid)
         {
             return;
-        }
-
-        if(DijkstraView.dimensions.x == 0)
-        {
-
-            //dim = true;
         }
 
         mPaintSquare.setTextSize(45);
@@ -142,16 +123,10 @@ public class Grid extends GameObject{
         resettingGrid = false;
         pathSequenceIndex = -1;
         exploredSequenceIndex = -1;
-
-
     }
 
     public void reset() {
-
-        //createGrid(numSquares);
-        //TODO place bool to pause update and draw
         init();
-
     }
 
     public void changeState() {
@@ -260,8 +235,8 @@ public class Grid extends GameObject{
 
         if(startIndex >= 0)
         {
+            squares.get(startIndex).dvLength = 0;
             squares.get(startIndex).pvPrevious = -2;
-            //squares.get(startIndex).dvLength = 0;
             pQ.add(squares.get(startIndex));
 
         }
@@ -274,9 +249,8 @@ public class Grid extends GameObject{
             {
                 s.kvKnown = true;
 
-                for(int i = 0; i < s.neighbors.size(); i++) //TODO change + 1 to cost
+                for(int i = 0; i < s.neighbors.size(); i++)
                 {
-
                     if(s.neighbors.get(i).dvLength > s.dvLength + s.neighbors.get(i).cost)
                     {
                         s.neighbors.get(i).dvLength = s.dvLength + s.neighbors.get(i).cost;
@@ -296,7 +270,6 @@ public class Grid extends GameObject{
                 if(currentS.index != endIndex)
                 {
                     returnPath.add(currentS.index);
-                    //exploredSquares.remove(currentS.index);
                 }
 
                 if(currentS.pvPrevious == -1)
@@ -324,12 +297,6 @@ public class Grid extends GameObject{
 
         Vector<Integer> returnPath = findPath();
 
-//        for(int i = 0; i < returnPath.size(); i++)
-//        {
-//            squares.get(returnPath.get(i)).setPath();
-//            squares.get(returnPath.get(i)).animate(.4f);
-//        }
-
         if(returnPath.size() > 0)
         {
             pathFound = true;
@@ -346,8 +313,6 @@ public class Grid extends GameObject{
 
     public int setStartOrEnd(int posX, int posY, int index, Square.State state)
     {
-        //System.out.println("------------------------------- TEST: " + index + " x:  " + posX + " y " + posY );
-
         int width = DijkstraView.dimensions.x/numSquares;
         int height = DijkstraView.dimensions.y/numSquares;
         int currentSquareIndex = (int)(posX/(float)width + (numSquares*posY)/(float)height);

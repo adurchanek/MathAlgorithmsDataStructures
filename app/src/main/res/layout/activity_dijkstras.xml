@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".DijkstrasActivity">
+    tools:context=".activities.DijkstrasActivity">
 
     <com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.DijkstraView
         android:id="@+id/DijkstraView"

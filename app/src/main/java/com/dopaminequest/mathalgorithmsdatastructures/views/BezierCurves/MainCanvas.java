@@ -10,7 +10,7 @@ import android.graphics.Shader;
 import java.util.ArrayList;
 
 
-public class MainCanvas extends GameObject{
+public class MainCanvas extends Object {
 
     final public int PADDING = 1;
     private Paint generalPaint;

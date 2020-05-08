@@ -2,20 +2,14 @@ package com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.Shader;
 
 import java.util.Comparator;
 import java.util.Vector;
 
-public class Square extends GameObject implements Comparator<Square> {
-
-//    public int node;
-
-
+public class Square extends Object implements Comparator<Square> {
 
     @Override
     public int compare(Square square1, Square square2) {
@@ -73,8 +67,6 @@ public class Square extends GameObject implements Comparator<Square> {
 
         if(isPressed())
         {
-
-
             if(state == Square.State.Start || state == Square.State.End)
             {
                 return;
@@ -102,8 +94,6 @@ public class Square extends GameObject implements Comparator<Square> {
                     neighbors.clear();
                     state = State.Blocked;
                     mPaintSquare.setColor(getColor());
-
-                    System.out.println("------------------------------- switch: " );
                     break;
 
                 case Unexplored:
@@ -139,19 +129,12 @@ public class Square extends GameObject implements Comparator<Square> {
 
     @Override
     public void draw(Canvas canvas) {
-
         canvas.save();
         canvas.rotate(animatingStep*6, position.x + scale.x/2,position.y + scale.x/2);
         mRectSquare.left = position.x + (int)animatingStep+padding;
         mRectSquare.right = position.x - (int)animatingStep + scale.x - padding;
         mRectSquare.top = position.y + (int)animatingStep+ padding;
         mRectSquare.bottom = position.y  - (int)animatingStep + scale.y - padding;
-        //TODO increase color ++ or *animating speed * 2 also slow down speed and delete scale.x/2 for one so it slides down and change alpha to be apparent
-        //mPaintSquare.setColor((int) (getColor()+ animatingStep*1600*3000));
-        //mPaintSquare.setColor((int) (getColor()+ animatingStep*3000*8));
-        //mPaintSquare.setColor((int) (getColor()+ animatingStep*16));
-
-
         mPaintSquare.setColor((int) (getColor()+ animatingStep*10));
         mPaintSquare.setAlpha((int)(55 + (200*((scale.x/2 - animatingStep)/(scale.x/2 )))));
         canvas.drawRect(mRectSquare,mPaintSquare);
@@ -160,7 +143,6 @@ public class Square extends GameObject implements Comparator<Square> {
 
 
     public void init(int w, int h, int x, int y, int index) {
-
         mRectSquare = new Rect();
         mPaintSquare = new Paint();
         position = new Point();

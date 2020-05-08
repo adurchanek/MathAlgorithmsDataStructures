@@ -9,7 +9,7 @@ import android.graphics.Rect;
 import java.util.Comparator;
 import java.util.Vector;
 
-public class Square extends GameObject implements Comparator<Square> {
+public class Square extends Object implements Comparator<Square> {
 
 //    public int node;
 

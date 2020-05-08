@@ -30,12 +30,8 @@ public class AStarView extends View implements Runnable{
     Boolean initialized = false;
     Boolean running = true;
     public static Point dimensions;
-    public static long downTime;
-    public static long eventTime;
-    public static int action;
     public static Point input;
     public static Boolean actionDown;
-    public static int metaState;
     public static State editState;
     public boolean paused = false;
     float time = 0f;
@@ -115,7 +111,7 @@ public class AStarView extends View implements Runnable{
                     dimensions = new Point();
                     dimensions.x = getWidth();
                     dimensions.y = getHeight();
-                    numTiles = 32;
+                    numTiles = 24;
                     g = new Grid(numTiles);
                     initialized = true;
                     input = new Point();

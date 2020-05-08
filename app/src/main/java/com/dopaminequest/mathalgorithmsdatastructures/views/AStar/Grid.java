@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.os.Build;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Vector;
@@ -14,7 +13,7 @@ import java.util.Vector;
 import androidx.annotation.RequiresApi;
 
 
-public class Grid extends GameObject{
+public class Grid extends Object {
 
     int rows;
     int columns;

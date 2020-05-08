@@ -3,7 +3,7 @@ package com.dopaminequest.mathalgorithmsdatastructures.views.BezierCurves;
 import android.graphics.Canvas;
 import android.graphics.Point;
 
-public abstract class GameObject {
+public abstract class Object {
     public Point getPosition() {
         return position;
     }

@@ -1,4 +1,4 @@
-package com.dopaminequest.mathalgorithmsdatastructures;
+package com.dopaminequest.mathalgorithmsdatastructures.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.dopaminequest.mathalgorithmsdatastructures.views.BezierCurves.BezierCurvesView;
+import com.dopaminequest.mathalgorithmsdatastructures.R;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.BezierCurvesActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.TemplateActivity;
 
 
 /**
@@ -62,13 +64,6 @@ public class MathTabFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_math_tab, container, false);
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,6 +76,15 @@ public class MathTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(getContext(), BezierCurvesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn2 = (Button) v.findViewById(R.id.second_btn);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), TemplateActivity.class);
                 startActivity(intent);
             }
         });

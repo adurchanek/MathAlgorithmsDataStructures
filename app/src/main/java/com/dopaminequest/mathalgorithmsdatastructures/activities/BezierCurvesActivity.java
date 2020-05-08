@@ -1,4 +1,4 @@
-package com.dopaminequest.mathalgorithmsdatastructures;
+package com.dopaminequest.mathalgorithmsdatastructures.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.ToggleButton;
 
+import com.dopaminequest.mathalgorithmsdatastructures.R;
 import com.dopaminequest.mathalgorithmsdatastructures.views.AStar.AStarView;
 import com.dopaminequest.mathalgorithmsdatastructures.views.BezierCurves.BezierCurvesView;
 import com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.DijkstraView;

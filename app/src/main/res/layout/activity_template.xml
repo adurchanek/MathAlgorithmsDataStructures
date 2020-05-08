@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.AStarActivity">
+    tools:context=".activities.TemplateActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.AStar.AStarView
-        android:id="@+id/AStarView"
+    <com.dopaminequest.mathalgorithmsdatastructures.views.Template.TemplateView
+        android:id="@+id/TemplateView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginRight="15dp"
@@ -19,7 +19,8 @@
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@android:color/white"/>
 
     <Button
         android:id="@+id/reset"
@@ -34,63 +35,37 @@
         app:backgroundTint="@android:color/white"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AStarView" />
+        app:layout_constraintTop_toBottomOf="@+id/TemplateView" />
 
-    <Button
-        android:id="@+id/start"
+    <Switch
+        android:id="@+id/pause"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="80dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="Start"
-        android:textColor="@android:color/white"
+        android:text="Pause"
+        android:textColor="@android:color/black"
         app:backgroundTint="@color/blue"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AStarView" />
+        app:layout_constraintTop_toBottomOf="@+id/TemplateView" />
 
-    <Button
-        android:id="@+id/blocked"
+    <Switch
+        android:id="@+id/disable_animation"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="Obstacle"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@color/black"
-        app:cornerRadius="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/end" />
-
-    <Button
-        android:id="@+id/end"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="End"
-        android:textColor="@android:color/white"
+        android:text="Animate"
         app:backgroundTint="@color/red"
         app:cornerRadius="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start" />
+        app:layout_constraintTop_toBottomOf="@+id/pause"
+        android:textColor="@android:color/black" />
 
-    <Button
-        android:id="@+id/find_path"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="272dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="Find Path"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@color/orange"
-        app:cornerRadius="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reset" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

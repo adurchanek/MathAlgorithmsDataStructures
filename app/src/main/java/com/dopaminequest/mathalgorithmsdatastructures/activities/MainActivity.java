@@ -1,4 +1,4 @@
-package com.dopaminequest.mathalgorithmsdatastructures;
+package com.dopaminequest.mathalgorithmsdatastructures.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,17 +9,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
+import com.dopaminequest.mathalgorithmsdatastructures.R;
+import com.dopaminequest.mathalgorithmsdatastructures.fragments.AlgorithmsTabFragment;
+import com.dopaminequest.mathalgorithmsdatastructures.fragments.DataStructuresTabFragment;
+import com.dopaminequest.mathalgorithmsdatastructures.fragments.MathTabFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-
-//import com.dopaminequest.mathalgorithmsdatastructures.views.MainView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,17 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-
-//        findViewById(R.id.first_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent =  new Intent(getApplicationContext(), DijkstrasActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

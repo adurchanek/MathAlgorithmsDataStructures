@@ -1,88 +1,84 @@
-package com.dopaminequest.mathalgorithmsdatastructures;
+package com.dopaminequest.mathalgorithmsdatastructures.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.dopaminequest.mathalgorithmsdatastructures.R;
+import com.dopaminequest.mathalgorithmsdatastructures.views.AStar.AStarView;
 import com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.DijkstraView;
 
-public class DijkstrasActivity extends AppCompatActivity {
+public class AStarActivity extends AppCompatActivity {
 
-    private DijkstraView dijkstraView;
+    private AStarView aStarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dijkstras);
+        setContentView(R.layout.activity_a_star);
 
-        dijkstraView = (DijkstraView) findViewById(R.id.DijkstraView);
+        aStarView = (AStarView) findViewById(R.id.AStarView);
 
         findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dijkstraView.resetX();
+                aStarView.resetX();
             }
         });
 
         findViewById(R.id.find_path).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dijkstraView.findShortestPath();
+                aStarView.findShortestPath();
             }
         });
 
         findViewById(R.id.blocked).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dijkstraView.editBlocked();
+                aStarView.editBlocked();
             }
         });
 
         findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dijkstraView.editStart();
+                aStarView.editStart();
             }
         });
 
         findViewById(R.id.end).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dijkstraView.editEnd();
+                aStarView.editEnd();
             }
         });
-
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        //dijkstraView.terminateThread();
-        System.out.println("------------------------------- OnStop() DijkstrasActivity: " );
-        //finish();
     }
 
     @Override
     public void onPause() {
         super.onPause();  // Always call the superclass method first
-        dijkstraView.pauseThread();
+        aStarView.pauseThread();
 
     }
 
     @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
-        dijkstraView.resumeThread();
+        aStarView.resumeThread();
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        dijkstraView.terminateThread();
-        System.out.println("------------------------------- OnStop() DijkstrasActivity: " );
+        aStarView.terminateThread();
         finish();
     }
 }
