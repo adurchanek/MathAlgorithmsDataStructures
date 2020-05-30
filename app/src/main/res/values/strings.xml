@@ -10,4 +10,6 @@
     <string name="DataStructuresFragment">Data Structures Fragment</string>
 
     <string name="MathFragment">Math Fragment</string>
+    <string name="stack_push">Push</string>
+    <string name="stack_pop">Pop</string>
 </resources>

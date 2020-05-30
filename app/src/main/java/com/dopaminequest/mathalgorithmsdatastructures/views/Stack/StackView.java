@@ -211,4 +211,13 @@ public class StackView extends View implements Runnable{
     public void toggleAnimation() {
         mc.toggleAnimation();
     }
+
+
+    public void push() {
+        mc.createNode();
+    }
+
+    public void pop() {
+        mc.destroyNode();
+    }
 }

@@ -1,5 +1,3 @@
-
-
 package com.dopaminequest.mathalgorithmsdatastructures.views.Template;
 
 import android.content.Context;

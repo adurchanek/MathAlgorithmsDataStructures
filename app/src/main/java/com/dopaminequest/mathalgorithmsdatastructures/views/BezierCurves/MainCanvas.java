@@ -7,6 +7,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Shader;
+
+import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
+
 import java.util.ArrayList;
 
 
@@ -29,7 +32,7 @@ public class MainCanvas extends Object {
 
     private int CIRCLE_RADIUS = BezierCurvesView.dimensions.x/110;
     private int numLinePoints;
-    private int currentAnimationIndex;
+    private float currentAnimationIndex;
     private int animationDirection;
     private int currentTouchControlPointAlpha;
     private int currentTouchControlPointRadius;
@@ -42,6 +45,7 @@ public class MainCanvas extends Object {
     private boolean pause;
     private boolean animate;
     private Path path;
+    private BezierCurve bc;
 
     public MainCanvas()
     {
@@ -154,7 +158,7 @@ public class MainCanvas extends Object {
 
         if(!pause)
         {
-            currentAnimationIndex += animationDirection;
+            currentAnimationIndex += animationDirection*(numLinePoints/200f);
         }
 
         if(currentAnimationIndex > numLinePoints - 1 || currentAnimationIndex < 0)
@@ -178,30 +182,36 @@ public class MainCanvas extends Object {
         drawBorder(canvas);
 
         generalPaint.setColor((int) (Color.BLUE));
-        Point bezierPoint = new Point();
+        //Point bezierPoint = new Point();
         path.reset();
 
         boolean firstPoint = true;
 
+        linePoints = bc.calculatePoints(numLinePoints);
+
         for(int index = 0; index < numLinePoints; index++)
         {
-            double t = (double)index / numLinePoints;
+//            double t = (double)index / numLinePoints;
+//
+//            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * p1.x + Math.pow(1 - t, 2) * t * 3 * p2.x  + (1-t) * Math.pow(t, 2) * 3 * p3.x  + Math.pow(t, 3) * p4.x));
+//            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * p1.y + Math.pow(1 - t, 2) * t * 3 * p2.y  + (1-t) * Math.pow(t, 2) * 3 * p3.y  + Math.pow(t, 3) * p4.y));
 
-            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * p1.x + Math.pow(1 - t, 2) * t * 3 * p2.x  + (1-t) * Math.pow(t, 2) * 3 * p3.x  + Math.pow(t, 3) * p4.x));
-            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * p1.y + Math.pow(1 - t, 2) * t * 3 * p2.y  + (1-t) * Math.pow(t, 2) * 3 * p3.y  + Math.pow(t, 3) * p4.y));
+
 
             if(firstPoint)
             {
-                path.moveTo(bezierPoint.x,bezierPoint.y);
+                path.moveTo(linePoints[index].x,linePoints[index].y);
                 firstPoint = false;
             }
             else
             {
-                path.lineTo(bezierPoint.x,bezierPoint.y);
+                path.lineTo(linePoints[index].x,linePoints[index].y);
             }
-            linePoints[index].x =  bezierPoint.x;
-            linePoints[index].y =  bezierPoint.y;
+//            linePoints[index].x =  bezierPoint.x;
+//            linePoints[index].y =  bezierPoint.y;
         }
+
+        path.lineTo(controlPoints.get(controlPoints.size()-1).x,controlPoints.get(controlPoints.size()-1).y);
 
         pathPaint.setShader(new LinearGradient(
                 BezierCurvesView.dimensions.x / 2f,
@@ -213,7 +223,6 @@ public class MainCanvas extends Object {
                     Shader.TileMode.MIRROR));
 
         canvas.drawPath(path, pathPaint);
-
         canvas.drawLine(p1.x, p1.y ,p2.x, p2.y, generalPaint);
         canvas.drawLine(p2.x, p2.y ,p3.x, p3.y, generalPaint);
         canvas.drawLine(p3.x, p3.y ,p4.x, p4.y, generalPaint);
@@ -275,7 +284,7 @@ public class MainCanvas extends Object {
 
         generalPaint.setAlpha(255);
         generalPaint.setColor((Color.YELLOW));
-        canvas.drawCircle(linePoints[currentAnimationIndex].x, linePoints[currentAnimationIndex].y, CIRCLE_RADIUS, generalPaint);
+        canvas.drawCircle(linePoints[(int) currentAnimationIndex].x, linePoints[(int) currentAnimationIndex].y, CIRCLE_RADIUS, generalPaint);
     }
 
     private void drawBorder(Canvas canvas) {
@@ -305,10 +314,12 @@ public class MainCanvas extends Object {
 
         controlPoints = new ArrayList<Point>();
 
+
         controlPoints.add(p1);
         controlPoints.add(p2);
         controlPoints.add(p3);
         controlPoints.add(p4);
+        bc = new BezierCurve(controlPoints);
         numLinePoints = 200;
         linePoints = new Point[numLinePoints];
         initializeLinePoints();
@@ -318,7 +329,7 @@ public class MainCanvas extends Object {
         animate = true;
         path = new Path();
 
-        currentAnimationIndex = 0;
+        currentAnimationIndex = 0f;
         animationDirection = 1;
         currentTouchControlPointAlpha = 0;
         currentTouchControlPointRadius = CIRCLE_RADIUS*3;

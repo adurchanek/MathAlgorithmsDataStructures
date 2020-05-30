@@ -6,12 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.ToggleButton;
-
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.views.AStar.AStarView;
 import com.dopaminequest.mathalgorithmsdatastructures.views.Stack.StackView;
-import com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.DijkstraView;
 
 public class StackActivity extends AppCompatActivity {
 
@@ -31,31 +27,17 @@ public class StackActivity extends AppCompatActivity {
         });
 
 
-        Switch sw1 = (Switch) findViewById(R.id.pause);
-        //sw1.setChecked(true);
-        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                    stackView.pause();
-                } else {
-                    // The toggle is disabled
-                    stackView.pause();
-                }
+        findViewById(R.id.push).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stackView.push();
             }
         });
 
-        Switch sw2 = (Switch) findViewById(R.id.disable_animation);
-        sw2.setChecked(true);
-        sw2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                    stackView.toggleAnimation();
-                } else {
-                    // The toggle is disabled
-                    stackView.toggleAnimation();
-                }
+        findViewById(R.id.pop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stackView.pop();
             }
         });
 

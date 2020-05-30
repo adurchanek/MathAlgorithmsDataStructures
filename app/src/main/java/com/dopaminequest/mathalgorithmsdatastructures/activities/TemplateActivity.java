@@ -6,41 +6,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.ToggleButton;
-
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.views.AStar.AStarView;
 import com.dopaminequest.mathalgorithmsdatastructures.views.Template.TemplateView;
-import com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras.DijkstraView;
 
 public class TemplateActivity extends AppCompatActivity {
 
-    private TemplateView bezierCurvesView;
+    private TemplateView view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template);
-        bezierCurvesView = (TemplateView) findViewById(R.id.TemplateView);
+        view = (TemplateView) findViewById(R.id.TemplateView);
 
         findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bezierCurvesView.resetX();
+                //view.resetX();
             }
         });
 
 
         Switch sw1 = (Switch) findViewById(R.id.pause);
-        //sw1.setChecked(true);
         sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // The toggle is enabled
-                    bezierCurvesView.pause();
+                    //view.pause();
                 } else {
                     // The toggle is disabled
-                    bezierCurvesView.pause();
+                    //view.pause();
                 }
             }
         });
@@ -51,10 +46,10 @@ public class TemplateActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // The toggle is enabled
-                    bezierCurvesView.toggleAnimation();
+                    //view.toggleAnimation();
                 } else {
                     // The toggle is disabled
-                    bezierCurvesView.toggleAnimation();
+                    //view.toggleAnimation();
                 }
             }
         });
@@ -69,21 +64,21 @@ public class TemplateActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();  // Always call the superclass method first
-        bezierCurvesView.pauseThread();
+        //view.pauseThread();
 
     }
 
     @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
-        bezierCurvesView.resumeThread();
+        //view.resumeThread();
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        bezierCurvesView.terminateThread();
+        //view.terminateThread();
         finish();
     }
 }

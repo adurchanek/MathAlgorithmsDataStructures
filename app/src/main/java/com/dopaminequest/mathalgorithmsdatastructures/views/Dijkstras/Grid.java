@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -165,25 +164,6 @@ public class Grid extends Object {
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
                     squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-
-
-//                    if(i != 0)
-//                    {
-//                        int diagonalPosXN = (j - 1) * width;
-//                        int diagonalPosYN = (i - 1) * height;
-//
-//                        currentNeighbor = (int)(diagonalPosXN/(float)width + (numSquares*diagonalPosYN)/(float)height);
-//                        squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-//                    }
-//
-//                    if(i != numSquares - 1)
-//                    {
-//                        int diagonalPosXN = (j - 1) * width;
-//                        int diagonalPosYN = (i + 1) * height;
-//
-//                        currentNeighbor = (int)(diagonalPosXN/(float)width + (numSquares*diagonalPosYN)/(float)height);
-//                        squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-//                    }
                 }
                 if(j != numSquares - 1)
                 {

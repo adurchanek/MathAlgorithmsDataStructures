@@ -5,20 +5,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.os.Build;
-
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Vector;
-
 import androidx.annotation.RequiresApi;
 
 
 public class Grid extends Object {
 
-    int rows;
-    int columns;
-    //Boolean dim = false;
-    final public int PADDING = 1;
+    private int rows;
+    private int columns;
     private Paint mPaintSquare;
     private Paint textPaint;
     public int startIndex;
@@ -177,25 +173,6 @@ public class Grid extends Object {
 
                     int currentNeighbor = (int)(posXN/(float)width + (numSquares*posYN)/(float)height);
                     squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-
-
-//                    if(i != 0)
-//                    {
-//                        int diagonalPosXN = (j - 1) * width;
-//                        int diagonalPosYN = (i - 1) * height;
-//
-//                        currentNeighbor = (int)(diagonalPosXN/(float)width + (numSquares*diagonalPosYN)/(float)height);
-//                        squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-//                    }
-//
-//                    if(i != numSquares - 1)
-//                    {
-//                        int diagonalPosXN = (j - 1) * width;
-//                        int diagonalPosYN = (i + 1) * height;
-//
-//                        currentNeighbor = (int)(diagonalPosXN/(float)width + (numSquares*diagonalPosYN)/(float)height);
-//                        squares.get( currentSquareIndex).neighbors.add(squares.get(currentNeighbor));
-//                    }
                 }
                 if(j != numSquares - 1)
                 {
@@ -243,21 +220,13 @@ public class Grid extends Object {
     public Vector<Integer> findPath()
     {
         //ArrayList<Square> pQ =  new ArrayList<>();
-        class StudentComparator implements Comparator<Square> {
-
-            //            public int compare(Square square1, Square square2) {
-//                if (square1.fCost < square2.fCost)
-//                    return -1;
-//                if (square1.fCost > square2.fCost)
-//                    return 1;
-//                return 0;
-//            }
+        class SquareComparator implements Comparator<Square> {
             public int compare(Square square1, Square square2) {
                 return Double.compare(square1.fCost, square2.fCost);
             }
         }
 
-        PriorityQueue<Square> pQ = new PriorityQueue<Square>(new StudentComparator());
+        PriorityQueue<Square> pQ = new PriorityQueue<Square>(new SquareComparator());
 
         exploredSquares = new Vector<Integer>();
         returnPath = new Vector<Integer>();
@@ -320,7 +289,6 @@ public class Grid extends Object {
                 if(currentS.index != endIndex)
                 {
                     returnPath.add(currentS.index);
-                    //exploredSquares.remove(currentS.index);
                 }
 
                 if(currentS.pvPrevious == -1)
