@@ -5,6 +5,7 @@
     <string name="MathTabFirstButton">Bézier Curves</string>
     <string name="MathTabSecondButton">Template</string>
     <string name="DataStructuresTabFirstButton">Stacks</string>
+    <string name="DataStructuresTabSecondButton">Queues</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="DataStructuresFragment">Data Structures Fragment</string>
@@ -12,4 +13,6 @@
     <string name="MathFragment">Math Fragment</string>
     <string name="stack_push">Push</string>
     <string name="stack_pop">Pop</string>
+    <string name="queue_enqueue">Queue</string>
+    <string name="queue_dequeue">Dequeue</string>
 </resources>

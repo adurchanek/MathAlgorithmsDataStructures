@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.BezierCurvesActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.QueueActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.StackActivity;
 
 
@@ -31,6 +32,7 @@ public class DataStructuresTabFragment extends Fragment {
     private String mParam2;
 
     private Button btn1;
+    private Button btn2;
 
     public DataStructuresTabFragment() {
         // Required empty public constructor
@@ -75,6 +77,15 @@ public class DataStructuresTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(getContext(), StackActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn2 = (Button) v.findViewById(R.id.second_button);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), QueueActivity.class);
                 startActivity(intent);
             }
         });

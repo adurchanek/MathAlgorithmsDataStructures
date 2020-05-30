@@ -1,16 +1,16 @@
-package com.dopaminequest.mathalgorithmsdatastructures.views.Stack;
+package com.dopaminequest.mathalgorithmsdatastructures.views.Queue;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.Shader;
 import android.text.TextPaint;
 
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
+import com.dopaminequest.mathalgorithmsdatastructures.views.Stack.StackView;
+
 import java.util.ArrayList;
 
 
@@ -20,9 +20,9 @@ public class MainCanvas extends Object {
     private Paint pathPaint;
     public boolean resettingMainCanvas = true;
     private  Point canvasDimensions;
-    private final int yDimension = StackView.dimensions.y;
-    private final int xDimension = StackView.dimensions.x;
-    private int P_SIZE = StackView.dimensions.x/110;
+    private final int yDimension = QueueView.dimensions.y;
+    private final int xDimension = QueueView.dimensions.x;
+    private int P_SIZE = QueueView.dimensions.x/110;
     private boolean pause;
     private boolean animate;
     private ArrayList<Node> activeNodes;
@@ -42,6 +42,7 @@ public class MainCanvas extends Object {
     private int size;
     private Paint paintText;
     private int textAlpha;
+    int bottom;
 
     public MainCanvas()
     {
@@ -75,6 +76,8 @@ public class MainCanvas extends Object {
         {
             activeNodes.get(i).update();
         }
+
+        System.out.println(activeNodes.size());
     }
 
     @Override
@@ -91,17 +94,17 @@ public class MainCanvas extends Object {
         if(size > 0)
         {
             paintText.setAlpha(textAlpha);
-            canvas.drawText("Top ->", activeNodes.get(size - 1).getCenterPosition().x - blockWidth * .75f, activeNodes.get(size-1).getCenterPosition().y, paintText);
+            canvas.drawText("Front ->", activeNodes.get(0).getCenterPosition().x - blockWidth * .82f, activeNodes.get(0).getCenterPosition().y, paintText);
             if(textAlpha < 180)
             {
                 textAlpha+=5;
             }
         }
 
-        mRectSquare.left = StackView.dimensions.x/2 - blockWidth/2;
-        mRectSquare.right = StackView.dimensions.x/2 + blockWidth/2;
-        mRectSquare.top = (int) (((StackView.dimensions.y) - (StackView.dimensions.y*.75f))/2);
-        mRectSquare.bottom = (int) (((StackView.dimensions.y) - (StackView.dimensions.y*.75f))/2) + stackHeight ;
+        mRectSquare.left = QueueView.dimensions.x/2 - blockWidth/2;
+        mRectSquare.right = QueueView.dimensions.x/2 + blockWidth/2;
+        mRectSquare.top = (int) (((QueueView.dimensions.y) - (QueueView.dimensions.y*.75f))/2);
+        mRectSquare.bottom = (int) (((QueueView.dimensions.y) - (QueueView.dimensions.y*.75f))/2) + stackHeight ;
         canvas.drawRect(mRectSquare, pathPaint);
 
         for(int i = 0; i < activeNodes.size(); i++)
@@ -138,13 +141,13 @@ public class MainCanvas extends Object {
         topPosition = new Point();
         bottomPosition = new Point();
         bc = new BezierCurve();
-        stackHeight = (int) ((StackView.dimensions.y*.75f));
+        stackHeight = (int) ((QueueView.dimensions.y*.75f));
         stackPaint = new Paint();
         stackPaint.setColor(Color.GREEN);
         stackPaint.setAlpha(55);
         mRectSquare = new Rect();
-        topPosition.x = (int) (StackView.dimensions.x*.5f);
-        topPosition.y = (int) (stackHeight  + ((StackView.dimensions.y) - (StackView.dimensions.y*.75f))/2);
+        topPosition.x = (int) (QueueView.dimensions.x*.5f);
+        topPosition.y = (int) (stackHeight  + ((QueueView.dimensions.y) - (QueueView.dimensions.y*.75f))/2);
         blockHeight = stackHeight/MAX_CAPACITY;
         blockWidth = blockHeight*3;
         size = 0;
@@ -167,13 +170,13 @@ public class MainCanvas extends Object {
         pathPaint.setStrokeCap(Paint.Cap.ROUND);
         pathPaint.setStrokeWidth(P_SIZE);
         pathPaint.setAntiAlias(true);
-
         paintText = new TextPaint();
         paintText.setColor(Color.BLACK);
         paintText.setTextSize(P_SIZE*8);
         textAlpha = 0;
         paintText.setAlpha(textAlpha);
         paintText.setTextAlign(Paint.Align.CENTER);
+        bottom = (int) (((QueueView.dimensions.y) - (QueueView.dimensions.y*.75f))/2) + stackHeight;
     }
 
     public void reset() {
@@ -198,22 +201,21 @@ public class MainCanvas extends Object {
     {
         if(size < MAX_CAPACITY)
         {
-            if(size != 0)
-            {
-                activeNodes.get(size-1).top = false;
-            }
             Node node;
             node = new Node(blockWidth, blockHeight , (int) (0), (int) (0));
             pushControlPoints.set(0, new Point(node.getCenterPosition().x, node.getCenterPosition().y));
-            pushControlPoints.set(1, new Point(node.getCenterPosition().x, (int) (StackView.dimensions.y*.5f)));
-            pushControlPoints.set(2, new Point(StackView.dimensions.x/2, 0));
+            pushControlPoints.set(1, new Point(node.getCenterPosition().x, (int) (QueueView.dimensions.y*.5f)));
+            pushControlPoints.set(2, new Point(QueueView.dimensions.x/2, 0));
             pushControlPoints.set(3, new Point(topPosition.x, topPosition.y - blockHeight/2));
-            node.followCurve(bc.calculatePoints(200, pushControlPoints));
+            node.followCurve(bc.calculatePoints(200, pushControlPoints), true);
             activeNodes.add(node);
             topPosition.y -= blockHeight;
+
+            if(size == 0)
+            {
+                node.front = true;
+            }
             size++;
-            node.top = true;
-            textAlpha = 0;
         }
     }
 
@@ -221,12 +223,12 @@ public class MainCanvas extends Object {
     {
         if(size > 0)
         {
-            Node node = activeNodes.get(size-1);
+            Node node = activeNodes.get(0);
             popControlPoints.set(0, new Point(node.getCenterPosition().x, node.getCenterPosition().y));
-            popControlPoints.set(1, new Point(node.getCenterPosition().x, 0));
-            popControlPoints.set(2, new Point(StackView.dimensions.x, StackView.dimensions.y/2));
-            popControlPoints.set(3, new Point(StackView.dimensions.x, -StackView.dimensions.y));
-            node.followCurve(bc.calculatePoints(200, popControlPoints));
+            popControlPoints.set(1, new Point(node.getCenterPosition().x, QueueView.dimensions.y/2));
+            popControlPoints.set(2, new Point(QueueView.dimensions.x, QueueView.dimensions.y));
+            popControlPoints.set(3, new Point(QueueView.dimensions.x, 2*QueueView.dimensions.y));
+            node.followCurve(bc.calculatePoints(200, popControlPoints),true);
             node.destroy = true;
             topPosition.y += blockHeight;
             inactiveNodes.add(node);
@@ -236,7 +238,17 @@ public class MainCanvas extends Object {
 
             if(size != 0)
             {
-                activeNodes.get(size-1).top = true;
+                activeNodes.get(0).front = true;
+            }
+
+            for(int i = 0; i < activeNodes.size(); i++)
+            {
+                Node n = activeNodes.get(i);
+                pushControlPoints.set(0, new Point(n.getCenterPosition().x, n.getCenterPosition().y));
+                pushControlPoints.set(1, new Point(QueueView.dimensions.x/2, bottom - (i)*blockHeight - blockHeight/2));
+                pushControlPoints.set(2, new Point(QueueView.dimensions.x/2, bottom - (i)*blockHeight - blockHeight/2));
+                pushControlPoints.set(3, new Point(QueueView.dimensions.x/2, bottom - (i)*blockHeight - blockHeight/2));
+                n.followCurve(bc.calculatePoints(200, pushControlPoints), false);
             }
         }
     }
@@ -251,7 +263,7 @@ public class MainCanvas extends Object {
         return (size == 0);
     }
 
-    public Node getTop()
+    public Node getFront()
     {
         if(size == 0)
         {
