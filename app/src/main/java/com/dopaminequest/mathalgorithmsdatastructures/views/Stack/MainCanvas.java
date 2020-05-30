@@ -8,6 +8,8 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.text.TextPaint;
+
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
 import java.util.ArrayList;
 
@@ -38,6 +40,7 @@ public class MainCanvas extends Object {
     private int stackHeight;
     private int blockWidth;
     private int size;
+    private Paint paintText;
 
     public MainCanvas()
     {
@@ -83,6 +86,11 @@ public class MainCanvas extends Object {
 
         generalPaint.setColor((Color.RED));
         pathPaint.setColor(Color.GREEN);
+
+        if(size > 0)
+        {
+            canvas.drawText("Top ->", activeNodes.get(size-1).getCenterPosition().x - blockWidth * .75f, activeNodes.get(size-1).getCenterPosition().y, paintText);
+        }
 
         mRectSquare.left = StackView.dimensions.x/2 - blockWidth/2;
         mRectSquare.right = StackView.dimensions.x/2 + blockWidth/2;
@@ -153,6 +161,14 @@ public class MainCanvas extends Object {
         pathPaint.setStrokeCap(Paint.Cap.ROUND);
         pathPaint.setStrokeWidth(P_SIZE);
         pathPaint.setAntiAlias(true);
+
+        paintText = new TextPaint();
+        paintText.setColor(Color.BLACK);
+        paintText.setTextSize(P_SIZE*8);
+        paintText.setAlpha(155);
+        paintText.setTextAlign(Paint.Align.CENTER);
+
+
 
     }
 

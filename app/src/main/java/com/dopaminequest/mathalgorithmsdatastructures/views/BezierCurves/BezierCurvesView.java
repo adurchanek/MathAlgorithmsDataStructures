@@ -12,13 +12,13 @@ import androidx.annotation.Nullable;
 
 public class BezierCurvesView extends View implements Runnable{
 
-    Thread ourThread = null;
-    long lastFrameTime;
-    int fps;
+    private Thread ourThread = null;
+    private long lastFrameTime;
+    private int fps;
     public static MainCanvas mc;
 
-    Boolean initialized = false;
-    Boolean running = true;
+    private Boolean initialized = false;
+    private Boolean running = true;
     public static Point dimensions;
     public static long downTime;
     public static long eventTime;
@@ -26,8 +26,8 @@ public class BezierCurvesView extends View implements Runnable{
     public static Point input;
     public static Boolean actionDown;
     public boolean paused = false;
-    float time = 0f;
-    int count = 0;
+    private float time = 0f;
+    private int count = 0;
 
     public BezierCurvesView(Context context) {
         super(context);

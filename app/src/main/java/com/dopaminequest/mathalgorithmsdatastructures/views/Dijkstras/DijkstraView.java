@@ -22,20 +22,20 @@ public class DijkstraView extends View implements Runnable{
         Start, End, Blocked, Explored, Unexplored, Path, Found;
     }
 
-    Thread ourThread = null;
-    long lastFrameTime;
-    int fps;
+    private Thread ourThread = null;
+    private long lastFrameTime;
+    private int fps;
     public static Grid g;
-    int numTiles;
-    Boolean initialized = false;
-    Boolean running = true;
+    private int numTiles;
+    private Boolean initialized = false;
+    private Boolean running = true;
     public static Point dimensions;
     public static Point input;
     public static Boolean actionDown;
     public static State editState;
     public boolean paused = false;
-    float time = 0f;
-    int count = 0;
+    private float time = 0f;
+    private int count = 0;
 
     public DijkstraView(Context context) {
         super(context);
@@ -111,7 +111,7 @@ public class DijkstraView extends View implements Runnable{
                     g = new Grid(numTiles);
                     initialized = true;
                     input = new Point();
-                    editState = State.Start;
+                    editState = State.Blocked;
                     actionDown = false;
                 }
             }

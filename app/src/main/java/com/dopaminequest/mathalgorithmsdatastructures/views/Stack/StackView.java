@@ -13,8 +13,8 @@ import androidx.annotation.Nullable;
 public class StackView extends View implements Runnable{
 
     private Thread mainThread;
-    long lastFrameTime;
-    int fps;
+    private long lastFrameTime;
+    private int fps;
     private MainCanvas mc;
     private Boolean initialized;
     private Boolean running;
