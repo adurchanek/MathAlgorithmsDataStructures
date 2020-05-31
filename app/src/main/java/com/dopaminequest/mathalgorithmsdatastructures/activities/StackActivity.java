@@ -12,12 +12,15 @@ import com.dopaminequest.mathalgorithmsdatastructures.views.Stack.StackView;
 public class StackActivity extends AppCompatActivity {
 
     private StackView stackView;
+    private long lastFrameTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stack);
         stackView = (StackView) findViewById(R.id.StackView);
+        lastFrameTime = System.currentTimeMillis();
+
 
         findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +33,11 @@ public class StackActivity extends AppCompatActivity {
         findViewById(R.id.push).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(System.currentTimeMillis() - lastFrameTime < 75)
+                {
+                    return;
+                }
+                lastFrameTime = System.currentTimeMillis();
                 stackView.push();
             }
         });
@@ -37,6 +45,11 @@ public class StackActivity extends AppCompatActivity {
         findViewById(R.id.pop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(System.currentTimeMillis() - lastFrameTime < 75)
+                {
+                    return;
+                }
+                lastFrameTime = System.currentTimeMillis();
                 stackView.pop();
             }
         });

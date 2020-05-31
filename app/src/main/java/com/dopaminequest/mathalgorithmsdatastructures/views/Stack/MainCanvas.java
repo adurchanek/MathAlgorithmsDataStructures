@@ -8,9 +8,12 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.text.TextPaint;
 
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
+import com.dopaminequest.mathalgorithmsdatastructures.views.Queue.QueueView;
+
 import java.util.ArrayList;
 
 
@@ -42,6 +45,9 @@ public class MainCanvas extends Object {
     private int size;
     private Paint paintText;
     private int textAlpha;
+    private int bottom;
+    private int NUM_BEZIER_POINTS = 70;
+    boolean createDestroyLock;
 
     public MainCanvas()
     {
@@ -91,8 +97,20 @@ public class MainCanvas extends Object {
         if(size > 0)
         {
             paintText.setAlpha(textAlpha);
+            paintText.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
             canvas.drawText("Top ->", activeNodes.get(size - 1).getCenterPosition().x - blockWidth * .75f, activeNodes.get(size-1).getCenterPosition().y, paintText);
             if(textAlpha < 180)
+            {
+                textAlpha+=5;
+            }
+        }
+        else
+        {
+
+            paintText.setAlpha(textAlpha);
+            paintText.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.ITALIC));
+            canvas.drawText("Empty ()", StackView.dimensions.x/2 - blockWidth * .81f, bottom-blockHeight/2, paintText);
+            if(textAlpha < 70)
             {
                 textAlpha+=5;
             }
@@ -174,6 +192,8 @@ public class MainCanvas extends Object {
         textAlpha = 0;
         paintText.setAlpha(textAlpha);
         paintText.setTextAlign(Paint.Align.CENTER);
+        bottom = (int) (((StackView.dimensions.y) - (StackView.dimensions.y*.75f))/2) + stackHeight;
+        createDestroyLock = false;
     }
 
     public void reset() {
@@ -196,6 +216,15 @@ public class MainCanvas extends Object {
 
     public void createNode()
     {
+        if(createDestroyLock)
+        {
+            return;
+        }
+        else
+        {
+            createDestroyLock = true;
+        }
+
         if(size < MAX_CAPACITY)
         {
             if(size != 0)
@@ -208,17 +237,27 @@ public class MainCanvas extends Object {
             pushControlPoints.set(1, new Point(node.getCenterPosition().x, (int) (StackView.dimensions.y*.5f)));
             pushControlPoints.set(2, new Point(StackView.dimensions.x/2, 0));
             pushControlPoints.set(3, new Point(topPosition.x, topPosition.y - blockHeight/2));
-            node.followCurve(bc.calculatePoints(200, pushControlPoints));
+            node.followCurve(bc.calculatePoints(NUM_BEZIER_POINTS, pushControlPoints));
             activeNodes.add(node);
             topPosition.y -= blockHeight;
             size++;
             node.top = true;
             textAlpha = 0;
         }
+        createDestroyLock = false;
     }
 
     public void destroyNode()
     {
+        if(createDestroyLock)
+        {
+            return;
+        }
+        else
+        {
+            createDestroyLock = true;
+        }
+
         if(size > 0)
         {
             Node node = activeNodes.get(size-1);
@@ -226,7 +265,7 @@ public class MainCanvas extends Object {
             popControlPoints.set(1, new Point(node.getCenterPosition().x, 0));
             popControlPoints.set(2, new Point(StackView.dimensions.x, StackView.dimensions.y/2));
             popControlPoints.set(3, new Point(StackView.dimensions.x, -StackView.dimensions.y));
-            node.followCurve(bc.calculatePoints(200, popControlPoints));
+            node.followCurve(bc.calculatePoints(NUM_BEZIER_POINTS, popControlPoints));
             node.destroy = true;
             topPosition.y += blockHeight;
             inactiveNodes.add(node);
@@ -239,6 +278,7 @@ public class MainCanvas extends Object {
                 activeNodes.get(size-1).top = true;
             }
         }
+        createDestroyLock = false;
     }
 
     public int getSize()

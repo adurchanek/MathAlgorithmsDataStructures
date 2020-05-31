@@ -7,24 +7,16 @@ import java.util.ArrayList;
 public class BezierCurve extends Object{
 
     public Point canvasDimensions;
-
     private double time = 0;
     private Point p1;
     private Point p2;
     private Point p3;
     private Point p4;
 
-
-    //private int numLinePoints;
-
-
     private ArrayList<Point> controlPoints;
-//    private Point[] linePoints;
-
 
     public BezierCurve()
     {
-        //ArrayList<ArrayList<Integer>> points = new ArrayList<>();
         ArrayList<Point> cPoints = new ArrayList<Point>();
         for(int i = 0; i < 4; i ++)
         {
@@ -38,9 +30,6 @@ public class BezierCurve extends Object{
     {
         init(cPoints);
     }
-
-
-
 
     public void init(ArrayList<Point> cPoints)
     {
@@ -62,7 +51,6 @@ public class BezierCurve extends Object{
         controlPoints.add(p4);
     }
 
-
     public Point[] calculatePoints(int numLinePoints)
     {
         Point bezierPoint = new Point();
@@ -72,8 +60,8 @@ public class BezierCurve extends Object{
         {
             double t = (double)index / (numLinePoints-1);
 
-            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).x + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).x  + (1-t) * Math.pow(t, 2) * 3 * controlPoints.get(2).x  + Math.pow(t, 3) * controlPoints.get(3).x));
-            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).y + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).y  + (1-t) * Math.pow(t, 2) * 3 * controlPoints.get(2).y  + Math.pow(t, 3) * controlPoints.get(3).y));
+            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).x + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).x  + (1 - t) * Math.pow(t, 2) * 3 * controlPoints.get(2).x  + Math.pow(t, 3) * controlPoints.get(3).x));
+            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).y + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).y  + (1 - t) * Math.pow(t, 2) * 3 * controlPoints.get(2).y  + Math.pow(t, 3) * controlPoints.get(3).y));
 
             linePoints[index].x =  bezierPoint.x;
             linePoints[index].y =  bezierPoint.y;
@@ -85,7 +73,6 @@ public class BezierCurve extends Object{
 
         return linePoints;
     }
-    //private ArrayList<Point> controlPoints
 
     public Point[] calculatePoints(int numLinePoints, ArrayList<Point> controlPoints)
     {
@@ -96,8 +83,8 @@ public class BezierCurve extends Object{
         {
             double t = (double)index / (numLinePoints-1);
 
-            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).x + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).x  + (1-t) * Math.pow(t, 2) * 3 * controlPoints.get(2).x  + Math.pow(t, 3) * controlPoints.get(3).x));
-            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).y + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).y  + (1-t) * Math.pow(t, 2) * 3 * controlPoints.get(2).y  + Math.pow(t, 3) * controlPoints.get(3).y));
+            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).x + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).x  + (1 - t) * Math.pow(t, 2) * 3 * controlPoints.get(2).x  + Math.pow(t, 3) * controlPoints.get(3).x));
+            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * controlPoints.get(0).y + Math.pow(1 - t, 2) * t * 3 * controlPoints.get(1).y  + (1 - t) * Math.pow(t, 2) * 3 * controlPoints.get(2).y  + Math.pow(t, 3) * controlPoints.get(3).y));
 
             linePoints[index].x =  bezierPoint.x;
             linePoints[index].y =  bezierPoint.y;
@@ -106,11 +93,8 @@ public class BezierCurve extends Object{
         linePoints[numLinePoints-1].x = controlPoints.get(controlPoints.size()-1).x;
         linePoints[numLinePoints-1].y = controlPoints.get(controlPoints.size()-1).y;
 
-
         return linePoints;
     }
-
-
 
     private void initializeLinePoints(int numLinePoints, Point[] linePoints)
     {

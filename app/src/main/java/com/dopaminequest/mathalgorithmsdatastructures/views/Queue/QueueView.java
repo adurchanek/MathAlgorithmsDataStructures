@@ -212,10 +212,12 @@ public class QueueView extends View implements Runnable{
 
 
     public void enqueue() {
+//        System.out.println("create node");
         mc.createNode();
     }
 
     public void dequeue() {
+//        System.out.println("destroy node");
         mc.destroyNode();
     }
 }
