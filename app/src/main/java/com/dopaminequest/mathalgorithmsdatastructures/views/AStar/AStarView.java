@@ -125,7 +125,8 @@ public class AStarView extends View implements Runnable{
                 {
                     g.update();
                     controlFPS();
-                    invalidate();
+//                    invalidate();
+                    postInvalidate();
                 }
                 catch(Exception e)
                 {

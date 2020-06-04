@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.graphics.Shader;
 
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
+import com.dopaminequest.mathalgorithmsdatastructures.views.VectorProjection.VectorProjectionView;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,8 @@ public class MainCanvas extends Object {
     private Path path;
     private BezierCurve bc;
 
+    Point clampedInput;
+
     public MainCanvas()
     {
         init();
@@ -67,37 +70,40 @@ public class MainCanvas extends Object {
             time = 1;
         }
 
-        if(BezierCurvesView.actionDown)
-        {
+
+            if(BezierCurvesView.actionDown)
+            {
+                clampedInput.x = BezierCurvesView.input.x > BezierCurvesView.dimensions.x ? BezierCurvesView.dimensions.x : Math.max(BezierCurvesView.input.x, 0);
+                clampedInput.y = BezierCurvesView.input.y > BezierCurvesView.dimensions.y ? BezierCurvesView.dimensions.y : Math.max(BezierCurvesView.input.y, 0);
+
+                if(controlPointPressReset)
+                {
+
+                    controlPointPressReset = false;
+                    currentTouchControlPointAlpha = 34;
+                }
+
+                currentTouchControlPointAlpha -= 3;
+
+                if(currentTouchControlPointAlpha < 0)
+                {
+                    currentTouchControlPointAlpha = 0;
+                }
+
+                currentTouchControlPointRadius += CIRCLE_RADIUS;
+
+                if(currentTouchControlPointRadius > MAX_SIZE_CONTROL_POINT)
+                {
+                    currentTouchControlPointRadius = MAX_SIZE_CONTROL_POINT;
+                }
+            }
+
+
             int minIndex = -1;
             float minDistance = Float.MAX_VALUE;
 
-            Point clampedInput = new Point(0,0);
 
-            clampedInput.x = BezierCurvesView.input.x;
-            clampedInput.y = BezierCurvesView.input.y;
-
-            if(BezierCurvesView.input.x < 0)
-            {
-                clampedInput.x = 0;
-            }
-
-            if(BezierCurvesView.input.y < 0)
-            {
-                clampedInput.y = 0;
-            }
-
-            if(BezierCurvesView.input.x > BezierCurvesView.dimensions.x)
-            {
-                clampedInput.x = BezierCurvesView.dimensions.x;
-            }
-
-            if(BezierCurvesView.input.y > BezierCurvesView.dimensions.y)
-            {
-                clampedInput.y = BezierCurvesView.dimensions.y;
-            }
-
-            if(controlPointPressReset)
+//            if(controlPointPressReset)
             {
                 for(int i = 0;  i < controlPoints.size(); i++)
                 {
@@ -109,12 +115,11 @@ public class MainCanvas extends Object {
                     }
                 }
                 currentControlPointIndex = minIndex;
-                controlPointPressReset = false;
-                currentTouchControlPointAlpha = 34;
+
             }
-            else
+            //else
             {
-                minIndex = currentControlPointIndex;
+                //minIndex = currentControlPointIndex;
             }
 
             double xVectorToInput = (clampedInput.x - controlPoints.get(minIndex).x);
@@ -124,37 +129,25 @@ public class MainCanvas extends Object {
             double directionToFingerVectorX =  (xVectorToInput/distToInput);
             double directionToFingerVectorY =  (yVectorToInput/distToInput);
 
-            if(distToInput < BezierCurvesView.dimensions.x / 70f)
+            if(distToInput < BezierCurvesView.dimensions.x / 45f)
             {
                 controlPoints.get(minIndex).x = clampedInput.x;
                 controlPoints.get(minIndex).y = clampedInput.y;
             }
             else
             {
-                controlPoints.get(minIndex).x += directionToFingerVectorX*distToInput/2;
-                controlPoints.get(minIndex).y += directionToFingerVectorY*distToInput/2;
+                controlPoints.get(minIndex).x += directionToFingerVectorX*distToInput*.5f;
+                controlPoints.get(minIndex).y += directionToFingerVectorY*distToInput*.5f;
             }
 
-            currentTouchControlPointAlpha -= 3;
 
-            if(currentTouchControlPointAlpha < 0)
-            {
-                currentTouchControlPointAlpha = 0;
-            }
-
-            currentTouchControlPointRadius += CIRCLE_RADIUS;
-
-            if(currentTouchControlPointRadius > MAX_SIZE_CONTROL_POINT)
-            {
-                currentTouchControlPointRadius = MAX_SIZE_CONTROL_POINT;
-            }
-        }
-        else
+        if(!BezierCurvesView.actionDown)
         {
             currentTouchControlPointAlpha = 55;
             currentTouchControlPointRadius = CIRCLE_RADIUS*3;
             controlPointPressReset = true;
         }
+
 
         if(!pause)
         {
@@ -305,12 +298,16 @@ public class MainCanvas extends Object {
         scale = new Point();
         resettingMainCanvas = false;
 
+
         int widthOffset = BezierCurvesView.dimensions.x / 13;
 
         p1 = new Point(widthOffset,BezierCurvesView.dimensions.x-widthOffset*3);
         p2 = new Point(widthOffset, widthOffset);
         p3 = new Point(BezierCurvesView.dimensions.x - widthOffset, widthOffset);
         p4 = new Point(BezierCurvesView.dimensions.x - widthOffset,BezierCurvesView.dimensions.x - widthOffset * 3);
+        clampedInput = new Point(0,0);
+        clampedInput.x = p4.x;
+        clampedInput.y = p4.y;
 
         controlPoints = new ArrayList<Point>();
 

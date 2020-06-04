@@ -108,7 +108,8 @@ public class QueueView extends View implements Runnable{
                 {
                     mc.update();
                     controlFPS();
-                    invalidate();
+//                    invalidate();
+                    postInvalidate();
                 }
                 catch(Exception e)
                 {
@@ -212,12 +213,10 @@ public class QueueView extends View implements Runnable{
 
 
     public void enqueue() {
-//        System.out.println("create node");
         mc.createNode();
     }
 
     public void dequeue() {
-//        System.out.println("destroy node");
         mc.destroyNode();
     }
 }

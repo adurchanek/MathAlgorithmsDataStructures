@@ -106,7 +106,6 @@ public class MainCanvas extends Object {
         }
         else
         {
-
             paintText.setAlpha(textAlpha);
             paintText.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.ITALIC));
             canvas.drawText("Empty ()", StackView.dimensions.x/2 - blockWidth * .81f, bottom-blockHeight/2, paintText);

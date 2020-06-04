@@ -1,67 +1,58 @@
-
-
-package com.dopaminequest.mathalgorithmsdatastructures.views.Dijkstras;
+package com.dopaminequest.mathalgorithmsdatastructures.views.VectorProjection;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import com.dopaminequest.mathalgorithmsdatastructures.R;
 import androidx.annotation.Nullable;
 
-public class DijkstraView extends View implements Runnable{
+public class VectorProjectionView extends View implements Runnable{
 
-    enum State
-    {
-        Start, End, Blocked, Explored, Unexplored, Path, Found;
-    }
-
-    private Thread ourThread = null;
+    private Thread mainThread;
     private long lastFrameTime;
     private int fps;
-    public static Grid g;
-    private int numTiles;
-    private Boolean initialized = false;
-    private Boolean running = true;
+    private MainCanvas mc;
+    private Boolean initialized;
+    private Boolean running;
     public static Point dimensions;
     public static Point input;
     public static Boolean actionDown;
-    public static State editState;
-    public boolean paused = false;
-    private float time = 0f;
-    private int count = 0;
+    public static Boolean actionUp;
+    public boolean paused;
+    public static Point[] points;
+    public static int numPoints;
+    public static boolean initialTouchDown;
 
-    public DijkstraView(Context context) {
+    public VectorProjectionView(Context context) {
         super(context);
 
         init(null);
     }
 
-    public DijkstraView(Context context, @Nullable AttributeSet attrs) {
+    public VectorProjectionView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public DijkstraView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VectorProjectionView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
-    public DijkstraView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public VectorProjectionView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
 
     private void  init(@Nullable AttributeSet set)
     {
-        ourThread = new Thread(this);
-        ourThread.start();
+        paused = false;
+        running = true;
+        initialized = false;
+        mainThread = new Thread(this);
+        mainThread.start();
     }
 
     @Override
@@ -70,7 +61,7 @@ public class DijkstraView extends View implements Runnable{
         {
             try
             {
-                g.draw(canvas);
+                mc.draw(canvas);
             }
             catch(Exception e)
             {
@@ -88,7 +79,7 @@ public class DijkstraView extends View implements Runnable{
             {
                 try
                 {
-                    ourThread.sleep(100);
+                    mainThread.sleep(100);
                 }
                 catch (InterruptedException e)
                 {
@@ -107,21 +98,28 @@ public class DijkstraView extends View implements Runnable{
                     dimensions = new Point();
                     dimensions.x = getWidth();
                     dimensions.y = getHeight();
-                    numTiles = 24;
-                    g = new Grid(numTiles);
-                    initialized = true;
+                    points=new Point[2];
+                    points[0] = new Point( 0,0);
+                    points[1] = new Point( 0,0);
                     input = new Point();
-                    editState = State.Blocked;
                     actionDown = false;
+                    actionUp = true;
+                    initialTouchDown = false;
+
+                    mc = new MainCanvas();
+                    initialized = true;
+
+
+
+
                 }
             }
             else
             {
                 try
                 {
-                    g.update();
+                    mc.update();
                     controlFPS();
-//                    invalidate();
                     postInvalidate();
                 }
                 catch(Exception e)
@@ -133,20 +131,16 @@ public class DijkstraView extends View implements Runnable{
     }
 
     public void controlFPS() {
-        count++;
         long timeThisFrame = (System.currentTimeMillis() - lastFrameTime);
-        time += timeThisFrame;
-
-        //time = time/count;
-
         long timeToSleep = 15 - timeThisFrame;
+
         if (timeThisFrame > 0) {
             fps = (int) (1000 / timeThisFrame);
         }
         if (timeToSleep > 0) {
 
             try {
-                ourThread.sleep(timeToSleep);
+                mainThread.sleep(timeToSleep);
             } catch (InterruptedException e) {
             }
         }
@@ -155,8 +149,15 @@ public class DijkstraView extends View implements Runnable{
 
     public void resetX()
     {
-        g.resettingGrid = true;
-        g.init();
+        mc.resettingMainCanvas = true;
+        input = new Point();
+        actionDown = false;
+        actionUp  = true;
+        initialTouchDown = false;
+        points=new Point[2];
+        points[0] = new Point( 0,0);
+        points[1] = new Point( 0,0);
+        mc.init();
     }
 
     @Override
@@ -169,43 +170,52 @@ public class DijkstraView extends View implements Runnable{
 
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_POINTER_DOWN:
-                actionDown = true;
+                //actionDown = true;
                 break;
             case MotionEvent.ACTION_POINTER_UP:
-                actionDown = false;
+                //actionDown = false;
                 break;
             case MotionEvent.ACTION_DOWN:
+                if(!actionDown)
+                {
+                    initialTouchDown = true;
+                }
+
                 actionDown = true;
+                actionUp = false;
+
                 break;
             case MotionEvent.ACTION_UP:
                 actionDown = false;
+                actionUp = true;
                 break;
+
         }
 
-        int numPoints = motionEvent.getPointerCount();
+        numPoints = motionEvent.getPointerCount();
+
+        if (numPoints > 2)
+        {
+            numPoints = 2;
+
+        }
+//        if(numPoints > 0 )
+//        {
+//            actionDown = true;
+//        }
+//        else
+//        {
+//            actionDown = false;
+//        }
+
         for (int n = 0; n < numPoints; n ++)
         {
             input.x  = (int) motionEvent.getX(0);
             input.y  = (int) motionEvent.getY(0);
-            break;
-        }
 
-        if(input.x < 0)
-        {
-            input.x = 0;
-        }
-        else if(input.x > (dimensions.x))
-        {
-            input.x = (dimensions.x/numTiles)*numTiles;
-        }
+            points[n].x = (int) motionEvent.getX(n);
+            points[n].y = (int) motionEvent.getY(n);
 
-        if(input.y < 0)
-        {
-            input.y = 0;
-        }
-        else if(input.y > (dimensions.y))
-        {
-            input.y = (dimensions.y/numTiles)*numTiles;
         }
 
         if(!actionDown)
@@ -213,42 +223,13 @@ public class DijkstraView extends View implements Runnable{
             input.x = -1;
             input.y = -1;
         }
+
         return true;
     }
 
-    public void editStart()
+    public MainCanvas getMainCanvas()
     {
-        editState = State.Start;
-    }
-
-    public void editEnd()
-    {
-        editState = State.End;
-    }
-
-    public void editExplored()
-    {
-        editState = State.Explored;
-    }
-
-    public void editUnexplored()
-    {
-        editState = State.Unexplored;
-    }
-
-    public void editBlocked()
-    {
-        editState = State.Blocked;
-    }
-
-    public void findShortestPath()
-    {
-        boolean returnVal = g.findShortestPath();
-    }
-
-    public Grid getGrid()
-    {
-        return g;
+        return mc;
     }
 
     public void terminateThread()
@@ -263,5 +244,13 @@ public class DijkstraView extends View implements Runnable{
     public void pauseThread()
     {
         paused = true;
+    }
+
+    public void pause() {
+        mc.pause();
+    }
+
+    public void toggleAnimation() {
+        mc.toggleAnimation();
     }
 }

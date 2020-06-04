@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.BezierCurvesActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.TemplateActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.VectorProjectionActivity;
 
 
 /**
@@ -76,6 +77,15 @@ public class MathTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(getContext(), BezierCurvesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn2 = (Button) v.findViewById(R.id.second_btn);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), VectorProjectionActivity.class);
                 startActivity(intent);
             }
         });

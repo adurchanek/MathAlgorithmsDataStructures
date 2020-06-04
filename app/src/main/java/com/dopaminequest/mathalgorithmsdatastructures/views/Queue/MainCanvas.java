@@ -212,18 +212,6 @@ public class MainCanvas extends Object {
 
     public void createNode()
     {
-//        System.out.println("createNode()");
-//        if(createDestroyLock)
-//        {
-//            return;
-//        }
-//        else
-//        {
-//            createDestroyLock = true;
-//        }
-
-
-
         if(size < MAX_CAPACITY)
         {
             Node node;
@@ -241,23 +229,11 @@ public class MainCanvas extends Object {
                 node.front = true;
             }
             size++;
-//            System.out.println("destroy()");
         }
-//        createDestroyLock = false;
     }
 
     public void destroyNode()
     {
-//        System.out.println("destroy()");
-//        if(createDestroyLock)
-//        {
-//            return;
-//        }
-//        else
-//        {
-//            createDestroyLock = true;
-//        }
-
         if(size > 0)
         {
             Node node = activeNodes.get(0);
@@ -280,7 +256,6 @@ public class MainCanvas extends Object {
 
             for(int i = 0; i < activeNodes.size(); i++)
             {
-//                System.out.println("for destroy");
                 Node n = activeNodes.get(i);
                 pushControlPoints.set(0, new Point(n.getCenterPosition().x, n.getCenterPosition().y));
                 pushControlPoints.set(1, new Point(QueueView.dimensions.x/2, bottom - (i)*blockHeight - blockHeight/2));
@@ -289,8 +264,6 @@ public class MainCanvas extends Object {
                 n.followCurve(bc.calculatePoints(NUM_BEZIER_POINTS, pushControlPoints), false);
             }
         }
-
-
     }
 
     public int getSize()

@@ -70,7 +70,6 @@ public class StackView extends View implements Runnable{
 
     @Override
     public void run() {
-
         while(running)
         {
             if(paused)
@@ -109,7 +108,7 @@ public class StackView extends View implements Runnable{
                 {
                     mc.update();
                     controlFPS();
-                    invalidate();
+                    postInvalidate();
                 }
                 catch(Exception e)
                 {
@@ -146,6 +145,8 @@ public class StackView extends View implements Runnable{
 
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
+
+
 
         if(!initialized)
         {
@@ -189,12 +190,10 @@ public class StackView extends View implements Runnable{
     {
         return mc;
     }
-
     public void terminateThread()
     {
         running = false;
     }
-
     public void resumeThread()
     {
         paused = false;
@@ -203,15 +202,12 @@ public class StackView extends View implements Runnable{
     {
         paused = true;
     }
-
     public void pause() {
         mc.pause();
     }
-
     public void toggleAnimation() {
         mc.toggleAnimation();
     }
-
 
     public void push() {
         mc.createNode();
@@ -219,5 +215,6 @@ public class StackView extends View implements Runnable{
 
     public void pop() {
         mc.destroyNode();
+
     }
 }

@@ -24,7 +24,7 @@ public class Node extends Object{
     private int P_SIZE = StackView.dimensions.x/110;
     private Point centerPosition;
     public boolean destroy;
-    private boolean offScreen;
+    public boolean offScreen;
     public boolean top;
     private int randomInt;
 
@@ -39,6 +39,8 @@ public class Node extends Object{
 
     @Override
     public void update() {
+
+
         animatingStep++;
 
         if(currentAnimationIndex > linePoints.length - 1)

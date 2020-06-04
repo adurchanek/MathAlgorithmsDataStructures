@@ -33,11 +33,11 @@ public class StackActivity extends AppCompatActivity {
         findViewById(R.id.push).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(System.currentTimeMillis() - lastFrameTime < 75)
-                {
-                    return;
-                }
-                lastFrameTime = System.currentTimeMillis();
+//                if(System.currentTimeMillis() - lastFrameTime < 75)
+//                {
+//                    return;
+//                }
+//                lastFrameTime = System.currentTimeMillis();
                 stackView.push();
             }
         });
@@ -45,11 +45,11 @@ public class StackActivity extends AppCompatActivity {
         findViewById(R.id.pop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(System.currentTimeMillis() - lastFrameTime < 75)
-                {
-                    return;
-                }
-                lastFrameTime = System.currentTimeMillis();
+//                if(System.currentTimeMillis() - lastFrameTime < 75)
+//                {
+//                    return;
+//                }
+//                lastFrameTime = System.currentTimeMillis();
                 stackView.pop();
             }
         });

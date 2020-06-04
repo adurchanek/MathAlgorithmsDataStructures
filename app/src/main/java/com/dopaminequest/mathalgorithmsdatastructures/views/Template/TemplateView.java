@@ -107,7 +107,7 @@ public class TemplateView extends View implements Runnable{
                 {
                     mc.update();
                     controlFPS();
-                    invalidate();
+                    postInvalidate();
                 }
                 catch(Exception e)
                 {

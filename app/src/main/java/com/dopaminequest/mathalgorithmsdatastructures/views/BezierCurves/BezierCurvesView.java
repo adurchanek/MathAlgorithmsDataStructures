@@ -112,7 +112,8 @@ public class BezierCurvesView extends View implements Runnable{
                 {
                     mc.update();
                     controlFPS();
-                    invalidate();
+//                    invalidate();
+                    postInvalidate();
                 }
                 catch(Exception e)
                 {
@@ -179,12 +180,6 @@ public class BezierCurvesView extends View implements Runnable{
             input.x  = (int) motionEvent.getX(0);
             input.y  = (int) motionEvent.getY(0);
             break;
-        }
-
-        if(!actionDown)
-        {
-            input.x = -1;
-            input.y = -1;
         }
 
         return true;
