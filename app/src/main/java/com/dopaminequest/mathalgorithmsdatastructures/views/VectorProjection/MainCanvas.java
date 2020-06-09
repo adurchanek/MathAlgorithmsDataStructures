@@ -9,9 +9,9 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Shader;
 
+import com.dopaminequest.mathalgorithmsdatastructures.views.Integral.IntegralView;
 
 import java.util.ArrayList;
-
 
 public class MainCanvas extends Object {
 
@@ -20,7 +20,7 @@ public class MainCanvas extends Object {
     private Paint generalPaint2;
     private Paint projectedLinePaint;
     public boolean resettingMainCanvas = true;
-    public Point canvasDimensions;
+    private Point canvasDimensions;
     private final int yDimension = VectorProjectionView.dimensions.y;
     private final int xDimension = VectorProjectionView.dimensions.x;
     private boolean pause;
@@ -31,23 +31,26 @@ public class MainCanvas extends Object {
     private float projectedVector;
     private int projectedX;
     private int projectedY;
-    Point gamePositionStart;
-    Point gamePositionEnd;
+    private Point gamePositionStart;
+    private Point gamePositionEnd;
     private int P_SIZE = VectorProjectionView.dimensions.x/110;
     private boolean controlPointPressReset;
     private int currentControlPointIndex;
     private int currentInputPointIndex;
     private ArrayList<Point> controlPoints;
     private ArrayList<Point> clampedInputPoints;
-    Point targetPoint;
-    RectF arcRect;
-    float visualMultiplier;
-    float controlPointsLineStartLength;
-    float arcAnimationIncrement;
-    int currentArcState;
-    int arcStateOne;
-    int arcStateTwo;
-    Paint arcPaint;
+    private Point targetPoint;
+    private RectF arcRect;
+    private float visualMultiplier;
+    private float controlPointsLineStartLength;
+    private float arcAnimationIncrement;
+    private int currentArcState;
+    private int arcStateOne;
+    private int arcStateTwo;
+    private Paint arcPaint;
+    private Paint gridTextPaint;
+    private Paint generalPaint5;
+    private int gridSubDivision;
 
 
     public MainCanvas() {
@@ -69,7 +72,6 @@ public class MainCanvas extends Object {
 
             clampedInputPoints.get(1).x = VectorProjectionView.points[1].x >= VectorProjectionView.dimensions.x ? VectorProjectionView.dimensions.x : Math.max(VectorProjectionView.points[1].x, 0);
             clampedInputPoints.get(1).y = VectorProjectionView.points[1].y >= VectorProjectionView.dimensions.y ? VectorProjectionView.dimensions.y : Math.max(VectorProjectionView.points[1].y, 0);
-
         }
 
         int minControlPointIndex = currentControlPointIndex;
@@ -81,14 +83,11 @@ public class MainCanvas extends Object {
             if (tempDist < minDistance) {
                 minControlPointIndex = i;
                 minDistance = tempDist;
-
             }
         }
 
         currentControlPointIndex = minControlPointIndex;
         controlPointPressReset = false;
-
-        //System.out.println(currentControlPointIndex);
 
         double xVectorToInput = (clampedInputPoints.get(0).x - controlPoints.get(minControlPointIndex).x);
         double yVectorToInput = (clampedInputPoints.get(0).y - controlPoints.get(minControlPointIndex).y);
@@ -147,6 +146,7 @@ public class MainCanvas extends Object {
         {
             return;
         }
+        drawGrid(canvas, gridSubDivision,gridSubDivision);
 
         pathPaint.setStrokeWidth(P_SIZE * .25f);
 
@@ -292,6 +292,8 @@ public class MainCanvas extends Object {
         canvas.drawCircle(targetPoint.x,targetPoint.y,P_SIZE*1.8f,generalPaint2);
         generalPaint2.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(gamePositionStart.x,gamePositionStart.y,P_SIZE*1.8f,pathPaint);
+
+
         drawBorder(canvas);
     }
 
@@ -378,6 +380,19 @@ public class MainCanvas extends Object {
                 Color.rgb(0,255,240),
                 Shader.TileMode.MIRROR));
 
+
+        gridTextPaint = new Paint();
+        gridTextPaint.setAntiAlias(true);
+        gridTextPaint.setColor(Color.LTGRAY);
+        gridTextPaint.setAlpha(255);
+        gridTextPaint.setTextSize(P_SIZE*3);
+
+        generalPaint5 = new Paint();
+        generalPaint5.setStyle(Paint.Style.STROKE);
+        generalPaint5.setAntiAlias(true);
+        generalPaint5.setColor(Color.LTGRAY);
+        generalPaint5.setAlpha(100);
+
         generalPaint2.setStyle(Paint.Style.STROKE);
         generalPaint2.setStrokeCap(Paint.Cap.ROUND);
         generalPaint2.setAntiAlias(true);
@@ -407,6 +422,8 @@ public class MainCanvas extends Object {
         arcPaint.setAntiAlias(true);
         arcPaint.setPathEffect(new DashPathEffect(new float[]{10, 20, 10, 20}, 0));
         arcPaint.setColor((Color.CYAN));
+
+        gridSubDivision = 6;
     }
 
     public void reset() {
@@ -461,9 +478,7 @@ public class MainCanvas extends Object {
         float projectedVec;
         float distanceToPoint;
 
-        projectedVec = (float) (((gamePositionEnd.x - gamePositionStart.x) * (targetX- gamePositionStart.x) +
-                        (gamePositionEnd.y - gamePositionStart.y) * (targetY - gamePositionStart.y))
-                        / (Math.pow(length, 2)));
+        projectedVec = calculateProjectedVector(targetX, targetY);
 
         projectedPoint.x = (int) (gamePositionStart.x + ((projectedVec) * ( gamePositionEnd.x - gamePositionStart.x)));
         projectedPoint.y = (int) (gamePositionStart.y + ((projectedVec) * ( gamePositionEnd.y - gamePositionStart.y)));
@@ -489,9 +504,7 @@ public class MainCanvas extends Object {
 
         float projectedVec;
 
-        projectedVec = (float) (((gamePositionEnd.x - gamePositionStart.x) * (targetX - gamePositionStart.x) +
-                        (gamePositionEnd.y - gamePositionStart.y) * (targetY - gamePositionStart.y))
-                        / (Math.pow(length, 2)));
+        projectedVec = calculateProjectedVector(targetX, targetY);
 
         projectedPoint.x = (int) (gamePositionStart.x + ((projectedVec) * (gamePositionEnd.x - gamePositionStart.x)));
         projectedPoint.y = (int) (gamePositionStart.y + ((projectedVec) * (gamePositionEnd.y - gamePositionStart.y)));
@@ -510,4 +523,28 @@ public class MainCanvas extends Object {
         this.gamePositionEnd.x = x;
         this.gamePositionEnd.y = y;
     }
+
+    private void drawGrid(Canvas canvas, int xDim, int yDim) {
+        generalPaint5.setAlpha(generalPaint5.getAlpha() + 155);
+        canvas.drawLine(IntegralView.dimensions.x/2,0,IntegralView.dimensions.x/2, IntegralView.dimensions.y, generalPaint5);
+        canvas.drawLine(0,IntegralView.dimensions.y/2,IntegralView.dimensions.x, IntegralView.dimensions.y/2, generalPaint5);
+
+        generalPaint5.setAlpha(generalPaint5.getAlpha() - 155);
+
+        for(int x = 0; x < IntegralView.dimensions.x/xDim; x++)
+        {
+
+            int currentX = x*(IntegralView.dimensions.x/xDim);
+            canvas.drawLine(currentX,0,currentX, IntegralView.dimensions.y, generalPaint5);
+            canvas.drawText(String.valueOf(x-xDim/2), currentX,IntegralView.dimensions.y/2,gridTextPaint);
+        }
+
+        for(int y = 0; y < IntegralView.dimensions.y/yDim; y++)
+        {
+            int currentY = y*(IntegralView.dimensions.y/yDim);
+            canvas.drawLine(0,currentY,IntegralView.dimensions.x, currentY, generalPaint5);
+            canvas.drawText(String.valueOf(-1*(y-yDim/2)), IntegralView.dimensions.x/2,currentY,gridTextPaint);
+        }
+    }
+
 }

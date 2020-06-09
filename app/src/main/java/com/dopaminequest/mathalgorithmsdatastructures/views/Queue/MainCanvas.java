@@ -8,7 +8,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.text.TextPaint;
-
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
 import com.dopaminequest.mathalgorithmsdatastructures.views.Stack.StackView;
 
