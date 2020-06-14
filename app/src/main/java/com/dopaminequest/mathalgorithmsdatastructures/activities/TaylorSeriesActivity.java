@@ -2,7 +2,6 @@ package com.dopaminequest.mathalgorithmsdatastructures.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,56 +10,50 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.views.Integral.IntegralView;
-import com.dopaminequest.mathalgorithmsdatastructures.views.Template.TemplateView;
+import com.dopaminequest.mathalgorithmsdatastructures.views.TaylorSeries.TaylorSeriesView;
 
-public class IntegralActivity extends AppCompatActivity {
 
-    private IntegralView integralView;
-    //Switch sw1;
+public class TaylorSeriesActivity extends AppCompatActivity {
+
+    private TaylorSeriesView taylorSeriesView;
+    Switch sw1;
     Switch sw2;
-    SeekBar seekBar;
+    SeekBar seekBar1;
     Spinner spinner;
-    TextView viewNumRects;
-    TextView viewArea;
+    TextView viewNumTerms;
+    TextView viewOffsetA;
+    SeekBar seekBar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_integral);
-        integralView = (IntegralView) findViewById(R.id.IntegralView);
+        setContentView(R.layout.activity_taylor_series);
+        taylorSeriesView = (TaylorSeriesView) findViewById(R.id.TaylorSeriesView);
 
-        viewNumRects = (TextView) findViewById(R.id.num_rects_text);
-        viewArea = (TextView) findViewById(R.id.area_text);
-        //viewArea = (TextView) findViewById(R.id.area_text);
-
+        viewNumTerms = (TextView) findViewById(R.id.num_rects_text);
+        viewOffsetA = (TextView) findViewById(R.id.point_a_view);
 
         findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sw2.setChecked(false);
                 spinner.setSelection(0);
-                integralView.resetX();
-
+                taylorSeriesView.resetX();
             }
         });
 
-
-
-//        sw1 = (Switch) findViewById(R.id.pause);
-//        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    // The toggle is enabled
-//                    //view.pause();
-//                } else {
-//                    // The toggle is disabled
-//                    //view.pause();
-//                }
-//            }
-//        });
+        sw1 = (Switch) findViewById(R.id.maclaurin_series);
+        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    taylorSeriesView.toggleMaclaurinSeries();
+                } else {
+                    taylorSeriesView.toggleMaclaurinSeries();
+                }
+                viewOffsetA.setText(String.valueOf("Point a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
+            }
+        });
 
         sw2 = (Switch) findViewById(R.id.disable_animation);
         sw2.setChecked(false);
@@ -68,63 +61,68 @@ public class IntegralActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // The toggle is enabled
-                    integralView.toggleAnimation();
+                    taylorSeriesView.toggleAnimation();
                 } else {
                     // The toggle is disabled
-                    integralView.toggleAnimation();
+                    taylorSeriesView.toggleAnimation();
                 }
             }
         });
 
-        seekBar = findViewById(R.id.seekBar);
-        seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
+        seekBar1 = findViewById(R.id.term_seek_bar);
+        seekBar1.setOnSeekBarChangeListener(seekBarChangeListener);
 
+        seekBar2 = findViewById(R.id.point_a_seek_bar);
+        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                taylorSeriesView.setPointAPosition(progress);
+                viewOffsetA.setText(String.valueOf("Point a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // called when the user first touches the SeekBar
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // called after the user finishes moving the SeekBar
+            }
+        });
 
         spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.integral_function_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.taylor_series_function_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("test");
-                integralView.setFunctionNum(i);
+                taylorSeriesView.setFunctionNum(i);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-
-
         });
-
-
-
-
-        //SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-
     }
-
-
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            // updated continuously as the user slides the thumb
-//                tvProgressLabel.setText("Progress: " + progress);
-            integralView.setSeekPosition(progress);
-            viewNumRects.setText(String.valueOf(integralView.getNumRects())+ " Subdivisions");
-
+            taylorSeriesView.setTermPosition(progress);
+            viewNumTerms.setText(String.valueOf( "Term: " +String.format(String.valueOf((int)taylorSeriesView.getCurrentTermNum()))   ));
+            viewOffsetA.setText(String.valueOf("Point a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
         }
 
-        @Override
+            @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
             // called when the user first touches the SeekBar
             sw2.setChecked(false);
@@ -133,11 +131,8 @@ public class IntegralActivity extends AppCompatActivity {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-            // called after the user finishes moving the SeekBar
         }
     };
-
-
 
     @Override
     protected void onStop() {
@@ -148,7 +143,6 @@ public class IntegralActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();  // Always call the superclass method first
         //view.pauseThread();
-
     }
 
     @Override
@@ -156,7 +150,6 @@ public class IntegralActivity extends AppCompatActivity {
         super.onResume();  // Always call the superclass method first
         //view.resumeThread();
     }
-
 
     @Override
     protected void onDestroy() {

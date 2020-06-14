@@ -11,23 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/IntegralActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/IntegralView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/MainCanvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_integral.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/TaylorSeriesActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/MainCanvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/TaylorSeriesView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_taylor_series.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -38,13 +26,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/IntegralActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/IntegralActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/MathTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/MathTabFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Queue/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Queue/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/IntegralView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/IntegralView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/MainCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -53,7 +40,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="374a4f344c313098" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Android_ARMv7a_Nougat" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -314,10 +301,10 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="424" y="262" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591099193248" />
-    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1591591107987">
+    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1592128578626">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1200@0.0.1920.1200" timestamp="1591591107987" />
+    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1200@0.0.1920.1200" timestamp="1592128578626" />
     <state x="648" y="335" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591588333081">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -334,30 +321,30 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="816" y="372" key="AndroidProcessChooserDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591147961586" />
-    <state width="1878" height="252" key="GridCell.Tab.0.bottom" timestamp="1591608192577">
+    <state width="1878" height="252" key="GridCell.Tab.0.bottom" timestamp="1592033762663">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1591608192577" />
-    <state width="1878" height="252" key="GridCell.Tab.0.center" timestamp="1591608192576">
+    <state width="1878" height="252" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1592033762663" />
+    <state width="1878" height="252" key="GridCell.Tab.0.center" timestamp="1592033762662">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1591608192576" />
-    <state width="1878" height="252" key="GridCell.Tab.0.left" timestamp="1591608192575">
+    <state width="1878" height="252" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1592033762662" />
+    <state width="1878" height="252" key="GridCell.Tab.0.left" timestamp="1592033762662">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1591608192575" />
-    <state width="1878" height="252" key="GridCell.Tab.0.right" timestamp="1591608192577">
+    <state width="1878" height="252" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1592033762662" />
+    <state width="1878" height="252" key="GridCell.Tab.0.right" timestamp="1592033762663">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1591608192577" />
+    <state width="1878" height="252" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1592033762663" />
     <state x="461" y="239" key="SettingsEditor" timestamp="1591682231268">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="461" y="239" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1591682231268" />
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1591682299580">
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1592131667804">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591682299580" />
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592131667804" />
     <state x="698" y="359" key="extract.method.dialog" timestamp="1590833379712">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>

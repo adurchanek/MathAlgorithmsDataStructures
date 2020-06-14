@@ -11,7 +11,6 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 
 
@@ -178,7 +177,6 @@ public class MainCanvas extends Object {
         boolean firstPoint = true;
         path.reset();
 
-
         for(int i = 0; i < IntegralView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
         {
             int yVal = getFunctionY(i, scalar,functionNum);
@@ -275,10 +273,10 @@ public class MainCanvas extends Object {
     }
 
     private void drawGrid(Canvas canvas, int xDim, int yDim) {
+
         generalPaint5.setAlpha(generalPaint5.getAlpha() + 155);
         canvas.drawLine(IntegralView.dimensions.x/2,0,IntegralView.dimensions.x/2, IntegralView.dimensions.y, generalPaint5);
         canvas.drawLine(0,IntegralView.dimensions.y/2,IntegralView.dimensions.x, IntegralView.dimensions.y/2, generalPaint5);
-
         generalPaint5.setAlpha(generalPaint5.getAlpha() - 155);
 
         for(int x = 0; x < IntegralView.dimensions.x/xDim; x++)
@@ -448,6 +446,7 @@ public class MainCanvas extends Object {
         {
             animateProgress = numRects;
         }
+        System.out.println("progress: "+ progress);
     }
 
     public int getNumRects() {
@@ -466,21 +465,21 @@ public class MainCanvas extends Object {
         switch (functionNum)
         {
             case 0:
-                float fun0 = (float) ((float) 3f*Math.sin((IntegralView.dimensions.x/2-x)/ scalar));
+                float fun0 = (float) ((float) 3f*Math.sin((IntegralView.dimensions.x/2f-x)/ scalar));
                 return (int) (IntegralView.dimensions.y*.5f + scalar/1f*fun0);
 
             case 1:
-                float fun1 = (float) (Math.pow((IntegralView.dimensions.x/2-x)/scalar, 3) - 1*((IntegralView.dimensions.x/2-x)/scalar));
+                float fun1 = (float) (Math.pow((IntegralView.dimensions.x/2f-x)/scalar, 3) - ((IntegralView.dimensions.x/2-x)/scalar));
                 return (int) (IntegralView.dimensions.y*.5f + scalar/1f*fun1);
 
             case 2:
-                float fun3 = .25f*(float) Math.sinh((IntegralView.dimensions.x/2-x)/ scalar);
+                float fun3 = .25f*(float) Math.sinh((IntegralView.dimensions.x/2f-x)/ scalar);
                 return (int) (IntegralView.dimensions.y*.5f + scalar/1f*fun3);
             case 3:
-                float fun4 = 3f*(float)Math.cbrt((IntegralView.dimensions.x/2-x)/ scalar);
+                float fun4 = 3f*(float)Math.cbrt((IntegralView.dimensions.x/2f-x)/ scalar);
                 return (int) (IntegralView.dimensions.y*.5f + scalar/1f*fun4);
             case 4:
-                float fun5 = (float) ((float) 3f*Math.sin(Math.pow((IntegralView.dimensions.x/2-x)/ scalar,3)/3));
+                float fun5 = (float) ((float) 3f*Math.sin(Math.pow((IntegralView.dimensions.x/2f-x)/ scalar, 3)/3));
                 return (int) (IntegralView.dimensions.y*.5f + scalar/1f*fun5);
 
         }

@@ -1,4 +1,4 @@
-package com.dopaminequest.mathalgorithmsdatastructures.views.Integral;
+package com.dopaminequest.mathalgorithmsdatastructures.views.TaylorSeries;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.SeekBar;
 import androidx.annotation.Nullable;
 
-public class IntegralView extends View implements Runnable{
+public class TaylorSeriesView extends View implements Runnable{
 
     private Thread mainThread;
     long lastFrameTime;
@@ -23,26 +23,23 @@ public class IntegralView extends View implements Runnable{
     public static Boolean actionDown;
     public boolean paused;
 
-    //Activity activity;
-
-    public IntegralView(Context context) {
+    public TaylorSeriesView(Context context) {
         super(context);
-        //activity = (Activity) context;
 
         init(null);
     }
 
-    public IntegralView(Context context, @Nullable AttributeSet attrs) {
+    public TaylorSeriesView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public IntegralView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TaylorSeriesView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
-    public IntegralView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TaylorSeriesView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
@@ -215,12 +212,23 @@ public class IntegralView extends View implements Runnable{
         mc.toggleAnimation();
     }
 
-    public void setSeekPosition(int progress) {
-        mc.setPosition(progress);
+    public void setTermPosition(double progress) {
+        mc.setTermPosition(progress);
+    }
+
+    public void setPointAPosition(double progress) {
+        mc.setPointAPosition(progress);
     }
 
     public int getNumRects() {
         return mc.getNumRects();
+    }
+    public double getPointAOffset() {
+        return mc.getPointAOffset();
+    }
+
+    public double getCurrentTermNum() {
+        return mc.getCurrentTermNum();
     }
 
     public void setSeekBar(SeekBar seekBar) {
@@ -228,5 +236,9 @@ public class IntegralView extends View implements Runnable{
     public void setFunctionNum(int num)
     {
      mc.setFunctionNum(num);
+    }
+
+    public void toggleMaclaurinSeries() {
+        mc.toggleMaclaurinSeries();
     }
 }

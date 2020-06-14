@@ -7,14 +7,20 @@
     <string name="DataStructuresTabFirstButton">Stacks</string>
     <string name="DataStructuresTabSecondButton">Queues</string>
     <string name="DataStructuresTabThird">Integrals</string>
+    <string name="TaylorSeries">Taylor Series</string>
 
-    <string-array name="function_array">
+    <string-array name="integral_function_array">
         <item>3sin(x)</item>
-        <item>x\u00B3 - 3x </item>
+        <item>x\u00B3 - x </item>
         <item>sinh(x)/4</item>
         <item>\3\u221Bx</item>
-        <item>\sin(x\u00B3/3)</item>
+        <item>\3sin(x\u00B3/3)</item>
+    </string-array>
 
+    <string-array name="taylor_series_function_array">
+        <item>cos(x) </item>
+        <item>sin(x) </item>
+        <item>e^(x) </item>
 
 
     </string-array>
@@ -27,5 +33,6 @@
     <string name="stack_pop">Pop</string>
     <string name="queue_enqueue">Queue</string>
     <string name="queue_dequeue">Dequeue</string>
+    <string name="maclaurin_series">Maclaurin Series</string>
 
 </resources>
