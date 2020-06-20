@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.Shader;
-
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
 import com.dopaminequest.mathalgorithmsdatastructures.views.VectorProjection.VectorProjectionView;
 
@@ -70,76 +69,64 @@ public class MainCanvas extends Object {
             time = 1;
         }
 
+        if(BezierCurvesView.actionDown)
+        {
+            clampedInput.x = BezierCurvesView.input.x > BezierCurvesView.dimensions.x ? BezierCurvesView.dimensions.x : Math.max(BezierCurvesView.input.x, 0);
+            clampedInput.y = BezierCurvesView.input.y > BezierCurvesView.dimensions.y ? BezierCurvesView.dimensions.y : Math.max(BezierCurvesView.input.y, 0);
 
-            if(BezierCurvesView.actionDown)
+            if(controlPointPressReset)
             {
-                clampedInput.x = BezierCurvesView.input.x > BezierCurvesView.dimensions.x ? BezierCurvesView.dimensions.x : Math.max(BezierCurvesView.input.x, 0);
-                clampedInput.y = BezierCurvesView.input.y > BezierCurvesView.dimensions.y ? BezierCurvesView.dimensions.y : Math.max(BezierCurvesView.input.y, 0);
 
-                if(controlPointPressReset)
-                {
-
-                    controlPointPressReset = false;
-                    currentTouchControlPointAlpha = 34;
-                }
-
-                currentTouchControlPointAlpha -= 3;
-
-                if(currentTouchControlPointAlpha < 0)
-                {
-                    currentTouchControlPointAlpha = 0;
-                }
-
-                currentTouchControlPointRadius += CIRCLE_RADIUS;
-
-                if(currentTouchControlPointRadius > MAX_SIZE_CONTROL_POINT)
-                {
-                    currentTouchControlPointRadius = MAX_SIZE_CONTROL_POINT;
-                }
+                controlPointPressReset = false;
+                currentTouchControlPointAlpha = 34;
             }
 
+            currentTouchControlPointAlpha -= 3;
 
-            int minIndex = -1;
-            float minDistance = Float.MAX_VALUE;
-
-
-//            if(controlPointPressReset)
+            if(currentTouchControlPointAlpha < 0)
             {
-                for(int i = 0;  i < controlPoints.size(); i++)
-                {
-                    float tempDist = getDistance(controlPoints.get(i),clampedInput);
-                    if(tempDist < minDistance)
-                    {
-                        minIndex = i;
-                        minDistance = tempDist;
-                    }
-                }
-                currentControlPointIndex = minIndex;
-
-            }
-            //else
-            {
-                //minIndex = currentControlPointIndex;
+                currentTouchControlPointAlpha = 0;
             }
 
-            double xVectorToInput = (clampedInput.x - controlPoints.get(minIndex).x);
-            double yVectorToInput = (clampedInput.y - controlPoints.get(minIndex).y);
-            double distToInput = (Math.sqrt(Math.pow(xVectorToInput,2) + Math.pow(yVectorToInput,2)));
+            currentTouchControlPointRadius += CIRCLE_RADIUS;
 
-            double directionToFingerVectorX =  (xVectorToInput/distToInput);
-            double directionToFingerVectorY =  (yVectorToInput/distToInput);
-
-            if(distToInput < BezierCurvesView.dimensions.x / 45f)
+            if(currentTouchControlPointRadius > MAX_SIZE_CONTROL_POINT)
             {
-                controlPoints.get(minIndex).x = clampedInput.x;
-                controlPoints.get(minIndex).y = clampedInput.y;
+                currentTouchControlPointRadius = MAX_SIZE_CONTROL_POINT;
             }
-            else
-            {
-                controlPoints.get(minIndex).x += directionToFingerVectorX*distToInput*.5f;
-                controlPoints.get(minIndex).y += directionToFingerVectorY*distToInput*.5f;
-            }
+        }
 
+        int minIndex = -1;
+        float minDistance = Float.MAX_VALUE;
+
+        for(int i = 0;  i < controlPoints.size(); i++)
+        {
+            float tempDist = getDistance(controlPoints.get(i), clampedInput);
+            if(tempDist < minDistance)
+            {
+                minIndex = i;
+                minDistance = tempDist;
+            }
+        }
+        currentControlPointIndex = minIndex;
+
+        double xVectorToInput = (clampedInput.x - controlPoints.get(minIndex).x);
+        double yVectorToInput = (clampedInput.y - controlPoints.get(minIndex).y);
+        double distToInput = (Math.sqrt(Math.pow(xVectorToInput, 2) + Math.pow(yVectorToInput, 2)));
+
+        double directionToFingerVectorX =  (xVectorToInput/distToInput);
+        double directionToFingerVectorY =  (yVectorToInput/distToInput);
+
+        if(distToInput < BezierCurvesView.dimensions.x / 45f)
+        {
+            controlPoints.get(minIndex).x = clampedInput.x;
+            controlPoints.get(minIndex).y = clampedInput.y;
+        }
+        else
+        {
+            controlPoints.get(minIndex).x += directionToFingerVectorX*distToInput*.5f;
+            controlPoints.get(minIndex).y += directionToFingerVectorY*distToInput*.5f;
+        }
 
         if(!BezierCurvesView.actionDown)
         {
@@ -147,7 +134,6 @@ public class MainCanvas extends Object {
             currentTouchControlPointRadius = CIRCLE_RADIUS*3;
             controlPointPressReset = true;
         }
-
 
         if(!pause)
         {
@@ -175,36 +161,7 @@ public class MainCanvas extends Object {
         drawBorder(canvas);
 
         generalPaint.setColor((int) (Color.BLUE));
-        //Point bezierPoint = new Point();
-        path.reset();
-
-        boolean firstPoint = true;
-
-        linePoints = bc.calculatePoints(numLinePoints);
-
-        for(int index = 0; index < numLinePoints; index++)
-        {
-//            double t = (double)index / numLinePoints;
-//
-//            bezierPoint.x = (int) ((Math.pow(1 - t, 3) * p1.x + Math.pow(1 - t, 2) * t * 3 * p2.x  + (1-t) * Math.pow(t, 2) * 3 * p3.x  + Math.pow(t, 3) * p4.x));
-//            bezierPoint.y = (int) ((Math.pow(1 - t, 3) * p1.y + Math.pow(1 - t, 2) * t * 3 * p2.y  + (1-t) * Math.pow(t, 2) * 3 * p3.y  + Math.pow(t, 3) * p4.y));
-
-
-
-            if(firstPoint)
-            {
-                path.moveTo(linePoints[index].x,linePoints[index].y);
-                firstPoint = false;
-            }
-            else
-            {
-                path.lineTo(linePoints[index].x,linePoints[index].y);
-            }
-//            linePoints[index].x =  bezierPoint.x;
-//            linePoints[index].y =  bezierPoint.y;
-        }
-
-        path.lineTo(controlPoints.get(controlPoints.size()-1).x,controlPoints.get(controlPoints.size()-1).y);
+        generateBezierPath();
 
         pathPaint.setShader(new LinearGradient(
                 BezierCurvesView.dimensions.x / 2f,
@@ -225,6 +182,10 @@ public class MainCanvas extends Object {
             animateCurves(canvas);
         }
 
+        drawControlPoints(canvas);
+    }
+
+    private void drawControlPoints(Canvas canvas) {
         generalPaint.setColor((Color.RED));
 
         for(int i = 0;  i < controlPoints.size(); i++)
@@ -248,6 +209,27 @@ public class MainCanvas extends Object {
                 canvas.drawCircle(controlPoints.get(i).x,controlPoints.get(i).y,CIRCLE_RADIUS*3, generalPaint);
             }
         }
+    }
+
+    private void generateBezierPath() {
+        path.reset();
+        boolean firstPoint = true;
+        linePoints = bc.calculatePoints(numLinePoints);
+
+        for(int index = 0; index < numLinePoints; index++)
+        {
+            if(firstPoint)
+            {
+                path.moveTo(linePoints[index].x,linePoints[index].y);
+                firstPoint = false;
+            }
+            else
+            {
+                path.lineTo(linePoints[index].x,linePoints[index].y);
+            }
+        }
+
+        path.lineTo(controlPoints.get(controlPoints.size()-1).x,controlPoints.get(controlPoints.size()-1).y);
     }
 
     private void animateCurves(Canvas canvas) {
@@ -297,8 +279,6 @@ public class MainCanvas extends Object {
         position = new Point();
         scale = new Point();
         resettingMainCanvas = false;
-
-
         int widthOffset = BezierCurvesView.dimensions.x / 13;
 
         p1 = new Point(widthOffset,BezierCurvesView.dimensions.x-widthOffset*3);
@@ -310,8 +290,6 @@ public class MainCanvas extends Object {
         clampedInput.y = p4.y;
 
         controlPoints = new ArrayList<Point>();
-
-
         controlPoints.add(p1);
         controlPoints.add(p2);
         controlPoints.add(p3);
@@ -356,9 +334,7 @@ public class MainCanvas extends Object {
     }
 
     public void reset() {
-        //TODO place bool to pause update and draw
         init();
-
     }
 
     public void changeState() {
@@ -381,8 +357,6 @@ public class MainCanvas extends Object {
     }
 
     public void toggleAnimation() {
-        //pause();
         animate = !animate;
-
     }
 }

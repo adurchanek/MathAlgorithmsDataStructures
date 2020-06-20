@@ -10,12 +10,9 @@ import android.graphics.Rect;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.text.TextPaint;
-
 import com.dopaminequest.mathalgorithmsdatastructures.tools.BezierCurve;
 import com.dopaminequest.mathalgorithmsdatastructures.views.Queue.QueueView;
-
 import java.util.ArrayList;
-
 
 public class MainCanvas extends Object {
 
@@ -47,8 +44,7 @@ public class MainCanvas extends Object {
     private int textAlpha;
     private int bottom;
     private int NUM_BEZIER_POINTS = 70;
-    boolean createDestroyLock;
-
+    public boolean createDestroyLock;
     public MainCanvas()
     {
         init();

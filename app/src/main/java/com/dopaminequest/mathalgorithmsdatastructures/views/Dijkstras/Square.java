@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
-
 import java.util.Comparator;
 import java.util.Vector;
 
@@ -26,12 +25,12 @@ public class Square extends Object implements Comparator<Square> {
     }
 
     public int cost;
-    public boolean animating;
-    public float animatingStep;
-    public float speed;
+    private boolean animating;
+    private float animatingStep;
+    private float speed;
     private Rect mRectSquare;
     public Paint mPaintSquare;
-    public int padding;
+    private int padding;
     public State state;
     public State editState;
     public Boolean kvKnown;
@@ -44,7 +43,6 @@ public class Square extends Object implements Comparator<Square> {
     {
 
     }
-
 
     Square(int w, int h, int x, int y, int index )
     {
@@ -72,57 +70,7 @@ public class Square extends Object implements Comparator<Square> {
                 return;
             }
 
-            switch (DijkstraView.editState)
-            {
-                case Blocked:
-                    if(state == State.Start)
-                    {
-                        DijkstraView.g.startIndex = -1;
-                    }
-
-                    if(state == State.End)
-                    {
-                        DijkstraView.g.endIndex = -1;
-                    }
-
-                    for(int i = 0; i < neighbors.size();i++)
-                    {
-                        Square s = neighbors.get(i);
-                        s.neighbors.remove(this);
-                    }
-
-                    neighbors.clear();
-                    state = State.Blocked;
-                    mPaintSquare.setColor(getColor());
-                    break;
-
-                case Unexplored:
-                    state = State.Unexplored;
-                    mPaintSquare.setColor(getColor());
-                    break;
-
-                case Start:
-                    DijkstraView.g.startIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.startIndex, State.Start);
-                    break;
-
-                case End:
-                    DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
-                    break;
-
-                case Explored:
-                    state = State.Explored;
-                    mPaintSquare.setColor(getColor());
-                    break;
-
-                case Path:
-                    state = State.Path;
-                    mPaintSquare.setColor(getColor());
-                    break;
-                case Found:
-                    DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
-                    break;
-            }
-
+            editState();
             animate(1f);
         }
     }
@@ -235,6 +183,59 @@ public class Square extends Object implements Comparator<Square> {
     public void setCost(int c)
     {
         cost = c;
+    }
+
+    private void editState() {
+        switch (DijkstraView.editState)
+        {
+            case Blocked:
+                if(state == State.Start)
+                {
+                    DijkstraView.g.startIndex = -1;
+                }
+
+                if(state == State.End)
+                {
+                    DijkstraView.g.endIndex = -1;
+                }
+
+                for(int i = 0; i < neighbors.size();i++)
+                {
+                    Square s = neighbors.get(i);
+                    s.neighbors.remove(this);
+                }
+
+                neighbors.clear();
+                state = State.Blocked;
+                mPaintSquare.setColor(getColor());
+                break;
+
+            case Unexplored:
+                state = State.Unexplored;
+                mPaintSquare.setColor(getColor());
+                break;
+
+            case Start:
+                DijkstraView.g.startIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.startIndex, State.Start);
+                break;
+
+            case End:
+                DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
+                break;
+
+            case Explored:
+                state = State.Explored;
+                mPaintSquare.setColor(getColor());
+                break;
+
+            case Path:
+                state = State.Path;
+                mPaintSquare.setColor(getColor());
+                break;
+            case Found:
+                DijkstraView.g.endIndex = DijkstraView.g.setStartOrEnd(position.x, position.y, DijkstraView.g.endIndex, State.End);
+                break;
+        }
     }
 
 }

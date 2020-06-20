@@ -42,9 +42,9 @@ public class MainCanvas extends Object {
     private int size;
     private Paint paintText;
     private int textAlpha;
-    int bottom;
-    boolean createDestroyLock;
-    int NUM_BEZIER_POINTS = 200;
+    public int bottom;
+    public boolean createDestroyLock;
+    public int NUM_BEZIER_POINTS = 200;
 
     public MainCanvas()
     {

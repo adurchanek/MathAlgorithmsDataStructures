@@ -12,7 +12,6 @@ public class BezierCurve extends Object{
     private Point p2;
     private Point p3;
     private Point p4;
-
     private ArrayList<Point> controlPoints;
 
     public BezierCurve()
@@ -37,7 +36,6 @@ public class BezierCurve extends Object{
 
         position = new Point();
         scale = new Point();
-
 
         p1 = cPoints.get(0);
         p2 = cPoints.get(1);

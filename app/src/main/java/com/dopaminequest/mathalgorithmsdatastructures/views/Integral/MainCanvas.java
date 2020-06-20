@@ -13,7 +13,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 
-
 public class MainCanvas extends Object {
 
     public boolean resettingMainCanvas = true;
@@ -72,77 +71,20 @@ public class MainCanvas extends Object {
 
         if(IntegralView.actionDown)
         {
-            clampedInput.x = IntegralView.input.x > IntegralView.dimensions.x ? IntegralView.dimensions.x : Math.max(IntegralView.input.x, 0);
-            clampedInput.y = IntegralView.input.y > IntegralView.dimensions.y ? IntegralView.dimensions.y : Math.max(IntegralView.input.y, 0);
-            clampedInput.y = getFunctionY(clampedInput.x,scalar, functionNum);
-
-            int minIndex = -1;
-            float minDistance = Float.MAX_VALUE;
-
-            if(controlPointPressReset)
-            {
-                for(int i = 0;  i < sliders.length; i++)
-                {
-                    float tempDist = Math.abs(sliders[i].x - clampedInput.x);
-                    if(tempDist < minDistance)
-                    {
-                        minIndex = i;
-                        minDistance = tempDist;
-                    }
-                }
-                currentControlPointIndex = minIndex;
-                controlPointPressReset = false;
-            }
-            else
-            {
-                minIndex = currentControlPointIndex;
-            }
-
-            double xVectorToInput = (clampedInput.x - sliders[minIndex].x);
-            double yVectorToInput = (clampedInput.y - sliders[minIndex].y);
-            double distToInput = (Math.sqrt(Math.pow(xVectorToInput,2) + Math.pow(yVectorToInput,2)));
-
-            double directionToFingerVectorX =  (xVectorToInput/distToInput);
-            double directionToFingerVectorY =  (yVectorToInput/distToInput);
-
-            if(distToInput < IntegralView.dimensions.x / 35f)
-            {
-                sliders[minIndex].x = clampedInput.x;
-                sliders[minIndex].y = clampedInput.y;
-            }
-            else
-            {
-                sliders[minIndex].x += directionToFingerVectorX*distToInput*.5f;
-                sliders[minIndex].y += directionToFingerVectorY*distToInput*.5f;
-            }
-
-            if(Math.abs(sliders[0].x - sliders[1].x) < P_SIZE*4)
-            {
-                if(minIndex == 0)
-                {
-                    sliders[1].x = (int) (sliders[0].x + P_SIZE*4);
-                    if(sliders[1].x > IntegralView.dimensions.x)
-                    {
-                        sliders[1].x = IntegralView.dimensions.x;
-                        sliders[0].x =  sliders[1].x - P_SIZE*4;
-                    }
-                }
-                else
-                {
-                    sliders[0].x = (int) (sliders[1].x - P_SIZE*4);
-
-                    if(sliders[0].x < 0)
-                    {
-                        sliders[0].x = 0;
-                        sliders[1].x =   P_SIZE*4;
-                    }
-                }
-            }
+            handleInput();
         }
         else
         {
             controlPointPressReset = true;
         }
+
+        sliders[0].y = getFunctionY(sliders[0].x, scalar,functionNum);
+        sliders[1].y = getFunctionY(sliders[1].x, scalar, functionNum);
+
+        sliders[0].x = sliders[0].x > IntegralView.dimensions.x ? IntegralView.dimensions.x : Math.max(sliders[0].x, 0);
+        sliders[0].y = sliders[0].y > IntegralView.dimensions.y ? IntegralView.dimensions.y : Math.max(sliders[0].y, 0);
+        sliders[1].x = sliders[1].x > IntegralView.dimensions.x ? IntegralView.dimensions.x : Math.max(sliders[1].x, 0);
+        sliders[1].y = sliders[1].y > IntegralView.dimensions.y ? IntegralView.dimensions.y : Math.max(sliders[1].y, 0);
     }
 
     @Override
@@ -158,47 +100,55 @@ public class MainCanvas extends Object {
 
         if(animate)
         {
-            animateProgress +=  (animateDirection * ANIMATE_SPEED);
-
-            if(animateProgress > MAX_NUM_RECTS)
-            {
-                animateProgress  = MAX_NUM_RECTS;
-                animateDirection *=-1;
-            }
-            else if(animateProgress < MIN_NUM_RECTS)
-            {
-                animateProgress  = MIN_NUM_RECTS;
-                animateDirection *=-1;
-            }
-
-            seekBar.setProgress((int)animateProgress-MIN_NUM_RECTS);
+            animate();
         }
 
-        boolean firstPoint = true;
-        path.reset();
-
-        for(int i = 0; i < IntegralView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
-        {
-            int yVal = getFunctionY(i, scalar,functionNum);
-
-            if(firstPoint)
-            {
-                path.moveTo(i,yVal);
-                firstPoint = false;
-            }
-            else
-            {
-                path.lineTo(i,yVal);
-            }
-        }
-
+        generateFunctionPath();
         canvas.drawPath(path, generalPaint2);
+
         area = 0f;
         RectF r = new RectF(rectWidth/2f,50,100,100);
 
-        for(int i = 0; i < IntegralView.dimensions.x; i+=rectWidth)
+        drawIntegralRectangles(canvas, rectWidth, r);
+
+        drawSliders(canvas, r);
+
+        areaTextView.setText("Estimated Area: " + String.format("%.2f", area/gridScaleFactor));
+        drawGrid(canvas, gridSubDivision,gridSubDivision);
+        drawBorder(canvas);
+    }
+
+    private void drawSliders(Canvas canvas, RectF r) {
+        generalPaint4.setColor(Color.MAGENTA);
+
+        r.left = sliders[0].x - P_SIZE*.45f;
+        r.right = sliders[0].x + P_SIZE*.45f;
+        r.bottom = IntegralView.dimensions.y;
+        r.top = sliders[0].y;
+        canvas.drawRect(r, generalPaint4);
+
+        r.left = sliders[1].x - P_SIZE*.45f;
+        r.right = sliders[1].x + P_SIZE*.45f;
+        r.bottom = IntegralView.dimensions.y;
+        r.top = sliders[1].y;
+        canvas.drawRect(r, generalPaint4);
+
+        generalPaint4.setColor(Color.CYAN);
+
+        canvas.drawCircle(sliders[0].x, sliders[0].y, SLIDER_RADIUS, generalPaint4);
+        canvas.drawCircle(sliders[1].x, sliders[1].y, SLIDER_RADIUS, generalPaint4);
+
+        generalPaint.setColor((Color.RED));
+        pathPaint.setColor(Color.GREEN);
+
+        canvas.drawCircle(sliders[0].x, sliders[0].y, SLIDER_RADIUS, circleOutlinePaint);
+        canvas.drawCircle(sliders[1].x, sliders[1].y, SLIDER_RADIUS, circleOutlinePaint);
+    }
+
+    private void drawIntegralRectangles(Canvas canvas, int rectWidth, RectF r) {
+        for(int i = 0; i < IntegralView.dimensions.x; i += rectWidth)
         {
-            int yVal = getFunctionY((int) (i+rectWidth/2f), scalar,functionNum);
+            int yVal = getFunctionY((int) (i + rectWidth/2f), scalar,functionNum);
 
             r.left = i;
             r.right = i+rectWidth;
@@ -232,44 +182,43 @@ public class MainCanvas extends Object {
                 }
             }
         }
+    }
 
-        areaTextView.setText("Estimated Area: " + String.format("%.2f", area/gridScaleFactor));
+    private void animate() {
+        animateProgress +=  (animateDirection * ANIMATE_SPEED);
 
-        sliders[0].y = getFunctionY(sliders[0].x, scalar,functionNum);
-        sliders[1].y = getFunctionY(sliders[1].x, scalar, functionNum);
+        if(animateProgress > MAX_NUM_RECTS)
+        {
+            animateProgress  = MAX_NUM_RECTS;
+            animateDirection *=-1;
+        }
+        else if(animateProgress < MIN_NUM_RECTS)
+        {
+            animateProgress  = MIN_NUM_RECTS;
+            animateDirection *=-1;
+        }
 
-        sliders[0].x = sliders[0].x > IntegralView.dimensions.x ? IntegralView.dimensions.x : Math.max(sliders[0].x, 0);
-        sliders[0].y = sliders[0].y > IntegralView.dimensions.y ? IntegralView.dimensions.y : Math.max(sliders[0].y, 0);
-        sliders[1].x = sliders[1].x > IntegralView.dimensions.x ? IntegralView.dimensions.x : Math.max(sliders[1].x, 0);
-        sliders[1].y = sliders[1].y > IntegralView.dimensions.y ? IntegralView.dimensions.y : Math.max(sliders[1].y, 0);
+        seekBar.setProgress((int)animateProgress - MIN_NUM_RECTS);
+    }
 
-        generalPaint4.setColor(Color.MAGENTA);
+    private void generateFunctionPath() {
+        boolean firstPoint = true;
+        path.reset();
 
-        r.left = sliders[0].x - P_SIZE*.45f;
-        r.right = sliders[0].x + P_SIZE*.45f;
-        r.bottom = IntegralView.dimensions.y;
-        r.top = sliders[0].y;
-        canvas.drawRect(r, generalPaint4);
+        for(int i = 0; i < IntegralView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
+        {
+            int yVal = getFunctionY(i, scalar,functionNum);
 
-        r.left = sliders[1].x - P_SIZE*.45f;
-        r.right = sliders[1].x + P_SIZE*.45f;
-        r.bottom = IntegralView.dimensions.y;
-        r.top = sliders[1].y;
-        canvas.drawRect(r, generalPaint4);
-
-        generalPaint4.setColor(Color.CYAN);
-
-        canvas.drawCircle(sliders[0].x, sliders[0].y, SLIDER_RADIUS, generalPaint4);
-        canvas.drawCircle(sliders[1].x, sliders[1].y, SLIDER_RADIUS, generalPaint4);
-
-        generalPaint.setColor((Color.RED));
-        pathPaint.setColor(Color.GREEN);
-
-        canvas.drawCircle(sliders[0].x, sliders[0].y, SLIDER_RADIUS, circleOutlinePaint);
-        canvas.drawCircle(sliders[1].x, sliders[1].y, SLIDER_RADIUS, circleOutlinePaint);
-
-        drawGrid(canvas, gridSubDivision,gridSubDivision);
-        drawBorder(canvas);
+            if(firstPoint)
+            {
+                path.moveTo(i,yVal);
+                firstPoint = false;
+            }
+            else
+            {
+                path.lineTo(i,yVal);
+            }
+        }
     }
 
     private void drawGrid(Canvas canvas, int xDim, int yDim) {
@@ -481,9 +430,77 @@ public class MainCanvas extends Object {
             case 4:
                 float fun5 = (float) ((float) 3f*Math.sin(Math.pow((IntegralView.dimensions.x/2f-x)/ scalar, 3)/3));
                 return (int) (IntegralView.dimensions.y*.5f + scalar/1f*fun5);
-
         }
         return -1;
+    }
+
+    private void handleInput() {
+        clampedInput.x = IntegralView.input.x > IntegralView.dimensions.x ? IntegralView.dimensions.x : Math.max(IntegralView.input.x, 0);
+        clampedInput.y = IntegralView.input.y > IntegralView.dimensions.y ? IntegralView.dimensions.y : Math.max(IntegralView.input.y, 0);
+        clampedInput.y = getFunctionY(clampedInput.x,scalar, functionNum);
+
+        int minIndex = -1;
+        float minDistance = Float.MAX_VALUE;
+
+        if(controlPointPressReset)
+        {
+            for(int i = 0;  i < sliders.length; i++)
+            {
+                float tempDist = Math.abs(sliders[i].x - clampedInput.x);
+                if(tempDist < minDistance)
+                {
+                    minIndex = i;
+                    minDistance = tempDist;
+                }
+            }
+            currentControlPointIndex = minIndex;
+            controlPointPressReset = false;
+        }
+        else
+        {
+            minIndex = currentControlPointIndex;
+        }
+
+        double xVectorToInput = (clampedInput.x - sliders[minIndex].x);
+        double yVectorToInput = (clampedInput.y - sliders[minIndex].y);
+        double distToInput = (Math.sqrt(Math.pow(xVectorToInput,2) + Math.pow(yVectorToInput,2)));
+
+        double directionToFingerVectorX =  (xVectorToInput/distToInput);
+        double directionToFingerVectorY =  (yVectorToInput/distToInput);
+
+        if(distToInput < IntegralView.dimensions.x / 35f)
+        {
+            sliders[minIndex].x = clampedInput.x;
+            sliders[minIndex].y = clampedInput.y;
+        }
+        else
+        {
+            sliders[minIndex].x += directionToFingerVectorX*distToInput*.5f;
+            sliders[minIndex].y += directionToFingerVectorY*distToInput*.5f;
+        }
+
+        if(Math.abs(sliders[0].x - sliders[1].x) < P_SIZE*4)
+        {
+            if(minIndex == 0)
+            {
+                sliders[1].x = (int) (sliders[0].x + P_SIZE*4);
+                if(sliders[1].x > IntegralView.dimensions.x)
+                {
+                    sliders[1].x = IntegralView.dimensions.x;
+                    sliders[0].x =  sliders[1].x - P_SIZE*4;
+                }
+            }
+            else
+            {
+                sliders[0].x = (int) (sliders[1].x - P_SIZE*4);
+
+                if(sliders[0].x < 0)
+                {
+                    sliders[0].x = 0;
+                    sliders[1].x =   P_SIZE*4;
+                }
+            }
+        }
     }
 
     public void setFunctionNum(int num)

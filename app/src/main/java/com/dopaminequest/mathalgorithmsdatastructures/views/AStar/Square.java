@@ -11,10 +11,6 @@ import java.util.Vector;
 
 public class Square extends Object implements Comparator<Square> {
 
-//    public int node;
-
-
-
     @Override
     public int compare(Square square1, Square square2) {
         if (square1.fCost < square2.fCost)
@@ -51,7 +47,6 @@ public class Square extends Object implements Comparator<Square> {
 
     }
 
-
     Square(int w, int h, int x, int y, int index )
     {
         init(h,w,x,y,index);
@@ -78,59 +73,7 @@ public class Square extends Object implements Comparator<Square> {
                 return;
             }
 
-            switch (AStarView.editState)
-            {
-                case Blocked:
-                    if(state == State.Start)
-                    {
-                        AStarView.g.startIndex = -1;
-                    }
-
-                    if(state == State.End)
-                    {
-                        AStarView.g.endIndex = -1;
-                    }
-
-                    for(int i = 0; i < neighbors.size();i++)
-                    {
-                        Square s = neighbors.get(i);
-                        s.neighbors.remove(this);
-                    }
-
-                    neighbors.clear();
-                    state = State.Blocked;
-                    mPaintSquare.setColor(getColor());
-
-                    System.out.println("------------------------------- switch: " );
-                    break;
-
-                case Unexplored:
-                    state = State.Unexplored;
-                    mPaintSquare.setColor(getColor());
-                    break;
-
-                case Start:
-                    AStarView.g.startIndex = AStarView.g.setStartOrEnd(position.x, position.y, AStarView.g.startIndex, State.Start);
-                    break;
-
-                case End:
-                    AStarView.g.endIndex = AStarView.g.setStartOrEnd(position.x, position.y, AStarView.g.endIndex, State.End);
-                    break;
-
-                case Explored:
-                    state = State.Explored;
-                    mPaintSquare.setColor(getColor());
-                    break;
-
-                case Path:
-                    state = State.Path;
-                    mPaintSquare.setColor(getColor());
-                    break;
-                case Found:
-                    AStarView.g.endIndex = AStarView.g.setStartOrEnd(position.x, position.y, AStarView.g.endIndex, State.End);
-                    break;
-            }
-
+            editState();
             animate(1f);
         }
     }
@@ -156,7 +99,6 @@ public class Square extends Object implements Comparator<Square> {
 
 
     public void init(int w, int h, int x, int y, int index) {
-
         mRectSquare = new Rect();
         mPaintSquare = new Paint();
         position = new Point();
@@ -251,6 +193,59 @@ public class Square extends Object implements Comparator<Square> {
     public void setCost(int c)
     {
         cost = c;
+    }
+
+    private void editState() {
+        switch (AStarView.editState)
+        {
+            case Blocked:
+                if(state == State.Start)
+                {
+                    AStarView.g.startIndex = -1;
+                }
+
+                if(state == State.End)
+                {
+                    AStarView.g.endIndex = -1;
+                }
+
+                for(int i = 0; i < neighbors.size();i++)
+                {
+                    Square s = neighbors.get(i);
+                    s.neighbors.remove(this);
+                }
+
+                neighbors.clear();
+                state = State.Blocked;
+                mPaintSquare.setColor(getColor());
+                break;
+
+            case Unexplored:
+                state = State.Unexplored;
+                mPaintSquare.setColor(getColor());
+                break;
+
+            case Start:
+                AStarView.g.startIndex = AStarView.g.setStartOrEnd(position.x, position.y, AStarView.g.startIndex, State.Start);
+                break;
+
+            case End:
+                AStarView.g.endIndex = AStarView.g.setStartOrEnd(position.x, position.y, AStarView.g.endIndex, State.End);
+                break;
+
+            case Explored:
+                state = State.Explored;
+                mPaintSquare.setColor(getColor());
+                break;
+
+            case Path:
+                state = State.Path;
+                mPaintSquare.setColor(getColor());
+                break;
+            case Found:
+                AStarView.g.endIndex = AStarView.g.setStartOrEnd(position.x, position.y, AStarView.g.endIndex, State.End);
+                break;
+        }
     }
 
 }

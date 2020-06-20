@@ -16,7 +16,6 @@ public class BezierCurvesView extends View implements Runnable{
     private long lastFrameTime;
     private int fps;
     public static MainCanvas mc;
-
     private Boolean initialized = false;
     private Boolean running = true;
     public static Point dimensions;

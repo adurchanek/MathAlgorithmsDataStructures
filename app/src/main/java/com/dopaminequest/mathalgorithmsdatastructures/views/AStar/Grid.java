@@ -47,46 +47,7 @@ public class Grid extends Object {
             return;
         }
 
-        if(exploredSequenceIndex != -1)
-        {
-            if(exploredSequenceIndex < exploredSquares.size())
-            {
-                int current = exploredSquares.get(exploredSequenceIndex);
-                if(squares.get(current).state != Square.State.Start && squares.get(current).state != Square.State.End)
-                {
-                    squares.get(current).state = Square.State.Explored;
-                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
-                    squares.get(current).animate(.7f);
-                }
-                else if(squares.get(current).state == Square.State.End)
-                {
-                    squares.get(current).state = Square.State.Found;
-                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
-                }
-                exploredSequenceIndex++;
-            }
-            else
-            {
-                exploredSequenceIndex = -1;
-            }
-        }
-        else if(pathSequenceIndex != -1)
-        {
-            if(pathSequenceIndex >= returnPath.size()/2)
-            {
-                squares.get(returnPath.get(pathSequenceIndex)).setPath();
-                squares.get(returnPath.get(pathSequenceIndex)).animate(.4f);
-
-                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).setPath();
-                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).animate(.4f);
-
-                pathSequenceIndex--;
-            }
-            else
-            {
-                pathSequenceIndex = -1;
-            }
-        }
+        advanceExploredSequence();
 
         for(int i = 0; i < squares.size(); i++)
         {
@@ -127,14 +88,10 @@ public class Grid extends Object {
         resettingGrid = false;
         pathSequenceIndex = -1;
         exploredSequenceIndex = -1;
-        System.out.println("--end" + AStarView.dimensions.x);
-        System.out.println("--end" + AStarView.dimensions.y);
     }
 
     public void reset() {
-        //TODO place bool to pause update and draw
         init();
-
     }
 
     public void changeState() {
@@ -248,9 +205,6 @@ public class Grid extends Object {
             {
                 break;
             }
-
-
-            //TODO if s == destination, return/break
 
 //            if(!s.kvKnown)
 //            {
@@ -407,5 +361,48 @@ public class Grid extends Object {
         index = currentSquareIndex;
 
         return index;
+    }
+
+    private void advanceExploredSequence() {
+        if(exploredSequenceIndex != -1)
+        {
+            if(exploredSequenceIndex < exploredSquares.size())
+            {
+                int current = exploredSquares.get(exploredSequenceIndex);
+                if(squares.get(current).state != Square.State.Start && squares.get(current).state != Square.State.End)
+                {
+                    squares.get(current).state = Square.State.Explored;
+                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
+                    squares.get(current).animate(.7f);
+                }
+                else if(squares.get(current).state == Square.State.End)
+                {
+                    squares.get(current).state = Square.State.Found;
+                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
+                }
+                exploredSequenceIndex++;
+            }
+            else
+            {
+                exploredSequenceIndex = -1;
+            }
+        }
+        else if(pathSequenceIndex != -1)
+        {
+            if(pathSequenceIndex >= returnPath.size()/2)
+            {
+                squares.get(returnPath.get(pathSequenceIndex)).setPath();
+                squares.get(returnPath.get(pathSequenceIndex)).animate(.4f);
+
+                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).setPath();
+                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).animate(.4f);
+
+                pathSequenceIndex--;
+            }
+            else
+            {
+                pathSequenceIndex = -1;
+            }
+        }
     }
 }

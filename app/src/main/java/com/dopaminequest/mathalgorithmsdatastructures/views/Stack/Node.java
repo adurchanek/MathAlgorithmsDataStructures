@@ -40,7 +40,6 @@ public class Node extends Object{
     @Override
     public void update() {
 
-
         animatingStep++;
 
         if(currentAnimationIndex > linePoints.length - 1)

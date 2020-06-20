@@ -43,51 +43,15 @@ public class Grid extends Object {
             return;
         }
 
-        if(exploredSequenceIndex != -1)
-        {
-            if(exploredSequenceIndex < exploredSquares.size())
-            {
-                int current = exploredSquares.get(exploredSequenceIndex);
-                if(squares.get(current).state != Square.State.Start && squares.get(current).state != Square.State.End)
-                {
-                    squares.get(current).state = Square.State.Explored;
-                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
-                    squares.get(current).animate(.7f);
-                }
-                else if(squares.get(current).state == Square.State.End)
-                {
-                    squares.get(current).state = Square.State.Found;
-                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
-                }
-                exploredSequenceIndex++;
-            }
-            else
-            {
-                exploredSequenceIndex = -1;
-            }
-        }
-        else if(pathSequenceIndex != -1)
-        {
-            if(pathSequenceIndex >= returnPath.size()/2)
-            {
-                squares.get(returnPath.get(pathSequenceIndex)).setPath();
-                squares.get(returnPath.get(pathSequenceIndex)).animate(.4f);
-                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).setPath();
-                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).animate(.4f);
-
-                pathSequenceIndex--;
-            }
-            else
-            {
-                pathSequenceIndex = -1;
-            }
-        }
+        advanceExploredSequence();
 
         for(int i = 0; i < squares.size(); i++)
         {
             squares.get(i).update();
         }
     }
+
+
 
     @Override
     public void draw(Canvas canvas) {
@@ -366,5 +330,47 @@ public class Grid extends Object {
         index = currentSquareIndex;
 
         return index;
+    }
+
+    private void advanceExploredSequence() {
+        if(exploredSequenceIndex != -1)
+        {
+            if(exploredSequenceIndex < exploredSquares.size())
+            {
+                int current = exploredSquares.get(exploredSequenceIndex);
+                if(squares.get(current).state != Square.State.Start && squares.get(current).state != Square.State.End)
+                {
+                    squares.get(current).state = Square.State.Explored;
+                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
+                    squares.get(current).animate(.7f);
+                }
+                else if(squares.get(current).state == Square.State.End)
+                {
+                    squares.get(current).state = Square.State.Found;
+                    squares.get(current).mPaintSquare.setColor(squares.get(current).getColor());
+                }
+                exploredSequenceIndex++;
+            }
+            else
+            {
+                exploredSequenceIndex = -1;
+            }
+        }
+        else if(pathSequenceIndex != -1)
+        {
+            if(pathSequenceIndex >= returnPath.size()/2)
+            {
+                squares.get(returnPath.get(pathSequenceIndex)).setPath();
+                squares.get(returnPath.get(pathSequenceIndex)).animate(.4f);
+                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).setPath();
+                squares.get(returnPath.get(returnPath.size() - 1 - pathSequenceIndex)).animate(.4f);
+
+                pathSequenceIndex--;
+            }
+            else
+            {
+                pathSequenceIndex = -1;
+            }
+        }
     }
 }
