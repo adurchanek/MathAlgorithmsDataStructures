@@ -7,7 +7,6 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
-import android.graphics.RectF;
 import android.graphics.Shader;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -56,7 +55,7 @@ public class MainCanvas extends Object {
     private float gridSubDivision;
     private Paint greenLinesPaint;
     private Paint circleOutlinePaint;
-    private double taylorLimitX;
+    private double termNum;
     private double pointAOffset;
     private double previousPointAOffset;
     private boolean maclaurin;
@@ -123,7 +122,7 @@ public class MainCanvas extends Object {
 
         for(int i = 0; i < TaylorSeriesView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
         {
-            int yVal = getTaylorSeriesY(i, scalar, functionNum, taylorLimitX, pointAOffset);
+            int yVal = getTaylorSeriesY(i, scalar, functionNum, termNum, pointAOffset);
 
             if(firstPoint2)
             {
@@ -187,6 +186,7 @@ public class MainCanvas extends Object {
         {
             int currentX = (int)  (x*TaylorSeriesView.dimensions.x/xDim);
 
+            //2*number of divisions
             if(xDim > 2*5 )
             {
                 if(x%5 == 0)
@@ -197,7 +197,6 @@ public class MainCanvas extends Object {
                     canvas.drawLine(TaylorSeriesView.dimensions.x/2 + currentX,0,TaylorSeriesView.dimensions.x/2 + currentX, TaylorSeriesView.dimensions.y, generalPaint5);
                     canvas.drawLine(TaylorSeriesView.dimensions.x/2 - currentX,0,TaylorSeriesView.dimensions.x/2 - currentX, TaylorSeriesView.dimensions.y, generalPaint5);
                     generalPaint5.setAlpha(generalPaint5.getAlpha() - 155);
-
                 }
                 else
                 {
@@ -218,6 +217,7 @@ public class MainCanvas extends Object {
         {
             int currentY = (int)  (y*TaylorSeriesView.dimensions.y/yDim);
 
+            //2*number of divisions
             if(yDim > 2*5)
             {
                 if(y%5 == 0)
@@ -233,7 +233,6 @@ public class MainCanvas extends Object {
                 {
                     canvas.drawLine(0,TaylorSeriesView.dimensions.y/2 + currentY, TaylorSeriesView.dimensions.x,TaylorSeriesView.dimensions.y/2 + currentY, generalPaint5);
                     canvas.drawLine(0,TaylorSeriesView.dimensions.y/2 - currentY, TaylorSeriesView.dimensions.x,TaylorSeriesView.dimensions.y/2 - currentY, generalPaint5);
-
                 }
             }
             else
@@ -373,7 +372,7 @@ public class MainCanvas extends Object {
         gridSubDivision = 6f;
         scalar = (float) (TaylorSeriesView.dimensions.x/gridSubDivision);
 
-        taylorLimitX = MIN_TERMS/SLIDER_SCALE_FACTOR;
+        termNum = MIN_TERMS/SLIDER_SCALE_FACTOR;
 
         pointASeekBar.setMax((int) TaylorSeriesView.dimensions.x);
         pointASeekBar.setProgress((int)(TaylorSeriesView.dimensions.x/2f));
@@ -413,7 +412,7 @@ public class MainCanvas extends Object {
 
         gridSubDivision = 6f + (float)progress;
         scalar = (float) (TaylorSeriesView.dimensions.x/gridSubDivision);
-        taylorLimitX = progress + MIN_TERMS/SLIDER_SCALE_FACTOR;
+        termNum = progress + MIN_TERMS/SLIDER_SCALE_FACTOR;
     }
 
     public void setPointAPosition(double progress) {
@@ -574,7 +573,7 @@ public class MainCanvas extends Object {
     }
 
     public double getCurrentTermNum() {
-        return taylorLimitX;
+        return termNum;
     }
 
     public void toggleMaclaurinSeries() {

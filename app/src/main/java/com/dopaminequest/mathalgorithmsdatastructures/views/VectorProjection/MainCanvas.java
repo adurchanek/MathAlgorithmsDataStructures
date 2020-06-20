@@ -28,8 +28,8 @@ public class MainCanvas extends Object {
     private float projectedVector;
     private int projectedX;
     private int projectedY;
-    private Point gamePositionStart;
-    private Point gamePositionEnd;
+    private Point controlPositionStart;
+    private Point controlPositionEnd;
     private int P_SIZE = VectorProjectionView.dimensions.x/110;
     private boolean controlPointPressReset;
     private int currentControlPointIndex;
@@ -82,17 +82,17 @@ public class MainCanvas extends Object {
         }
         drawGrid(canvas, gridSubDivision,gridSubDivision);
 
-        float targetControlPointsAngle = calculateAngle(gamePositionStart.x, gamePositionStart.y, targetPoint.x, targetPoint.y);
+        float targetControlPointsAngle = calculateAngle(controlPositionStart.x, controlPositionStart.y, targetPoint.x, targetPoint.y);
         float angleDifference = -targetControlPointsAngle + lineAngle;
 
         angleDifference = drawArc(canvas, angleDifference);
         drawRightAngle(canvas, angleDifference);
 
         pathPaint.setStrokeWidth(P_SIZE*.75f);
-        canvas.drawLine(gamePositionStart.x,gamePositionStart.y, gamePositionEnd.x, gamePositionEnd.y, generalPaint);
+        canvas.drawLine(controlPositionStart.x, controlPositionStart.y, controlPositionEnd.x, controlPositionEnd.y, generalPaint);
         pathPaint.setColor(Color.CYAN);
         generalPaint2.setColor((Color.MAGENTA));
-        canvas.drawLine(gamePositionStart.x,gamePositionStart.y, targetPoint.x, targetPoint.y, generalPaint2);
+        canvas.drawLine(controlPositionStart.x, controlPositionStart.y, targetPoint.x, targetPoint.y, generalPaint2);
 
         drawProjectedLines(canvas);
 
@@ -101,7 +101,7 @@ public class MainCanvas extends Object {
         generalPaint2.setColor(Color.CYAN);
         canvas.drawCircle(targetPoint.x,targetPoint.y,P_SIZE*1.8f,generalPaint2);
         generalPaint2.setStyle(Paint.Style.STROKE);
-        canvas.drawCircle(gamePositionStart.x,gamePositionStart.y,P_SIZE*1.8f,pathPaint);
+        canvas.drawCircle(controlPositionStart.x, controlPositionStart.y,P_SIZE*1.8f,pathPaint);
 
         drawBorder(canvas);
     }
@@ -123,33 +123,33 @@ public class MainCanvas extends Object {
         projectedVector = 0f;
         projectedX = 0;
         projectedY = 0;
-        this.gamePositionStart = new Point();
-        this.gamePositionEnd = new Point();
-        setGamePositionStart(P_SIZE*20,VectorProjectionView.dimensions.y - P_SIZE*20);
-        setGamePositionEnd(VectorProjectionView.dimensions.x -P_SIZE*20, VectorProjectionView.dimensions.y - P_SIZE*20);
+        this.controlPositionStart = new Point();
+        this.controlPositionEnd = new Point();
+        setControlPositionStart(P_SIZE*20,VectorProjectionView.dimensions.y - P_SIZE*20);
+        setControlPositionEnd(VectorProjectionView.dimensions.x -P_SIZE*20, VectorProjectionView.dimensions.y - P_SIZE*20);
         controlPointPressReset = true;
         currentControlPointIndex = 0;
         currentInputPointIndex = -1;
         controlPoints = new ArrayList<Point>();
-        controlPoints.add(gamePositionStart);
-        controlPoints.add(gamePositionEnd);
+        controlPoints.add(controlPositionStart);
+        controlPoints.add(controlPositionEnd);
         targetPoint = new Point();
         targetPoint.x = VectorProjectionView.dimensions.x/2;
         targetPoint.y = (int) (VectorProjectionView.dimensions.y*.25f);
         arcRect = new RectF();
 
-        VectorProjectionView.points[0].x = gamePositionStart.x;
-        VectorProjectionView.points[0].y = gamePositionStart.y;
-        VectorProjectionView.points[1].x = gamePositionEnd.x;
-        VectorProjectionView.points[1].y = gamePositionEnd.y;
+        VectorProjectionView.points[0].x = controlPositionStart.x;
+        VectorProjectionView.points[0].y = controlPositionStart.y;
+        VectorProjectionView.points[1].x = controlPositionEnd.x;
+        VectorProjectionView.points[1].y = controlPositionEnd.y;
 
         clampedInputPoints = new ArrayList<Point>();
         clampedInputPoints.add(new Point());
         clampedInputPoints.add(new Point());
-        clampedInputPoints.get(0).x = gamePositionStart.x;
-        clampedInputPoints.get(0).y = gamePositionStart.y;
-        clampedInputPoints.get(1).x = gamePositionEnd.x;
-        clampedInputPoints.get(1).y = gamePositionEnd.y;
+        clampedInputPoints.get(0).x = controlPositionStart.x;
+        clampedInputPoints.get(0).y = controlPositionStart.y;
+        clampedInputPoints.get(1).x = controlPositionEnd.x;
+        clampedInputPoints.get(1).y = controlPositionEnd.y;
 
         pathPaint.setStyle(Paint.Style.STROKE);
         pathPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -200,8 +200,8 @@ public class MainCanvas extends Object {
         projectedLinePaint.setPathEffect(new DashPathEffect(new float[]{10, 20, 10, 20}, 0));
         projectedLinePaint.setColor((Color.CYAN));
 
-        length = calculateDistance(gamePositionEnd.x, gamePositionEnd.y, gamePositionStart.x, gamePositionStart.y);
-        lineAngle = -calculateAngle(gamePositionStart.x, gamePositionStart.y, gamePositionEnd.x, gamePositionEnd.y);
+        length = calculateDistance(controlPositionEnd.x, controlPositionEnd.y, controlPositionStart.x, controlPositionStart.y);
+        lineAngle = -calculateAngle(controlPositionStart.x, controlPositionStart.y, controlPositionEnd.x, controlPositionEnd.y);
         distanceToLinePoint = (int) calculateDistanceToLinePoint(targetPoint.x, targetPoint.y);
         projectedVector = calculateProjectedVector(targetPoint.x, targetPoint.y);
         projectedX = calculateProjectedPoints(targetPoint.x, targetPoint.y).x;
@@ -276,8 +276,8 @@ public class MainCanvas extends Object {
 
         projectedVec = calculateProjectedVector(targetX, targetY);
 
-        projectedPoint.x = (int) (gamePositionStart.x + ((projectedVec) * ( gamePositionEnd.x - gamePositionStart.x)));
-        projectedPoint.y = (int) (gamePositionStart.y + ((projectedVec) * ( gamePositionEnd.y - gamePositionStart.y)));
+        projectedPoint.x = (int) (controlPositionStart.x + ((projectedVec) * ( controlPositionEnd.x - controlPositionStart.x)));
+        projectedPoint.y = (int) (controlPositionStart.y + ((projectedVec) * ( controlPositionEnd.y - controlPositionStart.y)));
         distanceToPoint = (int) calculateDistance(projectedPoint.x, projectedPoint.y, targetX, targetY);
 
         return distanceToPoint;
@@ -286,8 +286,8 @@ public class MainCanvas extends Object {
     public float calculateProjectedVector(int targetX, int targetY) {
         float projectedVec;
 
-        projectedVec = (float) (((gamePositionEnd.x - gamePositionStart.x) * (targetX - gamePositionStart.x) +
-                        (gamePositionEnd.y - gamePositionStart.y) * (targetY - gamePositionStart.y) )
+        projectedVec = (float) (((controlPositionEnd.x - controlPositionStart.x) * (targetX - controlPositionStart.x) +
+                        (controlPositionEnd.y - controlPositionStart.y) * (targetY - controlPositionStart.y) )
                         / (Math.pow(length, 2)));
 
         return projectedVec;
@@ -302,22 +302,22 @@ public class MainCanvas extends Object {
 
         projectedVec = calculateProjectedVector(targetX, targetY);
 
-        projectedPoint.x = (int) (gamePositionStart.x + ((projectedVec) * (gamePositionEnd.x - gamePositionStart.x)));
-        projectedPoint.y = (int) (gamePositionStart.y + ((projectedVec) * (gamePositionEnd.y - gamePositionStart.y)));
+        projectedPoint.x = (int) (controlPositionStart.x + ((projectedVec) * (controlPositionEnd.x - controlPositionStart.x)));
+        projectedPoint.y = (int) (controlPositionStart.y + ((projectedVec) * (controlPositionEnd.y - controlPositionStart.y)));
 
         return projectedPoint;
     }
 
-    public void setGamePositionStart(int x, int y)
+    public void setControlPositionStart(int x, int y)
     {
-        this.gamePositionStart.x = x;
-        this.gamePositionStart.y = y;
+        this.controlPositionStart.x = x;
+        this.controlPositionStart.y = y;
     }
 
-    public void setGamePositionEnd(int x, int y)
+    public void setControlPositionEnd(int x, int y)
     {
-        this.gamePositionEnd.x = x;
-        this.gamePositionEnd.y = y;
+        this.controlPositionEnd.x = x;
+        this.controlPositionEnd.y = y;
     }
 
     private void drawGrid(Canvas canvas, int xDim, int yDim) {
@@ -329,7 +329,6 @@ public class MainCanvas extends Object {
 
         for(int x = 0; x < VectorProjectionView.dimensions.x/xDim; x++)
         {
-
             int currentX = x*(VectorProjectionView.dimensions.x/xDim);
             canvas.drawLine(currentX,0,currentX, VectorProjectionView.dimensions.y, generalPaint5);
             canvas.drawText(String.valueOf(x-xDim/2), currentX,VectorProjectionView.dimensions.y/2,gridTextPaint);
@@ -423,7 +422,7 @@ public class MainCanvas extends Object {
             canvas.drawCircle(projectedX,projectedY,P_SIZE*1.8f,generalPaint2);
             generalPaint2.setStyle(Paint.Style.STROKE);
             pathPaint.setStyle(Paint.Style.STROKE);
-            canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,pathPaint);
+            canvas.drawCircle(controlPositionEnd.x, controlPositionEnd.y,P_SIZE*1.8f,pathPaint);
         }
         else
         {
@@ -434,7 +433,7 @@ public class MainCanvas extends Object {
             canvas.drawCircle(projectedX, projectedY,P_SIZE*1.3f,pathPaint);
             generalPaint2.setStrokeWidth(P_SIZE/5);
             generalPaint2.setColor((Color.GREEN));
-            canvas.drawLine(projectedX, projectedY, gamePositionEnd.x, gamePositionEnd.y, generalPaint2);
+            canvas.drawLine(projectedX, projectedY, controlPositionEnd.x, controlPositionEnd.y, generalPaint2);
             generalPaint2.setColor((Color.CYAN));
             generalPaint2.setColor((Color.CYAN));
             projectedLinePaint.setStrokeWidth(P_SIZE/5);
@@ -444,11 +443,11 @@ public class MainCanvas extends Object {
 
             if(projectedVector <= 1)
             {
-                canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,pathPaint);
+                canvas.drawCircle(controlPositionEnd.x, controlPositionEnd.y,P_SIZE*1.8f,pathPaint);
             }
             else
             {
-                canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,generalPaint2);
+                canvas.drawCircle(controlPositionEnd.x, controlPositionEnd.y,P_SIZE*1.8f,generalPaint2);
             }
 
             generalPaint2.setStyle(Paint.Style.STROKE);
@@ -508,10 +507,10 @@ public class MainCanvas extends Object {
 
     private float drawArc(Canvas canvas, float angleDifference) {
         visualMultiplier = length/controlPointsLineStartLength;
-        arcRect.set(gamePositionStart.x - visualMultiplier * P_SIZE*4 - P_SIZE*3,
-                gamePositionStart.y - visualMultiplier * P_SIZE*4 - P_SIZE*3,
-                gamePositionStart.x + visualMultiplier * P_SIZE*4 + P_SIZE*3,
-                gamePositionStart.y + visualMultiplier * P_SIZE*4 + P_SIZE*3);
+        arcRect.set(controlPositionStart.x - visualMultiplier * P_SIZE*4 - P_SIZE*3,
+                controlPositionStart.y - visualMultiplier * P_SIZE*4 - P_SIZE*3,
+                controlPositionStart.x + visualMultiplier * P_SIZE*4 + P_SIZE*3,
+                controlPositionStart.y + visualMultiplier * P_SIZE*4 + P_SIZE*3);
 
         arcAnimationIncrement -= .1f;
 
