@@ -13,7 +13,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 
-
 public class MainCanvas extends Object {
 
     public boolean resettingMainCanvas = true;
@@ -78,86 +77,6 @@ public class MainCanvas extends Object {
             return;
         }
 
-//        if(TaylorSeriesView.actionDown)
-//        {
-//            clampedInput.x = TaylorSeriesView.input.x > TaylorSeriesView.dimensions.x ? TaylorSeriesView.dimensions.x : Math.max(TaylorSeriesView.input.x, 0);
-//            clampedInput.y = TaylorSeriesView.input.y > TaylorSeriesView.dimensions.y ? TaylorSeriesView.dimensions.y : Math.max(TaylorSeriesView.input.y, 0);
-//            clampedInput.y = getFunctionY(clampedInput.x,scalar, functionNum);
-//
-//            int minIndex = -1;
-//            float minDistance = Float.MAX_VALUE;
-//
-//            if(controlPointPressReset)
-//            {
-//                for(int i = 0;  i < sliders.length; i++)
-//                {
-//                    float tempDist = Math.abs(sliders[i].x - clampedInput.x);
-//                    if(tempDist < minDistance)
-//                    {
-//                        minIndex = i;
-//                        minDistance = tempDist;
-//                    }
-//                }
-//                currentControlPointIndex = minIndex;
-//                controlPointPressReset = false;
-//            }
-//            else
-//            {
-//                minIndex = currentControlPointIndex;
-//            }
-//
-//            double xVectorToInput = (clampedInput.x - sliders[minIndex].x);
-//            double yVectorToInput = (clampedInput.y - sliders[minIndex].y);
-//            double distToInput = (Math.sqrt(Math.pow(xVectorToInput,2) + Math.pow(yVectorToInput,2)));
-//
-//            double directionToFingerVectorX =  (xVectorToInput/distToInput);
-//            double directionToFingerVectorY =  (yVectorToInput/distToInput);
-//
-//            if(distToInput < TaylorSeriesView.dimensions.x / 35f)
-//            {
-//                sliders[minIndex].x = clampedInput.x;
-//                sliders[minIndex].y = clampedInput.y;
-//            }
-//            else
-//            {
-//                sliders[minIndex].x += directionToFingerVectorX*distToInput*.5f;
-//                sliders[minIndex].y += directionToFingerVectorY*distToInput*.5f;
-//            }
-//
-//            if(Math.abs(sliders[0].x - sliders[1].x) < P_SIZE*4)
-//            {
-//                if(minIndex == 0)
-//                {
-//                    sliders[1].x = (int) (sliders[0].x + P_SIZE*4);
-//                    if(sliders[1].x > TaylorSeriesView.dimensions.x)
-//                    {
-//                        sliders[1].x = TaylorSeriesView.dimensions.x;
-//                        sliders[0].x =  sliders[1].x - P_SIZE*4;
-//                    }
-//                }
-//                else
-//                {
-//                    sliders[0].x = (int) (sliders[1].x - P_SIZE*4);
-//
-//                    if(sliders[0].x < 0)
-//                    {
-//                        sliders[0].x = 0;
-//                        sliders[1].x =   P_SIZE*4;
-//                    }
-//                }
-//            }
-//        }
-//        else
-//        {
-//            controlPointPressReset = true;
-//            //sliders[0].x = (int) (TaylorSeriesView.dimensions.x/2-(int) ((taylorLimitX)/MAX_TERMS)*(TaylorSeriesView.dimensions.x/2));
-//            //sliders[1].x = (int) (TaylorSeriesView.dimensions.x/2+(int) ((taylorLimitX)/MAX_TERMS)*(TaylorSeriesView.dimensions.x/2));
-//
-//
-//
-//        }
-
-
         sliders[0].y = getFunctionY(sliders[0].x, scalar,functionNum);
         sliders[1].y = getFunctionY(sliders[1].x, scalar, functionNum);
 
@@ -176,9 +95,69 @@ public class MainCanvas extends Object {
             return;
         }
 
-        int functionWidth = TaylorSeriesView.dimensions.x;
-        int rectWidth = (int) (functionWidth/numRects);
+        animate();
+        generateFunctionPath();
+        canvas.drawPath(path, generalPaint2);
 
+        generateTaylorSeriesPath();
+        generalPaint.setStyle(Paint.Style.STROKE);
+        canvas.drawPath(path, generalPaint);
+
+        int clampedPointAValueY = getFunctionY((int) (TaylorSeriesView.dimensions.x/2 + pointAOffset), scalar, functionNum);
+        clampedPointAValueY = clampedPointAValueY > TaylorSeriesView.dimensions.y ? TaylorSeriesView.dimensions.y : Math.max(clampedPointAValueY, 0);
+
+        canvas.drawCircle((float) (TaylorSeriesView.dimensions.x/2 + pointAOffset), clampedPointAValueY, SLIDER_RADIUS/2, pointAPaint);
+        pointAPaint.setColor(Color.MAGENTA);
+        pointAPaint.setStyle(Paint.Style.STROKE);
+        canvas.drawCircle((float) (TaylorSeriesView.dimensions.x/2 + pointAOffset), clampedPointAValueY , SLIDER_RADIUS/2, pointAPaint);
+        pointAPaint.setColor(Color.CYAN);
+        pointAPaint.setStyle(Paint.Style.FILL);
+
+        drawGrid(canvas, gridSubDivision,gridSubDivision);
+        drawBorder(canvas);
+    }
+
+    private void generateTaylorSeriesPath() {
+        boolean firstPoint2 = true;
+        path.reset();
+
+        for(int i = 0; i < TaylorSeriesView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
+        {
+            int yVal = getTaylorSeriesY(i, scalar, functionNum, taylorLimitX, pointAOffset);
+
+            if(firstPoint2)
+            {
+                path.moveTo(i,yVal);
+                firstPoint2 = false;
+            }
+            else
+            {
+                path.lineTo(i,yVal);
+            }
+        }
+    }
+
+    private void generateFunctionPath() {
+        boolean firstPoint1 = true;
+        path.reset();
+
+        for(int i = 0; i < TaylorSeriesView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
+        {
+            int yVal = getFunctionY(i, scalar,functionNum);
+
+            if(firstPoint1)
+            {
+                path.moveTo(i,yVal);
+                firstPoint1 = false;
+            }
+            else
+            {
+                path.lineTo(i,yVal);
+            }
+        }
+    }
+
+    private void animate() {
         if(animate)
         {
             animateProgress +=  (animateDirection * ANIMATE_SPEED);
@@ -195,60 +174,6 @@ public class MainCanvas extends Object {
             }
             termSeekBar.setProgress((int)animateProgress - MIN_TERMS);
         }
-
-        boolean firstPoint = true;
-        path.reset();
-
-        for(int i = 0; i < TaylorSeriesView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
-        {
-            int yVal = getFunctionY(i, scalar,functionNum);
-
-            if(firstPoint)
-            {
-                path.moveTo(i,yVal);
-                firstPoint = false;
-            }
-            else
-            {
-                path.lineTo(i,yVal);
-            }
-        }
-
-        canvas.drawPath(path, generalPaint2);
-
-        firstPoint = true;
-        path.reset();
-
-        for(int i = 0; i < TaylorSeriesView.dimensions.x + P_SIZE*1f; i += P_SIZE*1f)
-        {
-            int yVal = getTaylorSeriesY(i, scalar, functionNum, taylorLimitX, pointAOffset);
-
-            if(firstPoint)
-            {
-                path.moveTo(i,yVal);
-                firstPoint = false;
-            }
-            else
-            {
-                path.lineTo(i,yVal);
-            }
-        }
-
-        generalPaint.setStyle(Paint.Style.STROKE);
-        canvas.drawPath(path, generalPaint);
-
-        int clampedPointAValueY = getFunctionY((int) (TaylorSeriesView.dimensions.x/2 + pointAOffset), scalar, functionNum);
-        clampedPointAValueY = clampedPointAValueY > TaylorSeriesView.dimensions.y ? TaylorSeriesView.dimensions.y : Math.max(clampedPointAValueY, 0);
-
-        canvas.drawCircle((float) (TaylorSeriesView.dimensions.x/2 + pointAOffset), clampedPointAValueY, SLIDER_RADIUS/2, pointAPaint);
-        pointAPaint.setColor(Color.MAGENTA);
-        pointAPaint.setStyle(Paint.Style.STROKE);
-        canvas.drawCircle((float) (TaylorSeriesView.dimensions.x/2 + pointAOffset), clampedPointAValueY , SLIDER_RADIUS/2, pointAPaint);
-        pointAPaint.setColor(Color.CYAN);
-        pointAPaint.setStyle(Paint.Style.FILL);
-
-        drawGrid(canvas, gridSubDivision,gridSubDivision);
-        drawBorder(canvas);
     }
 
     private void drawGrid(Canvas canvas, float xDim, float yDim) {

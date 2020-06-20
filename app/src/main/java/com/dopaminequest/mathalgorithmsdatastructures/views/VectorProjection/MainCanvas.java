@@ -8,9 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Shader;
-
-import com.dopaminequest.mathalgorithmsdatastructures.views.Integral.IntegralView;
-
 import java.util.ArrayList;
 
 public class MainCanvas extends Object {
@@ -64,70 +61,7 @@ public class MainCanvas extends Object {
         if (resettingMainCanvas) {
             return;
         }
-
-        //if(VectorProjectionView.actionDown)
-        {
-            clampedInputPoints.get(0).x = VectorProjectionView.points[0].x >= VectorProjectionView.dimensions.x ? VectorProjectionView.dimensions.x : Math.max(VectorProjectionView.points[0].x, 0);
-            clampedInputPoints.get(0).y = VectorProjectionView.points[0].y >= VectorProjectionView.dimensions.y ? VectorProjectionView.dimensions.y : Math.max(VectorProjectionView.points[0].y, 0);
-
-            clampedInputPoints.get(1).x = VectorProjectionView.points[1].x >= VectorProjectionView.dimensions.x ? VectorProjectionView.dimensions.x : Math.max(VectorProjectionView.points[1].x, 0);
-            clampedInputPoints.get(1).y = VectorProjectionView.points[1].y >= VectorProjectionView.dimensions.y ? VectorProjectionView.dimensions.y : Math.max(VectorProjectionView.points[1].y, 0);
-        }
-
-        int minControlPointIndex = currentControlPointIndex;
-        int minInputPointIndex = -1;
-        float minDistance = Float.MAX_VALUE;
-
-        for (int i = 0; i < controlPoints.size(); i++) {
-            float tempDist = getDistance(controlPoints.get(i), clampedInputPoints.get(0));
-            if (tempDist < minDistance) {
-                minControlPointIndex = i;
-                minDistance = tempDist;
-            }
-        }
-
-        currentControlPointIndex = minControlPointIndex;
-        controlPointPressReset = false;
-
-        double xVectorToInput = (clampedInputPoints.get(0).x - controlPoints.get(minControlPointIndex).x);
-        double yVectorToInput = (clampedInputPoints.get(0).y - controlPoints.get(minControlPointIndex).y);
-        double distToInput = (Math.sqrt(Math.pow(xVectorToInput, 2) + Math.pow(yVectorToInput,2)));
-
-        double directionToFingerVectorX =  (xVectorToInput/distToInput);
-        double directionToFingerVectorY =  (yVectorToInput/distToInput);
-
-        if(distToInput < VectorProjectionView.dimensions.x / 45f)
-        {
-            controlPoints.get(minControlPointIndex).x = clampedInputPoints.get(0).x;
-            controlPoints.get(minControlPointIndex).y = clampedInputPoints.get(0).y;
-        }
-        else
-        {
-            controlPoints.get(minControlPointIndex).x += directionToFingerVectorX*distToInput*.35f;
-            controlPoints.get(minControlPointIndex).y += directionToFingerVectorY*distToInput*.35f;
-        }
-
-        if(VectorProjectionView.numPoints > 1)
-        {
-            minInputPointIndex = 1 - minInputPointIndex;
-            xVectorToInput = (clampedInputPoints.get(1).x - controlPoints.get(1 - minControlPointIndex).x);
-            yVectorToInput = (clampedInputPoints.get(1).y - controlPoints.get(1 - minControlPointIndex).y);
-            distToInput = (Math.sqrt(Math.pow(xVectorToInput, 2) + Math.pow(yVectorToInput,2)));
-
-            directionToFingerVectorX =  (xVectorToInput/distToInput);
-            directionToFingerVectorY =  (yVectorToInput/distToInput);
-
-            if(distToInput < VectorProjectionView.dimensions.x / 45f)
-            {
-                controlPoints.get(1-minControlPointIndex).x = clampedInputPoints.get(1).x;
-                controlPoints.get(1-minControlPointIndex).y = clampedInputPoints.get(1).y;
-            }
-            else
-            {
-                controlPoints.get(1 - minControlPointIndex).x += directionToFingerVectorX*distToInput * .35f;
-                controlPoints.get(1 - minControlPointIndex).y += directionToFingerVectorY*distToInput * .35f;
-            }
-        }
+        handleInput();
 
         length = calculateDistance(controlPoints.get(0).x, controlPoints.get(0).y, controlPoints.get(1).x, controlPoints.get(1).y);
         lineAngle = calculateAngle(controlPoints.get(0).x, controlPoints.get(0).y, controlPoints.get(1).x, controlPoints.get(1).y);
@@ -148,93 +82,11 @@ public class MainCanvas extends Object {
         }
         drawGrid(canvas, gridSubDivision,gridSubDivision);
 
-        pathPaint.setStrokeWidth(P_SIZE * .25f);
-
-        visualMultiplier = length/controlPointsLineStartLength;
         float targetControlPointsAngle = calculateAngle(gamePositionStart.x, gamePositionStart.y, targetPoint.x, targetPoint.y);
-        arcRect.set(gamePositionStart.x - visualMultiplier * P_SIZE*4 - P_SIZE*3,
-                    gamePositionStart.y - visualMultiplier * P_SIZE*4 - P_SIZE*3,
-                   gamePositionStart.x + visualMultiplier * P_SIZE*4 + P_SIZE*3,
-                 gamePositionStart.y + visualMultiplier * P_SIZE*4 + P_SIZE*3);
+        float angleDifference = -targetControlPointsAngle + lineAngle;
 
-        float dif = -targetControlPointsAngle + lineAngle;
-
-        arcAnimationIncrement -= .1f;
-
-        if(arcAnimationIncrement < 0)
-        {
-            arcAnimationIncrement = 0;
-        }
-
-        if(dif > 180f)
-        {
-            dif  = dif - 360;
-        }
-        else if(dif < -180)
-        {
-            dif  = dif + 360;
-        }
-
-        if(180 + dif > 0 && 180 + dif <= 180   && currentArcState == -1 )
-        {
-            currentArcState = 1;
-            arcAnimationIncrement = 1f;
-        }
-        else if(180 + dif <= 360 &&  180 + dif > 180  && currentArcState == 1)
-        {
-            currentArcState = -1;
-            arcAnimationIncrement = 1f;
-        }
-
-        canvas.drawArc(arcRect, -lineAngle + dif*arcAnimationIncrement / 2, dif -  dif*arcAnimationIncrement, false, pathPaint);
-
-        float targetStartPointAngle = dif + 180;
-
-        canvas.save();
-        int xSign;
-        int ySign;
-
-        if(targetStartPointAngle >= 0 && targetStartPointAngle < 90)
-        {
-            xSign = 1;
-            ySign = -1;
-        }
-        else if(targetStartPointAngle >= 90 && targetStartPointAngle < 180)
-        {
-            xSign = -1;
-            ySign = -1;
-        }
-        else if(targetStartPointAngle >= 180 && targetStartPointAngle < 270)
-        {
-            xSign = -1;
-            ySign = 1;
-        }
-        else
-        {
-            xSign = 1;
-            ySign = 1;
-        }
-
-        canvas.rotate(-lineAngle, projectedX,projectedY);
-
-        if(P_SIZE*4 > Math.abs(projectedVector*length))
-        {
-            visualMultiplier = Math.abs(projectedVector*length/((float)P_SIZE*4f));
-        }
-        else  if(P_SIZE*4 > distanceToLinePoint)
-        {
-            visualMultiplier = Math.abs(distanceToLinePoint/((float)P_SIZE*4f));
-        }
-        else
-        {
-            visualMultiplier = 1f;
-        }
-
-        generalPaint2.setColor((Color.MAGENTA));
-        generalPaint2.setStrokeWidth(P_SIZE*.25f);
-        canvas.drawRect(projectedX,projectedY,projectedX + visualMultiplier*xSign*P_SIZE*4,projectedY + visualMultiplier*ySign*P_SIZE*4, generalPaint2);
-        generalPaint2.setStrokeWidth(P_SIZE*.75f);
-        canvas.restore();
+        angleDifference = drawArc(canvas, angleDifference);
+        drawRightAngle(canvas, angleDifference);
 
         pathPaint.setStrokeWidth(P_SIZE*.75f);
         canvas.drawLine(gamePositionStart.x,gamePositionStart.y, gamePositionEnd.x, gamePositionEnd.y, generalPaint);
@@ -242,50 +94,8 @@ public class MainCanvas extends Object {
         generalPaint2.setColor((Color.MAGENTA));
         canvas.drawLine(gamePositionStart.x,gamePositionStart.y, targetPoint.x, targetPoint.y, generalPaint2);
 
-        if(projectedVector >= 0 && projectedVector <= 1)
-        {
-            generalPaint.setColor((Color.CYAN));
-            generalPaint2.setColor((Color.CYAN));
-            generalPaint2.setStrokeWidth(P_SIZE*.75f);
-            projectedLinePaint.setStrokeWidth(P_SIZE*.75f);
-            canvas.drawLine(projectedX, projectedY, targetPoint.x, targetPoint.y, projectedLinePaint);
-            pathPaint.setStyle(Paint.Style.FILL);
-            generalPaint2.setStyle(Paint.Style.FILL);
-            generalPaint2.setColor(Color.YELLOW);
-            canvas.drawCircle(projectedX,projectedY,P_SIZE*1.8f,generalPaint2);
-            generalPaint2.setStyle(Paint.Style.STROKE);
-            pathPaint.setStyle(Paint.Style.STROKE);
-            canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,pathPaint);
-        }
-        else
-        {
-            generalPaint2.setStrokeWidth(P_SIZE*.75f);
-            generalPaint2.setStyle(Paint.Style.FILL);
-            generalPaint2.setColor((Color.YELLOW));
-            canvas.drawCircle(projectedX, projectedY,P_SIZE*1.3f,generalPaint2);
-            canvas.drawCircle(projectedX, projectedY,P_SIZE*1.3f,pathPaint);
-            generalPaint2.setStrokeWidth(P_SIZE/5);
-            generalPaint2.setColor((Color.GREEN));
-            canvas.drawLine(projectedX, projectedY, gamePositionEnd.x, gamePositionEnd.y, generalPaint2);
-            generalPaint2.setColor((Color.CYAN));
-            generalPaint2.setColor((Color.CYAN));
-            projectedLinePaint.setStrokeWidth(P_SIZE/5);
-            canvas.drawLine(projectedX, projectedY, targetPoint.x, targetPoint.y, projectedLinePaint);
-            generalPaint2.setColor((Color.YELLOW));
-            generalPaint2.setStyle(Paint.Style.FILL);
+        drawProjectedLines(canvas);
 
-            if(projectedVector <= 1)
-            {
-                canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,pathPaint);
-            }
-            else
-            {
-                canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,generalPaint2);
-            }
-
-            generalPaint2.setStyle(Paint.Style.STROKE);
-            pathPaint.setStyle(Paint.Style.STROKE);
-        }
         generalPaint2.setStyle(Paint.Style.FILL);
         generalPaint2.setStrokeWidth(P_SIZE*.75f);
         generalPaint2.setColor(Color.CYAN);
@@ -293,15 +103,7 @@ public class MainCanvas extends Object {
         generalPaint2.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(gamePositionStart.x,gamePositionStart.y,P_SIZE*1.8f,pathPaint);
 
-
         drawBorder(canvas);
-    }
-
-    private void drawBorder(Canvas canvas) {
-        canvas.drawLine(0,0, xDimension, 0, generalPaint);
-        canvas.drawLine(0,0, 0, yDimension, generalPaint);
-        canvas.drawLine(0, yDimension, xDimension, yDimension, generalPaint);
-        canvas.drawLine(xDimension,0, xDimension, yDimension, generalPaint);
     }
 
     public void init()
@@ -336,15 +138,12 @@ public class MainCanvas extends Object {
         targetPoint.y = (int) (VectorProjectionView.dimensions.y*.25f);
         arcRect = new RectF();
 
-
         VectorProjectionView.points[0].x = gamePositionStart.x;
         VectorProjectionView.points[0].y = gamePositionStart.y;
         VectorProjectionView.points[1].x = gamePositionEnd.x;
         VectorProjectionView.points[1].y = gamePositionEnd.y;
 
         clampedInputPoints = new ArrayList<Point>();
-
-
         clampedInputPoints.add(new Point());
         clampedInputPoints.add(new Point());
         clampedInputPoints.get(0).x = gamePositionStart.x;
@@ -365,8 +164,6 @@ public class MainCanvas extends Object {
                 Color.rgb(20,220,20),
                 Shader.TileMode.MIRROR));
 
-
-
         generalPaint.setStyle(Paint.Style.STROKE);
         generalPaint.setStrokeCap(Paint.Cap.ROUND);
         generalPaint.setStrokeWidth(P_SIZE*.75f);
@@ -379,7 +176,6 @@ public class MainCanvas extends Object {
                 Color.rgb(180,255,0),
                 Color.rgb(0,255,240),
                 Shader.TileMode.MIRROR));
-
 
         gridTextPaint = new Paint();
         gridTextPaint.setAntiAlias(true);
@@ -526,25 +322,233 @@ public class MainCanvas extends Object {
 
     private void drawGrid(Canvas canvas, int xDim, int yDim) {
         generalPaint5.setAlpha(generalPaint5.getAlpha() + 155);
-        canvas.drawLine(IntegralView.dimensions.x/2,0,IntegralView.dimensions.x/2, IntegralView.dimensions.y, generalPaint5);
-        canvas.drawLine(0,IntegralView.dimensions.y/2,IntegralView.dimensions.x, IntegralView.dimensions.y/2, generalPaint5);
+        canvas.drawLine(VectorProjectionView.dimensions.x/2,0,VectorProjectionView.dimensions.x/2, VectorProjectionView.dimensions.y, generalPaint5);
+        canvas.drawLine(0,VectorProjectionView.dimensions.y/2,VectorProjectionView.dimensions.x, VectorProjectionView.dimensions.y/2, generalPaint5);
 
         generalPaint5.setAlpha(generalPaint5.getAlpha() - 155);
 
-        for(int x = 0; x < IntegralView.dimensions.x/xDim; x++)
+        for(int x = 0; x < VectorProjectionView.dimensions.x/xDim; x++)
         {
 
-            int currentX = x*(IntegralView.dimensions.x/xDim);
-            canvas.drawLine(currentX,0,currentX, IntegralView.dimensions.y, generalPaint5);
-            canvas.drawText(String.valueOf(x-xDim/2), currentX,IntegralView.dimensions.y/2,gridTextPaint);
+            int currentX = x*(VectorProjectionView.dimensions.x/xDim);
+            canvas.drawLine(currentX,0,currentX, VectorProjectionView.dimensions.y, generalPaint5);
+            canvas.drawText(String.valueOf(x-xDim/2), currentX,VectorProjectionView.dimensions.y/2,gridTextPaint);
         }
 
-        for(int y = 0; y < IntegralView.dimensions.y/yDim; y++)
+        for(int y = 0; y < VectorProjectionView.dimensions.y/yDim; y++)
         {
-            int currentY = y*(IntegralView.dimensions.y/yDim);
-            canvas.drawLine(0,currentY,IntegralView.dimensions.x, currentY, generalPaint5);
-            canvas.drawText(String.valueOf(-1*(y-yDim/2)), IntegralView.dimensions.x/2,currentY,gridTextPaint);
+            int currentY = y*(VectorProjectionView.dimensions.y/yDim);
+            canvas.drawLine(0,currentY,VectorProjectionView.dimensions.x, currentY, generalPaint5);
+            canvas.drawText(String.valueOf(-1*(y-yDim/2)), VectorProjectionView.dimensions.x/2,currentY,gridTextPaint);
         }
     }
 
+    private void handleInput() {
+        //if(VectorProjectionView.actionDown)
+        {
+            clampedInputPoints.get(0).x = VectorProjectionView.points[0].x >= VectorProjectionView.dimensions.x ? VectorProjectionView.dimensions.x : Math.max(VectorProjectionView.points[0].x, 0);
+            clampedInputPoints.get(0).y = VectorProjectionView.points[0].y >= VectorProjectionView.dimensions.y ? VectorProjectionView.dimensions.y : Math.max(VectorProjectionView.points[0].y, 0);
+
+            clampedInputPoints.get(1).x = VectorProjectionView.points[1].x >= VectorProjectionView.dimensions.x ? VectorProjectionView.dimensions.x : Math.max(VectorProjectionView.points[1].x, 0);
+            clampedInputPoints.get(1).y = VectorProjectionView.points[1].y >= VectorProjectionView.dimensions.y ? VectorProjectionView.dimensions.y : Math.max(VectorProjectionView.points[1].y, 0);
+        }
+
+        int minControlPointIndex = currentControlPointIndex;
+        int minInputPointIndex = -1;
+        float minDistance = Float.MAX_VALUE;
+
+        for (int i = 0; i < controlPoints.size(); i++) {
+            float tempDist = getDistance(controlPoints.get(i), clampedInputPoints.get(0));
+            if (tempDist < minDistance) {
+                minControlPointIndex = i;
+                minDistance = tempDist;
+            }
+        }
+
+        currentControlPointIndex = minControlPointIndex;
+        controlPointPressReset = false;
+
+        double xVectorToInput = (clampedInputPoints.get(0).x - controlPoints.get(minControlPointIndex).x);
+        double yVectorToInput = (clampedInputPoints.get(0).y - controlPoints.get(minControlPointIndex).y);
+        double distToInput = (Math.sqrt(Math.pow(xVectorToInput, 2) + Math.pow(yVectorToInput,2)));
+
+        double directionToFingerVectorX =  (xVectorToInput/distToInput);
+        double directionToFingerVectorY =  (yVectorToInput/distToInput);
+
+        if(distToInput < VectorProjectionView.dimensions.x / 45f)
+        {
+            controlPoints.get(minControlPointIndex).x = clampedInputPoints.get(0).x;
+            controlPoints.get(minControlPointIndex).y = clampedInputPoints.get(0).y;
+        }
+        else
+        {
+            controlPoints.get(minControlPointIndex).x += directionToFingerVectorX*distToInput*.35f;
+            controlPoints.get(minControlPointIndex).y += directionToFingerVectorY*distToInput*.35f;
+        }
+
+        if(VectorProjectionView.numPoints > 1)
+        {
+            minInputPointIndex = 1 - minInputPointIndex;
+            xVectorToInput = (clampedInputPoints.get(1).x - controlPoints.get(1 - minControlPointIndex).x);
+            yVectorToInput = (clampedInputPoints.get(1).y - controlPoints.get(1 - minControlPointIndex).y);
+            distToInput = (Math.sqrt(Math.pow(xVectorToInput, 2) + Math.pow(yVectorToInput,2)));
+
+            directionToFingerVectorX =  (xVectorToInput/distToInput);
+            directionToFingerVectorY =  (yVectorToInput/distToInput);
+
+            if(distToInput < VectorProjectionView.dimensions.x / 45f)
+            {
+                controlPoints.get(1-minControlPointIndex).x = clampedInputPoints.get(1).x;
+                controlPoints.get(1-minControlPointIndex).y = clampedInputPoints.get(1).y;
+            }
+            else
+            {
+                controlPoints.get(1 - minControlPointIndex).x += directionToFingerVectorX*distToInput * .35f;
+                controlPoints.get(1 - minControlPointIndex).y += directionToFingerVectorY*distToInput * .35f;
+            }
+        }
+    }
+
+    private void drawProjectedLines(Canvas canvas) {
+        if(projectedVector >= 0 && projectedVector <= 1)
+        {
+            generalPaint.setColor((Color.CYAN));
+            generalPaint2.setColor((Color.CYAN));
+            generalPaint2.setStrokeWidth(P_SIZE*.75f);
+            projectedLinePaint.setStrokeWidth(P_SIZE*.75f);
+            canvas.drawLine(projectedX, projectedY, targetPoint.x, targetPoint.y, projectedLinePaint);
+            pathPaint.setStyle(Paint.Style.FILL);
+            generalPaint2.setStyle(Paint.Style.FILL);
+            generalPaint2.setColor(Color.YELLOW);
+            canvas.drawCircle(projectedX,projectedY,P_SIZE*1.8f,generalPaint2);
+            generalPaint2.setStyle(Paint.Style.STROKE);
+            pathPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,pathPaint);
+        }
+        else
+        {
+            generalPaint2.setStrokeWidth(P_SIZE*.75f);
+            generalPaint2.setStyle(Paint.Style.FILL);
+            generalPaint2.setColor((Color.YELLOW));
+            canvas.drawCircle(projectedX, projectedY,P_SIZE*1.3f,generalPaint2);
+            canvas.drawCircle(projectedX, projectedY,P_SIZE*1.3f,pathPaint);
+            generalPaint2.setStrokeWidth(P_SIZE/5);
+            generalPaint2.setColor((Color.GREEN));
+            canvas.drawLine(projectedX, projectedY, gamePositionEnd.x, gamePositionEnd.y, generalPaint2);
+            generalPaint2.setColor((Color.CYAN));
+            generalPaint2.setColor((Color.CYAN));
+            projectedLinePaint.setStrokeWidth(P_SIZE/5);
+            canvas.drawLine(projectedX, projectedY, targetPoint.x, targetPoint.y, projectedLinePaint);
+            generalPaint2.setColor((Color.YELLOW));
+            generalPaint2.setStyle(Paint.Style.FILL);
+
+            if(projectedVector <= 1)
+            {
+                canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,pathPaint);
+            }
+            else
+            {
+                canvas.drawCircle(gamePositionEnd.x,gamePositionEnd.y,P_SIZE*1.8f,generalPaint2);
+            }
+
+            generalPaint2.setStyle(Paint.Style.STROKE);
+            pathPaint.setStyle(Paint.Style.STROKE);
+        }
+    }
+
+    private void drawRightAngle(Canvas canvas, float angleDifference) {
+        float targetStartPointAngle = angleDifference + 180;
+
+        canvas.save();
+        int xSign;
+        int ySign;
+
+        if(targetStartPointAngle >= 0 && targetStartPointAngle < 90)
+        {
+            xSign = 1;
+            ySign = -1;
+        }
+        else if(targetStartPointAngle >= 90 && targetStartPointAngle < 180)
+        {
+            xSign = -1;
+            ySign = -1;
+        }
+        else if(targetStartPointAngle >= 180 && targetStartPointAngle < 270)
+        {
+            xSign = -1;
+            ySign = 1;
+        }
+        else
+        {
+            xSign = 1;
+            ySign = 1;
+        }
+
+        canvas.rotate(-lineAngle, projectedX,projectedY);
+
+        if(P_SIZE*4 > Math.abs(projectedVector*length))
+        {
+            visualMultiplier = Math.abs(projectedVector*length/((float)P_SIZE*4f));
+        }
+        else  if(P_SIZE*4 > distanceToLinePoint)
+        {
+            visualMultiplier = Math.abs(distanceToLinePoint/((float)P_SIZE*4f));
+        }
+        else
+        {
+            visualMultiplier = 1f;
+        }
+
+        generalPaint2.setColor((Color.MAGENTA));
+        generalPaint2.setStrokeWidth(P_SIZE*.25f);
+        canvas.drawRect(projectedX,projectedY,projectedX + visualMultiplier*xSign*P_SIZE*4,projectedY + visualMultiplier*ySign*P_SIZE*4, generalPaint2);
+        generalPaint2.setStrokeWidth(P_SIZE*.75f);
+        canvas.restore();
+    }
+
+    private float drawArc(Canvas canvas, float angleDifference) {
+        visualMultiplier = length/controlPointsLineStartLength;
+        arcRect.set(gamePositionStart.x - visualMultiplier * P_SIZE*4 - P_SIZE*3,
+                gamePositionStart.y - visualMultiplier * P_SIZE*4 - P_SIZE*3,
+                gamePositionStart.x + visualMultiplier * P_SIZE*4 + P_SIZE*3,
+                gamePositionStart.y + visualMultiplier * P_SIZE*4 + P_SIZE*3);
+
+        arcAnimationIncrement -= .1f;
+
+        if(arcAnimationIncrement < 0)
+        {
+            arcAnimationIncrement = 0;
+        }
+
+        if(angleDifference > 180f)
+        {
+            angleDifference  = angleDifference - 360;
+        }
+        else if(angleDifference < -180)
+        {
+            angleDifference  = angleDifference + 360;
+        }
+
+        if(180 + angleDifference > 0 && 180 + angleDifference <= 180   && currentArcState == -1 )
+        {
+            currentArcState = 1;
+            arcAnimationIncrement = 1f;
+        }
+        else if(180 + angleDifference <= 360 &&  180 + angleDifference > 180  && currentArcState == 1)
+        {
+            currentArcState = -1;
+            arcAnimationIncrement = 1f;
+        }
+
+        pathPaint.setStrokeWidth(P_SIZE * .25f);
+        canvas.drawArc(arcRect, -lineAngle + angleDifference*arcAnimationIncrement / 2, angleDifference -  angleDifference*arcAnimationIncrement, false, pathPaint);
+        return angleDifference;
+    }
+
+    private void drawBorder(Canvas canvas) {
+        canvas.drawLine(0,0, xDimension, 0, generalPaint);
+        canvas.drawLine(0,0, 0, yDimension, generalPaint);
+        canvas.drawLine(0, yDimension, xDimension, yDimension, generalPaint);
+        canvas.drawLine(xDimension,0, xDimension, yDimension, generalPaint);
+    }
 }
