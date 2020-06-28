@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.IntegralActivity">
+    tools:context=".activities.mathactivities.IntegralActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.Integral.IntegralView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.mathviews.Integral.IntegralView
         android:id="@+id/IntegralView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -86,7 +86,7 @@
 
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/seekBarSortSpeed"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="350dp"
         android:layout_height="40dp"
@@ -105,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="num_rects"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarSortSpeed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"

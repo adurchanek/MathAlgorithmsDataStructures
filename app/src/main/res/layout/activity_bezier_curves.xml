@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.BezierCurvesActivity">
+    tools:context=".activities.mathactivities.BezierCurvesActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.BezierCurves.BezierCurvesView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.mathviews.BezierCurves.BezierCurvesView
         android:id="@+id/BezierCurvesView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

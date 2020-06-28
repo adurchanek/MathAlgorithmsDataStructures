@@ -4,7 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="mainMenuBtnColor">#4CAF50</color>
+    <color name="mainMenuBtnColor">#CC0058FF</color>
+    <color name="mainMenuBtnColor1Saved">#1C40BD</color>
+    <color name="mainMenuBtnColorSaved">#4CAF50</color>
+    <color name="mainMenuBtnColor2Saved">#5A8DED</color>
+    <color name="mainMenuBtnColor2">#82AEFF</color>
+    <color name="mainMenuBtnColor3">#1C40BD</color>
     <color name="blue">#00E2FF</color>
     <color name="red">#FF0027</color>
 

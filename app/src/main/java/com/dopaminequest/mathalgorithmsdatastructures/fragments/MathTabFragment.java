@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.BezierCurvesActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.IntegralActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.TaylorSeriesActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.TemplateActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.VectorProjectionActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.BezierCurvesActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.IntegralActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.TaylorSeriesActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.VectorProjectionActivity;
 
 
 /**

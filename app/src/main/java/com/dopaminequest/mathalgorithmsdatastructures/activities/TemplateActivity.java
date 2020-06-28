@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.views.Template.TemplateView;
+import com.dopaminequest.mathalgorithmsdatastructures.views.templateview.TemplateView;
 
 public class TemplateActivity extends AppCompatActivity {
 

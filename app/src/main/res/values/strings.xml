@@ -1,13 +1,16 @@
 <resources>
-    <string name="app_name">Math, Algorithms, Data Structures</string>
-    <string name="AlforithmsTabFirstButton">Dijkstra\'s Algorithm</string>
-    <string name="AlforithmsTabSecondButton">A* Search Algorithm</string>
+    <string name="app_name">Math, Algorithms, And Data Structures</string>
+    <string name="AlgorithmsTabFirstButton">Dijkstra\'s Algorithm</string>
+    <string name="AlgorithmsTabSecondButton">A* Search Algorithm</string>
+    <string name="AlgorithmsTabThirdButton">Insertion Sort</string>
+    <string name="AlgorithmsTabFourthButton">Bubble Sort</string>
     <string name="MathTabFirstButton">Bézier Curves</string>
     <string name="MathTabSecondButton">Vector Projection</string>
     <string name="DataStructuresTabFirstButton">Stacks</string>
     <string name="DataStructuresTabSecondButton">Queues</string>
     <string name="DataStructuresTabThird">Integrals</string>
     <string name="TaylorSeries">Taylor Series</string>
+    <string name="InsertionSort">Insertion Sort</string>
 
     <string-array name="integral_function_array">
         <item>3sin(x)</item>
@@ -26,11 +29,10 @@
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="DataStructuresFragment">Data Structures Fragment</string>
-
-    <string name="MathFragment">Math Fragment</string>
     <string name="stack_push">Push</string>
     <string name="stack_pop">Pop</string>
+    <string name="auto_sort">Sort</string>
+    <string name="next_sort">Next</string>
     <string name="queue_enqueue">Queue</string>
     <string name="queue_dequeue">Dequeue</string>
     <string name="maclaurin_series">Maclaurin Series</string>

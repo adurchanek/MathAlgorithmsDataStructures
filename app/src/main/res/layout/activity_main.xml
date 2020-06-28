@@ -15,14 +15,17 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/mainMenuBtnColor"
+            android:background="@color/mainMenuBtnColor2"
             app:titleTextColor="@android:color/white" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:tabIndicatorColor="@color/mainMenuBtnColor" />
+
+
+
+            app:tabIndicatorColor="@color/mainMenuBtnColor2" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

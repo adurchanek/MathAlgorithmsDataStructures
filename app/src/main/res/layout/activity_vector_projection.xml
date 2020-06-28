@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.VectorProjectionActivity">
+    tools:context=".activities.mathactivities.VectorProjectionActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.VectorProjection.VectorProjectionView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.mathviews.VectorProjection.VectorProjectionView
         android:id="@+id/VectorProjectionView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

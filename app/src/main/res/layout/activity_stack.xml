@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.StackActivity">
+    tools:context=".activities.datastructureactivities.StackActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.Stack.StackView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.datastructureviews.Stack.StackView
         android:id="@+id/StackView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

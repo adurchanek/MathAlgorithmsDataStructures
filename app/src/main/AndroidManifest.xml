@@ -9,32 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.TaylorSeriesActivity"
+        <activity android:name=".activities.algorithmactivities.BubbleSortActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.IntegralActivity"
+        <activity android:name=".activities.algorithmactivities.InsertionSortActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.VectorProjectionActivity"
+        <activity android:name=".activities.mathactivities.TaylorSeriesActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.QueueActivity"
+        <activity android:name=".activities.mathactivities.IntegralActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activities.StackActivity"
+        <activity android:name=".activities.mathactivities.VectorProjectionActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activities.datastructureactivities.QueueActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activities.datastructureactivities.StackActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".activities.BezierCurvesActivity"
+            android:name=".activities.mathactivities.BezierCurvesActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TemplateActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.AStarActivity"
+            android:name=".activities.algorithmactivities.AStarActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.DijkstrasActivity"
+            android:name=".activities.algorithmactivities.DijkstrasActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"

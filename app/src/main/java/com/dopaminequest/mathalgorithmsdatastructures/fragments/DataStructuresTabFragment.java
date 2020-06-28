@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.BezierCurvesActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.QueueActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.StackActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.datastructureactivities.QueueActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.datastructureactivities.StackActivity;
 
 
 /**

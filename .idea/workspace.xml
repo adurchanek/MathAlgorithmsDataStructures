@@ -11,16 +11,93 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/algorithmactivities/BubbleSortActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/algorithmactivities/InsertionSortActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/BubbleSortView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/MainCanvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/Dijkstras/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/InsertionSortView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/MainCanvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Queue/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Stack/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/VectorProjection/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bubble_sort.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_insertion_sort.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/AStarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/algorithmactivities/AStarActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/BezierCurvesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/BezierCurvesActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/DijkstrasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/algorithmactivities/DijkstrasActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/IntegralActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/IntegralActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/QueueActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/datastructureactivities/QueueActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/StackActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/datastructureactivities/StackActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/TaylorSeriesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/TaylorSeriesActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/TemplateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/TemplateActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/VectorProjectionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/VectorProjectionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/AlgorithmsTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/AlgorithmsTabFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/DataStructuresTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/DataStructuresTabFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/MathTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/MathTabFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/AStar/AStarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/AStar/AStarView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/AStar/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/AStar/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/AStar/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Integral/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/AStar/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/AStar/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/BezierCurvesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/BezierCurves/BezierCurvesView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/BezierCurves/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/BezierCurves/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/AStar/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/DijkstraView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/Dijkstras/DijkstraView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/Dijkstras/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/BezierCurves/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Dijkstras/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/Dijkstras/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/IntegralView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Integral/IntegralView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Integral/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Integral/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/TaylorSeries/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Queue/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Queue/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Queue/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Queue/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Queue/Object.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Queue/QueueView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Queue/QueueView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Stack/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Stack/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Stack/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Stack/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Stack/Object.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Stack/StackView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Stack/StackView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/TaylorSeries/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/Object.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/TaylorSeries/TaylorSeriesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/TaylorSeries/TaylorSeriesView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Template/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/templateview/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Template/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/templateview/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/Template/TemplateView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/templateview/TemplateView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/VectorProjection/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/Object.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/VectorProjection/VectorProjectionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/VectorProjection/VectorProjectionView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_a_star.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_a_star.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_bezier_curves.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_bezier_curves.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dijkstras.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dijkstras.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_integral.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_integral.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_queue.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_queue.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_stack.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_stack.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_taylor_series.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_taylor_series.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_template.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_vector_projection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_vector_projection.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data_structures_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data_structures_tab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +190,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="extract.method.default.visibility" value="private" />
+    <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
@@ -126,6 +203,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.dopaminequest.mathalgorithmsdatastructures.views.Algorithms" />
       <recent name="com.dopaminequest.mathalgorithmsdatastructures.fragments" />
       <recent name="com.dopaminequest.mathalgorithmsdatastructures.activities" />
     </key>
@@ -280,22 +358,34 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="485" y="339" key="#PSD/0.0.1920.1200@0.0.1920.1200" timestamp="1591500000879" />
-    <state x="653" y="238" key="#app" timestamp="1591003608315">
+    <state x="653" y="238" key="#app" timestamp="1592965244023">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="653" y="238" key="#app/0.0.1920.1200@0.0.1920.1200" timestamp="1591003608315" />
+    <state x="653" y="238" key="#app/0.0.1920.1200@0.0.1920.1200" timestamp="1592965244023" />
     <state x="424" y="262" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591099193248">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="424" y="262" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591099193248" />
-    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1592128578626">
+    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1593148185036">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1200@0.0.1920.1200" timestamp="1592128578626" />
+    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1200@0.0.1920.1200" timestamp="1593148185036" />
+    <state x="697" y="383" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1592884090771">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="697" y="383" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592884090771" />
     <state x="648" y="335" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591588333081">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="648" y="335" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591588333081" />
+    <state x="190" y="523" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592884698852">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="190" y="523" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592884698852" />
+    <state x="641" y="487" width="754" height="226" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1592884096486">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="641" y="487" width="754" height="226" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1200@0.0.1920.1200" timestamp="1592884096486" />
     <state x="570" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590910044725">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -308,37 +398,49 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="816" y="372" key="AndroidProcessChooserDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591147961586" />
-    <state width="1878" height="252" key="GridCell.Tab.0.bottom" timestamp="1592643332875">
+    <state width="1878" height="445" key="GridCell.Tab.0.bottom" timestamp="1593336598460">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1592643332875" />
-    <state width="1878" height="252" key="GridCell.Tab.0.center" timestamp="1592643332875">
+    <state width="1878" height="445" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598460" />
+    <state width="1878" height="445" key="GridCell.Tab.0.center" timestamp="1593336598460">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1592643332875" />
-    <state width="1878" height="252" key="GridCell.Tab.0.left" timestamp="1592643332875">
+    <state width="1878" height="445" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598460" />
+    <state width="1878" height="445" key="GridCell.Tab.0.left" timestamp="1593336598459">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1592643332875" />
-    <state width="1878" height="252" key="GridCell.Tab.0.right" timestamp="1592643332875">
+    <state width="1878" height="445" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598459" />
+    <state width="1878" height="445" key="GridCell.Tab.0.right" timestamp="1593336598460">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="252" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1592643332875" />
+    <state width="1878" height="445" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598460" />
     <state x="461" y="239" key="SettingsEditor" timestamp="1591682231268">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="461" y="239" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1591682231268" />
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1592640649343">
+    <state x="737" y="385" key="chooseDestDirectoryDialog" timestamp="1592884142423">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592640649343" />
-    <state x="698" y="359" key="extract.method.dialog" timestamp="1592642450975">
+    <state x="737" y="385" key="chooseDestDirectoryDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592884142423" />
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1593334589830">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="698" y="359" key="extract.method.dialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592642450975" />
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593334589830" />
+    <state x="698" y="359" key="extract.method.dialog" timestamp="1593328289290">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="698" y="359" key="extract.method.dialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593328289290" />
+    <state x="613" y="234" width="693" height="732" key="find.popup" timestamp="1592882103358">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="613" y="234" width="693" height="732" key="find.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1592882103358" />
     <state x="662" y="213" key="refactoring.ChangeSignatureDialog" timestamp="1591510727143">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="662" y="213" key="refactoring.ChangeSignatureDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591510727143" />
+    <state x="625" y="251" width="670" height="676" key="search.everywhere.popup" timestamp="1592886733014">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="625" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1592886733014" />
   </component>
 </project>

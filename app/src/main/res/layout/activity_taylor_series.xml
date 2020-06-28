@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.TaylorSeriesActivity">
+    tools:context=".activities.mathactivities.TaylorSeriesActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.TaylorSeries.TaylorSeriesView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.mathviews.TaylorSeries.TaylorSeriesView
         android:id="@+id/TaylorSeriesView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

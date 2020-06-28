@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dopaminequest.mathalgorithmsdatastructures.R;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.AStarActivity;
-import com.dopaminequest.mathalgorithmsdatastructures.activities.DijkstrasActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.AStarActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.BubbleSortActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.DijkstrasActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.InsertionSortActivity;
 
 
 /**
@@ -31,6 +33,8 @@ public class AlgorithmsTabFragment extends Fragment {
     private String mParam2;
     private Button btn1;
     private Button btn2;
+    private Button btn3;
+    private Button btn4;
 
     public AlgorithmsTabFragment() {
         // Required empty public constructor
@@ -85,6 +89,24 @@ public class AlgorithmsTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(getContext(), AStarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn3 = (Button) v.findViewById(R.id.third_button);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), InsertionSortActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn4 = (Button) v.findViewById(R.id.fourth_button);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), BubbleSortActivity.class);
                 startActivity(intent);
             }
         });

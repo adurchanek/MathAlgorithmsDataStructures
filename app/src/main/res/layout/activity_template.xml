@@ -7,7 +7,7 @@
     android:background="@color/offwhite"
     tools:context=".activities.TemplateActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.Template.TemplateView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.templateview.TemplateView
         android:id="@+id/TemplateView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

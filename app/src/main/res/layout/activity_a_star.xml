@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/offwhite"
-    tools:context=".activities.AStarActivity">
+    tools:context=".activities.algorithmactivities.AStarActivity">
 
-    <com.dopaminequest.mathalgorithmsdatastructures.views.AStar.AStarView
+    <com.dopaminequest.mathalgorithmsdatastructures.views.algorithmviews.AStar.AStarView
         android:id="@+id/AStarView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
