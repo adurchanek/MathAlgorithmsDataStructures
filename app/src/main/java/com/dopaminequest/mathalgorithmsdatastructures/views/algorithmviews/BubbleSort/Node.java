@@ -116,7 +116,7 @@ public class Node extends Object{
         {
 
             mPaintSquare.setColor(Color.LTGRAY);
-            mPaintSquare.setAlpha((int) (mPaintSquare.getAlpha()*.25f));
+            mPaintSquare.setAlpha((int) (mPaintSquare.getAlpha()*.15f));
             canvas.drawRect(mRectSquare,mPaintSquare);
         }
         else if(isSorted)

@@ -87,7 +87,6 @@ public class MainCanvas extends Object {
     private class MoveInfo
     {
         public boolean moveNodeToPosition;
-        public int index;
         public int indexVal;
         public Point endPoint;
         public int direction;
@@ -96,9 +95,8 @@ public class MainCanvas extends Object {
         public boolean isSorted;
         public boolean isComplete;
 
-        public MoveInfo(int i, int iVal, Point end, int dir, int nNodesToAnimate, boolean cSelectedNode, boolean moveNode, boolean sorted, boolean complete)
+        public MoveInfo(int iVal, Point end, int dir, int nNodesToAnimate, boolean cSelectedNode, boolean moveNode, boolean sorted, boolean complete)
         {
-           index  = i;
            endPoint = end;
            direction = dir;
            indexVal = iVal;
@@ -180,7 +178,7 @@ public class MainCanvas extends Object {
             processMoveInfo(moveInfo);
             if(val == moveInfo.indexVal && numberNodesToAnimate > 1 && animationIndex < animationSequence.size()-1)
             {
-                numberNodesToAnimate++;
+                //numberNodesToAnimate++;
             }
         }
         animationIndex += numberNodesToAnimate;
@@ -224,88 +222,35 @@ public class MainCanvas extends Object {
     private void sort() {
 
 
-//        iSort = 0;
-//        jSort = 1;
-//
-//        while(jSort < NUM_NODES)
-//        {
-//            Node keyNode = nodes[jSort];
-//
-//            animationSequence.add(new MoveInfo(jSort, keyNode.val, new Point(keyPoint), 1));
-//            //moveNodeToPosition(jSort, keyPoint, 1);
-//
-//            //nodes[NUM_NODES] = nodes[jSort];
-//
-//            iSort = jSort - 1;
-//
-//            while(iSort >= 0 && nodes[iSort].val > keyNode.val)
-//            {
-//
-//                animationSequence.add(new MoveInfo(iSort, nodes[iSort].val,  new Point(nodes[iSort + 1].getCenterPosition()), 1));
-//                //moveNodeToPosition(iSort, nodes[iSort + 1].getCenterDestinationPosition(), 1);
-//
-//                //Node temp2 = nodes[iSort + 1];
-//                nodes[iSort + 1] = nodes[iSort];
-//                //nodes[iSort] = temp2;
-//
-//                iSort = iSort - 1;
-//            }
-//            animationSequence.add(new MoveInfo(jSort, keyNode.val, new Point (nodes[iSort+1].getCenterPosition()), 1));
-//            //moveNodeToPosition(jSort, nodes[iSort + 1].getCenterDestinationPosition(), 1);
-//
-//            nodes[iSort + 1] = keyNode;
-//
-//            jSort++;
-//
-//        }
-//        printList();
-//        System.out.println("sorted");
-
         iSort = 0;
+        jSort = 1;
 
-
-        while(iSort < numNodes)
+        animationSequence.add(new MoveInfo(nodes[0].val,  new Point(convertIndexToPosition(iSort + 1)), 1,1, false, false, true, false));
+        while(jSort < numNodes)
         {
+            Node keyNode = nodes[jSort];
 
-            jSort = 1;
-            while(jSort < numNodes -iSort)
+            animationSequence.add(new MoveInfo(nodes[jSort].val,  new Point( convertIndexToPosition(jSort).x, (int) (InsertionSortView.dimensions.y)), 1,1, true, true, false, false));
+
+            iSort = jSort - 1;
+
+            while(iSort >= 0 && nodes[iSort].val > keyNode.val)
             {
-                boolean isSorted = false;
-                if(jSort >= numNodes -iSort-1)
-                {
-                    isSorted = true;
-                }
-                animationSequence.add(new MoveInfo(iSort, nodes[jSort-1].val,  new Point(convertIndexToPosition(jSort)), 1,1, true, false, false, false));
-                if(nodes[jSort-1].val > nodes[jSort].val)
-                {
-
-                    if(jSort >= numNodes -iSort-1)
-                    {
-                        isSorted = true;
-                    }
-                    animationSequence.add(new MoveInfo(iSort, nodes[jSort - 1].val,  new Point(convertIndexToPosition(jSort)), 1,2, true, true,isSorted, false));
-                    animationSequence.add(new MoveInfo(iSort, nodes[jSort].val,  new Point(convertIndexToPosition(jSort-1)), -1,1,false, true,false, false));
-
-                    Node temp = nodes[jSort - 1];
-                    nodes[jSort-1] = nodes[jSort];
-                    nodes[jSort] = temp;
-                }
-                else
-                {
-                    if(jSort >= numNodes -iSort-1)
-                    {
-                        isSorted = true;
-                        animationSequence.add(new MoveInfo(iSort, nodes[jSort].val,  new Point(convertIndexToPosition(jSort)), 1,1, true, false, isSorted, false));
-                    }
-                }
-                jSort++;
+                animationSequence.add(new MoveInfo(nodes[iSort].val,  new Point(convertIndexToPosition(iSort + 1)), -1,1, false, true, false, false));
+                nodes[iSort + 1] = nodes[iSort];
+                iSort = iSort - 1;
             }
-            iSort++;
+
+            animationSequence.add(new MoveInfo(keyNode.val,  new Point(convertIndexToPosition(iSort+1)), 1,1, false, true, true, false));
+
+            nodes[iSort + 1] = keyNode;
+
+            jSort++;
         }
 
         for(int i = 0; i < numNodes; i++)
         {
-            animationSequence.add(new MoveInfo(iSort, nodes[i].val,  new Point(convertIndexToPosition(i)), 1,1, true, false, false, true));
+            animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(i)), 1,1, true, false, false, true));
         }
     }
 
