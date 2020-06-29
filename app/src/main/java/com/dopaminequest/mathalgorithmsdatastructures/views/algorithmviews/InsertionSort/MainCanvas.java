@@ -131,15 +131,15 @@ public class MainCanvas extends Object {
 
         if(numberAnimating <= 0 || getProgressBarPercentage() == 0f || nextSort)
         {
-            if (autoSort || nextSort) {
-
-                if(getProgressBarPercentage() == 0f)
-                {
-                    animationSpeedCounter += animationSpeedIncrement*.75f;
-                }
-
+            if (autoSort || nextSort)
+            {
                 if (animationIndex < animationSequence.size())
                 {
+                    if(getProgressBarPercentage() == 0f)
+                    {
+                        animationSpeedCounter += animationSpeedIncrement*.75f;
+                    }
+
                     if (animationSpeedCounter >= animationSpeed || nextSort)
                     {
                         processNextMoveSequence();
@@ -167,7 +167,8 @@ public class MainCanvas extends Object {
         }
     }
 
-    private void processNextMoveSequence() {
+    private void processNextMoveSequence()
+    {
         MoveInfo moveInfo = animationSequence.get(animationIndex);
         int numberNodesToAnimate = moveInfo.numberNodesToAnimate;
 
@@ -185,8 +186,8 @@ public class MainCanvas extends Object {
         animationSpeedCounter = 0f;
     }
 
-    private void processMoveInfo(MoveInfo moveInfo) {
-
+    private void processMoveInfo(MoveInfo moveInfo)
+    {
         Node currentNode = nodes[nodeConverter.get(moveInfo.indexVal)];
 
         if(moveInfo.isComplete)
@@ -221,7 +222,6 @@ public class MainCanvas extends Object {
 
     private void sort() {
 
-
         iSort = 0;
         jSort = 1;
 
@@ -230,18 +230,18 @@ public class MainCanvas extends Object {
         {
             Node keyNode = nodes[jSort];
 
-            animationSequence.add(new MoveInfo(nodes[jSort].val,  new Point( convertIndexToPosition(jSort).x, (int) (InsertionSortView.dimensions.y)), 1,1, true, true, false, false));
+            animationSequence.add(new MoveInfo(nodes[jSort].val,  new Point(convertIndexToPosition(jSort).x, (int) (InsertionSortView.dimensions.y)), 1,1, true, true, false, false));
 
             iSort = jSort - 1;
 
             while(iSort >= 0 && nodes[iSort].val > keyNode.val)
             {
-                animationSequence.add(new MoveInfo(nodes[iSort].val,  new Point(convertIndexToPosition(iSort + 1)), -1,1, false, true, false, false));
+                animationSequence.add(new MoveInfo(nodes[iSort].val, new Point(convertIndexToPosition(iSort + 1)), -1,1, false, true, false, false));
                 nodes[iSort + 1] = nodes[iSort];
                 iSort = iSort - 1;
             }
 
-            animationSequence.add(new MoveInfo(keyNode.val,  new Point(convertIndexToPosition(iSort+1)), 1,1, false, true, true, false));
+            animationSequence.add(new MoveInfo(keyNode.val, new Point(convertIndexToPosition(iSort + 1)), 1,1, false, true, true, false));
 
             nodes[iSort + 1] = keyNode;
 
@@ -250,7 +250,7 @@ public class MainCanvas extends Object {
 
         for(int i = 0; i < numNodes; i++)
         {
-            animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(i)), 1,1, true, false, false, true));
+            animationSequence.add(new MoveInfo(nodes[i].val, new Point(convertIndexToPosition(i)), 1,1, true, false, false, true));
         }
     }
 
@@ -280,7 +280,6 @@ public class MainCanvas extends Object {
 
     public void init()
     {
-
         nodesInitialized = false;
         seekBarNumNodes.setEnabled(true);
         this.canvasDimensions = new Point();

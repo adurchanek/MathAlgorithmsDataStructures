@@ -4,6 +4,7 @@
     <string name="AlgorithmsTabSecondButton">A* Search Algorithm</string>
     <string name="AlgorithmsTabThirdButton">Insertion Sort</string>
     <string name="AlgorithmsTabFourthButton">Bubble Sort</string>
+    <string name="AlgorithmsTabFifthButton">Selection Sort</string>
     <string name="MathTabFirstButton">Bézier Curves</string>
     <string name="MathTabSecondButton">Vector Projection</string>
     <string name="DataStructuresTabFirstButton">Stacks</string>
@@ -11,6 +12,7 @@
     <string name="DataStructuresTabThird">Integrals</string>
     <string name="TaylorSeries">Taylor Series</string>
     <string name="InsertionSort">Insertion Sort</string>
+    <string name="SelectionSort">Selection Sort</string>
 
     <string-array name="integral_function_array">
         <item>3sin(x)</item>
@@ -24,8 +26,6 @@
         <item>cos(x) </item>
         <item>sin(x) </item>
         <item>e^(x) </item>
-
-
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

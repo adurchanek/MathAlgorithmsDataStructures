@@ -59,19 +59,36 @@
         </Button>
 
         <Button
-            android:id="@+id/fourth_button"
+        android:id="@+id/fourth_button"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:layout_margin="3dp"
+        android:backgroundTint="@color/mainMenuBtnColor2"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/AlgorithmsTabFourthButton"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@android:color/white"
+        app:cornerRadius="0dp">
+
+        </Button>
+
+        <Button
+            android:id="@+id/fifth_button"
             android:layout_width="match_parent"
             android:layout_height="99dp"
             android:layout_margin="3dp"
             android:backgroundTint="@color/mainMenuBtnColor2"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="@string/AlgorithmsTabFourthButton"
+            android:text="@string/AlgorithmsTabFifthButton"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
             app:cornerRadius="0dp">
 
         </Button>
+
+
 
 
 

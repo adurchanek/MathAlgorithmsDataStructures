@@ -6,23 +6,37 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/algorithmactivities/SelectionSortActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/MainCanvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/SelectionSortView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_selection_sort.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/AlgorithmsTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/AlgorithmsTabFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/tools/BezierCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/tools/BezierCurve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/tools/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/tools/Object.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Queue/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Queue/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,10 +305,10 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="424" y="262" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591099193248" />
-    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1593148185036">
+    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1593414795261">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1200@0.0.1920.1200" timestamp="1593148185036" />
+    <state x="773" y="315" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1200@0.0.1920.1200" timestamp="1593414795261" />
     <state x="697" y="383" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1592884090771">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -323,22 +337,22 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="816" y="372" key="AndroidProcessChooserDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591147961586" />
-    <state width="1878" height="445" key="GridCell.Tab.0.bottom" timestamp="1593336598460">
+    <state width="1878" height="445" key="GridCell.Tab.0.bottom" timestamp="1593414933833">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="445" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598460" />
-    <state width="1878" height="445" key="GridCell.Tab.0.center" timestamp="1593336598460">
+    <state width="1878" height="445" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1593414933833" />
+    <state width="1878" height="445" key="GridCell.Tab.0.center" timestamp="1593414933832">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="445" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598460" />
-    <state width="1878" height="445" key="GridCell.Tab.0.left" timestamp="1593336598459">
+    <state width="1878" height="445" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1593414933832" />
+    <state width="1878" height="445" key="GridCell.Tab.0.left" timestamp="1593414933832">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="445" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598459" />
-    <state width="1878" height="445" key="GridCell.Tab.0.right" timestamp="1593336598460">
+    <state width="1878" height="445" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1593414933832" />
+    <state width="1878" height="445" key="GridCell.Tab.0.right" timestamp="1593414933833">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="445" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1593336598460" />
+    <state width="1878" height="445" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1593414933833" />
     <state x="461" y="239" key="SettingsEditor" timestamp="1591682231268">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -347,10 +361,10 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="737" y="385" key="chooseDestDirectoryDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592884142423" />
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1593334589830">
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1593399631648">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593334589830" />
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593399631648" />
     <state x="698" y="359" key="extract.method.dialog" timestamp="1593328289290">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>

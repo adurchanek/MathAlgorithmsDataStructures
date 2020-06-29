@@ -1,5 +1,6 @@
 package com.dopaminequest.mathalgorithmsdatastructures.tools;
 
+import android.graphics.Canvas;
 import android.graphics.Point;
 
 import java.util.ArrayList;
@@ -116,5 +117,15 @@ public class BezierCurve extends Object{
     private float getDistance(Point p, Point input)
     {
         return (float) Math.sqrt(Math.pow(input.x - p.x, 2) + Math.pow(input.y - p.y, 2));
+    }
+
+    @Override
+    protected void update() {
+
+    }
+
+    @Override
+    protected void draw(Canvas canvas) {
+
     }
 }

@@ -96,7 +96,8 @@ public class Node extends Object{
         }
         else
         {
-            mPaintSquare = shaderGreenPaint;
+            //mPaintSquare = shaderGreenPaint;
+            mPaintSquare.setColor(Color.GREEN);
         }
 
         mRectSquare.left = position.x+padding;

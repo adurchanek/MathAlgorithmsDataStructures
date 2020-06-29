@@ -133,15 +133,15 @@ public class MainCanvas extends Object {
 
         if(numberAnimating <= 0 || getProgressBarPercentage() == 0f || nextSort)
         {
-            if (autoSort || nextSort) {
-
-                if(getProgressBarPercentage() == 0f)
-                {
-                    animationSpeedCounter += animationSpeedIncrement*.75f;
-                }
-
+            if (autoSort || nextSort)
+            {
                 if (animationIndex < animationSequence.size())
                 {
+                    if(getProgressBarPercentage() == 0f)
+                    {
+                        animationSpeedCounter += animationSpeedIncrement*.75f;
+                    }
+
                     if (animationSpeedCounter >= animationSpeed || nextSort)
                     {
                         processNextMoveSequence();
@@ -276,7 +276,7 @@ public class MainCanvas extends Object {
         {
             return;
         }
-        
+
         for(int i = 0; i < nodes.length; i++)
         {
             nodes[i].draw(canvas);
