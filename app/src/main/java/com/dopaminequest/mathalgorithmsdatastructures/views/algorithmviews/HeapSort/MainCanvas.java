@@ -178,7 +178,7 @@ public class MainCanvas extends Object {
                 {
                     Node.rightNode = nodes[nodeConverter.get(moveInfo.indexVal)];
                 }
-                else if(moveInfo.leftOrRight.equals("NULL"))
+                else if(moveInfo.leftOrRight.equals("Right NULL"))
                 {
                     Node.rightNode = null;
                 }
@@ -186,7 +186,7 @@ public class MainCanvas extends Object {
                 {
                     Node.leftNode = nodes[nodeConverter.get(moveInfo.indexVal)];
                 }
-                else if(moveInfo.leftOrRight.equals("NULL"))
+                else if(moveInfo.leftOrRight.equals("Left NULL"))
                 {
                     Node.leftNode = null;
                 }
@@ -251,7 +251,7 @@ public class MainCanvas extends Object {
         }
         else
         {
-            animationSequence.add(new MoveInfo(nodes[0].val,  new Point(convertIndexToPosition(i)), 1,2, false, false, false, false, false, "NULL"));
+            animationSequence.add(new MoveInfo(nodes[0].val,  new Point(convertIndexToPosition(i)), 1,2, false, false, false, false, false, "Left NULL"));
         }
 
         if(r < n)
@@ -260,7 +260,7 @@ public class MainCanvas extends Object {
         }
         else
         {
-            animationSequence.add(new MoveInfo(nodes[0].val,  new Point(convertIndexToPosition(i)), 1,1, false, false, false, false, false,"NULL"));
+            animationSequence.add(new MoveInfo(nodes[0].val,  new Point(convertIndexToPosition(i)), 1,1, false, false, false, false, false,"Right NULL"));
         }
 
         if(l < n)
@@ -373,7 +373,7 @@ public class MainCanvas extends Object {
         curveControlPoints.add(new Point(0, 0));
         curveControlPoints.add(new Point(0, 0));
         curveControlPoints.add(new Point(0, 0));
-        
+
         pathPaint = new Paint();
         pathPaint.setStyle(Paint.Style.STROKE);
         pathPaint.setStrokeCap(Paint.Cap.ROUND);

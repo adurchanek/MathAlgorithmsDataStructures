@@ -11,29 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/algorithmactivities/HeapSortActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/HeapSort/HeapSortView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/HeapSort/MainCanvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/HeapSort/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/HeapSort/Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_heap_sort.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/AlgorithmsTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/AlgorithmsTabFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_algorithms_tab.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/HeapSort/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/HeapSort/MainCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,10 +348,10 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="737" y="385" key="chooseDestDirectoryDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592884142423" />
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1593500929525">
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1593503287318">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593500929525" />
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593503287318" />
     <state x="698" y="359" key="extract.method.dialog" timestamp="1593328289290">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
