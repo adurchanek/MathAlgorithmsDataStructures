@@ -88,6 +88,21 @@
 
         </Button>
 
+        <Button
+            android:id="@+id/sixth_button"
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            android:layout_margin="3dp"
+            android:backgroundTint="@color/mainMenuBtnColor2"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/AlgorithmsTabSixthButton"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/white"
+            app:cornerRadius="0dp">
+
+        </Button>
+
 
 
 

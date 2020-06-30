@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".activities.algorithmactivities.HeapSortActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".activities.algorithmactivities.SelectionSortActivity"
             android:screenOrientation="portrait">
         </activity>

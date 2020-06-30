@@ -379,7 +379,7 @@ public class MainCanvas extends Object {
 
     public void createSortedList()
     {
-        float blockHeight =  (maxBlockHeight - minBlockHeight)/(float) numNodes;
+        float blockHeight =  ((maxBlockHeight - minBlockHeight)/(float) numNodes);
 
         for(int i = 0; i < numNodes; i++)
         {

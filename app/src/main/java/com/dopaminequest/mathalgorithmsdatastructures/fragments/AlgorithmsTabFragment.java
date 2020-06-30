@@ -14,6 +14,7 @@ import com.dopaminequest.mathalgorithmsdatastructures.R;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.AStarActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.BubbleSortActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.DijkstrasActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.HeapSortActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.InsertionSortActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.algorithmactivities.SelectionSortActivity;
 
@@ -37,6 +38,7 @@ public class AlgorithmsTabFragment extends Fragment {
     private Button btn3;
     private Button btn4;
     private Button btn5;
+    private Button btn6;
 
     public AlgorithmsTabFragment() {
         // Required empty public constructor
@@ -118,6 +120,15 @@ public class AlgorithmsTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(getContext(), SelectionSortActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn6 = (Button) v.findViewById(R.id.sixth_button);
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), HeapSortActivity.class);
                 startActivity(intent);
             }
         });

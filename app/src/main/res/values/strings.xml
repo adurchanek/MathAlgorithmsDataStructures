@@ -5,6 +5,7 @@
     <string name="AlgorithmsTabThirdButton">Insertion Sort</string>
     <string name="AlgorithmsTabFourthButton">Bubble Sort</string>
     <string name="AlgorithmsTabFifthButton">Selection Sort</string>
+    <string name="AlgorithmsTabSixthButton">Heap Sort</string>
     <string name="MathTabFirstButton">Bézier Curves</string>
     <string name="MathTabSecondButton">Vector Projection</string>
     <string name="DataStructuresTabFirstButton">Stacks</string>
@@ -13,6 +14,7 @@
     <string name="TaylorSeries">Taylor Series</string>
     <string name="InsertionSort">Insertion Sort</string>
     <string name="SelectionSort">Selection Sort</string>
+    <string name="HeapSort">Heap Sort</string>
 
     <string-array name="integral_function_array">
         <item>3sin(x)</item>

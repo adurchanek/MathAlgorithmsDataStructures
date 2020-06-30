@@ -180,7 +180,7 @@ public class MainCanvas extends Object {
             processMoveInfo(moveInfo);
             if(val == moveInfo.indexVal && numberNodesToAnimate > 1 && animationIndex < animationSequence.size()-1)
             {
-                numberNodesToAnimate++;
+                //numberNodesToAnimate++;
             }
         }
         animationIndex += numberNodesToAnimate;
@@ -243,7 +243,7 @@ public class MainCanvas extends Object {
                     {
                         isSorted = true;
                     }
-                    animationSequence.add(new MoveInfo(nodes[jSort - 1].val,  new Point(convertIndexToPosition(jSort)), 1,2, true, true,isSorted, false));
+                    animationSequence.add(new MoveInfo(nodes[jSort - 1].val,  new Point(convertIndexToPosition(jSort)), 1,3, true, true,isSorted, false));
                     animationSequence.add(new MoveInfo(nodes[jSort].val,  new Point(convertIndexToPosition(jSort-1)), -1,1,false, true,false, false));
 
                     Node temp = nodes[jSort - 1];
