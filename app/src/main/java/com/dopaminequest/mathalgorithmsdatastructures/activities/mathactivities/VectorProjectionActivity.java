@@ -26,34 +26,6 @@ public class VectorProjectionActivity extends AppCompatActivity {
             }
         });
 
-
-        Switch sw1 = (Switch) findViewById(R.id.pause);
-        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                    //view.pause();
-                } else {
-                    // The toggle is disabled
-                    //view.pause();
-                }
-            }
-        });
-
-        Switch sw2 = (Switch) findViewById(R.id.disable_animation);
-        sw2.setChecked(true);
-        sw2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                    //view.toggleAnimation();
-                } else {
-                    // The toggle is disabled
-                    //view.toggleAnimation();
-                }
-            }
-        });
-
     }
 
     @Override

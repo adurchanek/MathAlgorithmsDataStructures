@@ -62,10 +62,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="60dp"
-        android:elevation="23dp"
         android:outlineAmbientShadowColor="@color/red"
         app:backgroundTint="@color/red"
         app:layout_constraintEnd_toStartOf="@+id/reset"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/spinner_text"
         app:layout_constraintTop_toBottomOf="@+id/disable_animation" />
 
@@ -122,13 +122,16 @@
 
 
     <TextView
-        android:id="@+id/num_rects_text"
+        android:id="@+id/h_val_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="1dp"
+        android:padding="4dp"
         android:text="num_rects"
         app:layout_constraintBottom_toTopOf="@+id/term_seek_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
         app:layout_constraintVertical_bias="1.0" />
@@ -137,10 +140,13 @@
         android:id="@+id/point_a_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="1dp"
+        android:padding="4dp"
         android:text="num_rects"
         app:layout_constraintBottom_toTopOf="@+id/point_a_seek_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/term_seek_bar"
         app:layout_constraintVertical_bias="1.0" />

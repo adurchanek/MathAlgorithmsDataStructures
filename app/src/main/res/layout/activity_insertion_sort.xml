@@ -98,7 +98,11 @@
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InsertionSortView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:background="@android:color/white"
+        android:elevation="1dp"
+        android:padding="4dp"
+        />
 
     <TextView
         android:id="@+id/sortSpeedTextView"
@@ -107,7 +111,11 @@
         app:layout_constraintBottom_toTopOf="@+id/seekBarSortSpeed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/white"
+        android:elevation="1dp"
+        android:padding="4dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

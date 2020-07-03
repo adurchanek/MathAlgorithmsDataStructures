@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".activities.mathactivities.DerivativeActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".activities.algorithmactivities.HeapSortActivity"
             android:screenOrientation="portrait">
         </activity>

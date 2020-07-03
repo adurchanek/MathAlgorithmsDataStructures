@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.BezierCurvesActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.DerivativeActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.IntegralActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.TaylorSeriesActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.mathactivities.VectorProjectionActivity;
@@ -36,6 +37,7 @@ public class MathTabFragment extends Fragment {
     private Button btn2;
     private Button btn3;
     private Button btn4;
+    private Button btn5;
 
     public MathTabFragment() {
         // Required empty public constructor
@@ -110,6 +112,16 @@ public class MathTabFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        btn5 = (Button) v.findViewById(R.id.fifth_button);
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), DerivativeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return v;
     }

@@ -8,6 +8,8 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Shader;
 
+import com.dopaminequest.mathalgorithmsdatastructures.views.algorithmviews.HeapSort.HeapSortView;
+
 import java.util.HashMap;
 
 public class Node extends Object{
@@ -37,6 +39,10 @@ public class Node extends Object{
     private Point centerDestinationPosition;
     public boolean isComplete;
     private Paint rectOutlinePaint;
+
+    private float animationCompleteIncrementAlpha;
+    private float animationCompleteIncrement;
+    private Paint animationCompleteIncrementPaint;
 
     Node(int w, int h, int x, int y, int nNumber, MainCanvas mainCanvas)
     {
@@ -104,6 +110,7 @@ public class Node extends Object{
 
         if(isComplete)
         {
+            drawCompletionAnimation(canvas);
             mPaintSquare.setColor(Color.CYAN);
             canvas.drawRect(mRectSquare,shaderGreenPaint);
         }
@@ -193,6 +200,14 @@ public class Node extends Object{
         currentNodeSelected = false;
         isSorted = false;
         isComplete = false;
+        animationCompleteIncrementAlpha = .05f;
+        animationCompleteIncrement = 0f;
+
+        animationCompleteIncrementPaint = new Paint();
+        animationCompleteIncrementPaint.setStyle(Paint.Style.FILL);
+        animationCompleteIncrementPaint.setStrokeCap(Paint.Cap.ROUND);
+        animationCompleteIncrementPaint.setAntiAlias(true);
+        animationCompleteIncrementPaint.setColor(Color.GREEN);
     }
 
     void followCurve(Point[] linePoints)
@@ -247,4 +262,28 @@ public class Node extends Object{
     public boolean isAnimating() {
         return animating;
     }
+
+    public void drawCompletionAnimation(Canvas canvas) {
+        mRectSquare.left = position.x+padding;
+        mRectSquare.right = position.x + scale.x-padding;
+        mRectSquare.top = (int) (position.y - animationCompleteIncrement);
+        mRectSquare.bottom = (int) (position.y + scale.y + animationCompleteIncrement);
+
+
+        animationCompleteIncrementPaint.setAlpha((int) (255f* animationCompleteIncrementAlpha));
+        canvas.drawRect(mRectSquare,animationCompleteIncrementPaint);
+        animationCompleteIncrementAlpha *=.85f;
+
+        if(animationCompleteIncrementAlpha < 0)
+        {
+            animationCompleteIncrementAlpha = 0f;
+        }
+        animationCompleteIncrement += (scale.y/ HeapSortView.mc.minBlockHeight)*P_SIZE*5;
+
+        mRectSquare.left = position.x+padding;
+        mRectSquare.right = position.x + scale.x-padding;
+        mRectSquare.top = position.y;
+        mRectSquare.bottom = position.y + scale.y;
+    }
+
 }

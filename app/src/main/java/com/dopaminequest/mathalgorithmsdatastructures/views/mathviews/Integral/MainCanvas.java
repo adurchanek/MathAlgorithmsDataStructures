@@ -57,7 +57,7 @@ public class MainCanvas extends Object {
     public MainCanvas(Activity context)
     {
         seekBar = (SeekBar) context.findViewById(R.id.seekBarSortSpeed);
-        areaTextView = (TextView) context.findViewById(R.id.area_text);
+        areaTextView = (TextView) context.findViewById(R.id.derivative_text);
         init();
     }
 
@@ -479,7 +479,7 @@ public class MainCanvas extends Object {
             sliders[minIndex].y += directionToFingerVectorY*distToInput*.5f;
         }
 
-        if(Math.abs(sliders[0].x - sliders[1].x) < P_SIZE*4)
+        if(Math.abs(sliders[0].x - sliders[1].x) < P_SIZE*4 || sliders[0].x >=sliders[1].x )
         {
             if(minIndex == 0)
             {

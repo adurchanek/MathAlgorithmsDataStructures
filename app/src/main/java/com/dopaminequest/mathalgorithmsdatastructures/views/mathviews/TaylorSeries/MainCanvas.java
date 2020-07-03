@@ -64,7 +64,7 @@ public class MainCanvas extends Object {
     {
         termSeekBar = (SeekBar) context.findViewById(R.id.term_seek_bar);
         pointASeekBar = (SeekBar) context.findViewById(R.id.point_a_seek_bar);
-        areaTextView = (TextView) context.findViewById(R.id.area_text);
+        areaTextView = (TextView) context.findViewById(R.id.derivative_text);
         init();
     }
 

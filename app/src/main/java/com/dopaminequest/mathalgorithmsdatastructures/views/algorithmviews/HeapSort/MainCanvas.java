@@ -22,8 +22,8 @@ public class MainCanvas extends Object {
     private SeekBar seekBarNumNodes;
     private Paint generalPaint;
 
-    float maxBlockHeight;
-    float minBlockHeight;
+    public float maxBlockHeight;
+    public float minBlockHeight;
     boolean nodesInitialized;
 
     private Paint pathPaint;
@@ -304,7 +304,10 @@ public class MainCanvas extends Object {
 
         for(int i = numNodes-1; i > 0; i--)
         {
-            animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(i)), 1,1, true, false, false, false, false,"N/A"));
+            animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(i)), 1,3, false, false, false, false, false,"Left NULL"));
+            animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(i)), 1,1, false, false, false, false, false,"Right NULL"));
+            animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(i)), 1,1, true, false, false, false, true,"N/A"));
+
 
             animationSequence.add(new MoveInfo(nodes[0].val,  new Point(convertIndexToPosition(i)), 1,6, true, true, true, false, true,"N/A"));
             animationSequence.add(new MoveInfo(nodes[i].val,  new Point(convertIndexToPosition(0)), -1,1,false, true,false, false, false,"N/A"));

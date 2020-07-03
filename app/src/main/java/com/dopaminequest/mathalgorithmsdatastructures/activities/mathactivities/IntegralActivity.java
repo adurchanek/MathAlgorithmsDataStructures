@@ -30,8 +30,8 @@ public class IntegralActivity extends AppCompatActivity {
         setContentView(R.layout.activity_integral);
         integralView = (IntegralView) findViewById(R.id.IntegralView);
 
-        viewNumRects = (TextView) findViewById(R.id.num_rects_text);
-        viewArea = (TextView) findViewById(R.id.area_text);
+        viewNumRects = (TextView) findViewById(R.id.h_val_text);
+        viewArea = (TextView) findViewById(R.id.derivative_text);
         //viewArea = (TextView) findViewById(R.id.area_text);
 
 
@@ -98,14 +98,7 @@ public class IntegralActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-
-
         });
-
-
-
-
-        //SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
 
     }
 
@@ -118,7 +111,7 @@ public class IntegralActivity extends AppCompatActivity {
             // updated continuously as the user slides the thumb
 //                tvProgressLabel.setText("Progress: " + progress);
             integralView.setSeekPosition(progress);
-            viewNumRects.setText(String.valueOf(integralView.getNumRects())+ " Subdivisions");
+            viewNumRects.setText(String.valueOf(integralView.getNumRects())+ " Rectangles");
 
         }
 

@@ -31,7 +31,7 @@ public class TaylorSeriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_taylor_series);
         taylorSeriesView = (TaylorSeriesView) findViewById(R.id.TaylorSeriesView);
 
-        viewNumTerms = (TextView) findViewById(R.id.num_rects_text);
+        viewNumTerms = (TextView) findViewById(R.id.h_val_text);
         viewOffsetA = (TextView) findViewById(R.id.point_a_view);
 
         findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class TaylorSeriesActivity extends AppCompatActivity {
                 } else {
                     taylorSeriesView.toggleMaclaurinSeries();
                 }
-                viewOffsetA.setText(String.valueOf("Point a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
+                viewOffsetA.setText(String.valueOf("Offset a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
             }
         });
 
@@ -78,7 +78,7 @@ public class TaylorSeriesActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 taylorSeriesView.setPointAPosition(progress);
-                viewOffsetA.setText(String.valueOf("Point a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
+                viewOffsetA.setText(String.valueOf("Offset a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
             }
 
             @Override
@@ -118,8 +118,8 @@ public class TaylorSeriesActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             taylorSeriesView.setTermPosition(progress);
-            viewNumTerms.setText(String.valueOf( "Term: " +String.format(String.valueOf((int)taylorSeriesView.getCurrentTermNum()))   ));
-            viewOffsetA.setText(String.valueOf("Point a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
+            viewNumTerms.setText(String.valueOf( "Term: " +String.format("%.2f",taylorSeriesView.getCurrentTermNum())   ));
+            viewOffsetA.setText(String.valueOf("Offset a: " + String.format("%.2f",taylorSeriesView.getPointAOffset())));
         }
 
             @Override

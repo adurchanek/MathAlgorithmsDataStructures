@@ -10,17 +10,28 @@
     <string name="MathTabSecondButton">Vector Projection</string>
     <string name="DataStructuresTabFirstButton">Stacks</string>
     <string name="DataStructuresTabSecondButton">Queues</string>
-    <string name="DataStructuresTabThird">Integrals</string>
+    <string name="Integrals">Integrals</string>
     <string name="TaylorSeries">Taylor Series</string>
     <string name="InsertionSort">Insertion Sort</string>
     <string name="SelectionSort">Selection Sort</string>
     <string name="HeapSort">Heap Sort</string>
+    <string name="Derivatives">Derivatives</string>
+
+
 
     <string-array name="integral_function_array">
         <item>3sin(x)</item>
         <item>x\u00B3 - x </item>
         <item>sinh(x)/4</item>
         <item>\3\u221Bx</item>
+        <item>\3sin(x\u00B3/3)</item>
+    </string-array>
+
+    <string-array name="derivative_function_array">
+        <item>2sin(x)</item>
+        <item>-2 + x\u00B2</item>
+        <item>sinh(x)/4</item>
+        <item>\2\u221Bx</item>
         <item>\3sin(x\u00B3/3)</item>
     </string-array>
 
@@ -38,5 +49,8 @@
     <string name="queue_enqueue">Queue</string>
     <string name="queue_dequeue">Dequeue</string>
     <string name="maclaurin_series">Maclaurin Series</string>
+
+    <string name="change_in_x"> \u25B3x = x\u2082 - x\u2081</string>
+    <string name="change_in_y"> \u25B3y = y\u2082 - y\u2081</string>
 
 </resources>
