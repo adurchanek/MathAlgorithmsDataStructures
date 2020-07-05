@@ -69,7 +69,7 @@ public class MainCanvas extends Object {
     {
         activity = context;
         seekBar = (SeekBar) context.findViewById(R.id.seekBarSortSpeed);
-        derivativeTextView = (TextView) context.findViewById(R.id.derivative_text);
+        derivativeTextView = (TextView) context.findViewById(R.id.num_points_text);
         hValTextView = (TextView) context.findViewById(R.id.h_val_text);
         init();
     }
@@ -122,7 +122,14 @@ public class MainCanvas extends Object {
         drawSliders(canvas, r);
         drawSlopeTriangle(canvas);
 
-        derivativeTextView.setText("Derivative: " + String.format("%.2f", -1*derivative));
+        double tempDerivative =  derivative;
+
+        if(tempDerivative != 0)
+        {
+            tempDerivative = -1*tempDerivative;
+        }
+
+        derivativeTextView.setText("Derivative: " + String.format("%.2f", tempDerivative));
         hValTextView.setText("h = " + String.format("%.2f", hVal/scalar));
 
         drawGrid(canvas, gridSubDivision,gridSubDivision);
@@ -191,7 +198,6 @@ public class MainCanvas extends Object {
 
     public double calculateSlope()
     {
-        System.out.println("sliders[0].x" + sliders[0].x + " || "+ "sliders[0].y" + sliders[0].y);
         double changeInY = sliders[1].y - sliders[0].y;
         double changeInX = sliders[1].x - sliders[0].x;
         hVal = changeInX;

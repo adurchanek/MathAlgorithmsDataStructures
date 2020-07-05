@@ -278,7 +278,7 @@ public class Node extends Object{
         {
             animationCompleteIncrementAlpha = 0f;
         }
-        animationCompleteIncrement += (scale.y/ HeapSortView.mc.minBlockHeight)*P_SIZE*5;
+        animationCompleteIncrement += (scale.y/ BubbleSortView.mc.minBlockHeight)*P_SIZE*5;
 
         mRectSquare.left = position.x+padding;
         mRectSquare.right = position.x + scale.x-padding;

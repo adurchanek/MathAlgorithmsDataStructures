@@ -8,8 +8,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Shader;
 
-import com.dopaminequest.mathalgorithmsdatastructures.views.algorithmviews.HeapSort.HeapSortView;
-
 public class Node extends Object{
 
     private boolean animating;
@@ -286,7 +284,7 @@ public class Node extends Object{
         {
             animationCompleteIncrementAlpha = 0f;
         }
-        animationCompleteIncrement += (scale.y/ HeapSortView.mc.minBlockHeight)*P_SIZE*5;
+        animationCompleteIncrement += (scale.y/ SelectionSortView.mc.minBlockHeight)*P_SIZE*5;
 
         mRectSquare.left = position.x+padding;
         mRectSquare.right = position.x + scale.x-padding;

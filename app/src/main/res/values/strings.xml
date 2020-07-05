@@ -16,6 +16,7 @@
     <string name="SelectionSort">Selection Sort</string>
     <string name="HeapSort">Heap Sort</string>
     <string name="Derivatives">Derivatives</string>
+    <string name="LagrangeInterpolation">Lagrange Interpolation</string>
 
 
 
@@ -52,5 +53,6 @@
 
     <string name="change_in_x"> \u25B3x = x\u2082 - x\u2081</string>
     <string name="change_in_y"> \u25B3y = y\u2082 - y\u2081</string>
+    <string name="x_duplicates"> x\u1d62 != x\u2c7c</string>
 
 </resources>

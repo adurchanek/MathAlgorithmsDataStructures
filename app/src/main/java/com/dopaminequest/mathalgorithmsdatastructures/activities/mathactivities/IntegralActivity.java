@@ -31,7 +31,7 @@ public class IntegralActivity extends AppCompatActivity {
         integralView = (IntegralView) findViewById(R.id.IntegralView);
 
         viewNumRects = (TextView) findViewById(R.id.h_val_text);
-        viewArea = (TextView) findViewById(R.id.derivative_text);
+        viewArea = (TextView) findViewById(R.id.num_points_text);
         //viewArea = (TextView) findViewById(R.id.area_text);
 
 

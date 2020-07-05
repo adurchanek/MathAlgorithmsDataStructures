@@ -57,7 +57,7 @@ public class MainCanvas extends Object {
     public MainCanvas(Activity context)
     {
         seekBar = (SeekBar) context.findViewById(R.id.seekBarSortSpeed);
-        areaTextView = (TextView) context.findViewById(R.id.derivative_text);
+        areaTextView = (TextView) context.findViewById(R.id.num_points_text);
         init();
     }
 
