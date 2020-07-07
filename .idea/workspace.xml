@@ -11,12 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="388ff6c8-4ce3-48a0-9ef5-b1524454795d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/LagrangeInterpolationActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/LagrangeInterpolation/LagrangeInterpolationView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/LagrangeInterpolation/MainCanvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/LagrangeInterpolation/Object.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/LagrangeInterpolation/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lagrange_interpolation.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/datastructureactivities/HeapActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Heap/HeapView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Heap/MainCanvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Heap/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/datastructureviews/Heap/Object.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_heap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -29,18 +29,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/DerivativeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/DerivativeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/IntegralActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/activities/mathactivities/IntegralActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/MathTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/MathTabFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/BubbleSort/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/InsertionSort/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/algorithmviews/SelectionSort/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Derivative/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Derivative/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Integral/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/Integral/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/TaylorSeries/MainCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/views/mathviews/TaylorSeries/MainCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_derivative.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_derivative.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_integral.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_integral.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_math_tab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/DataStructuresTabFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dopaminequest/mathalgorithmsdatastructures/fragments/DataStructuresTabFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data_structures_tab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_data_structures_tab.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +129,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="memory.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Default Config" />
@@ -330,10 +320,10 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="641" y="487" width="754" height="226" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1200@0.0.1920.1200" timestamp="1592884096486" />
-    <state x="570" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590910044725">
+    <state x="570" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594104082277">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="570" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1590910044725" />
+    <state x="570" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1594104082277" />
     <state x="698" y="354" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591500079739">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -342,38 +332,38 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="816" y="372" key="AndroidProcessChooserDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591147961586" />
-    <state width="1878" height="255" key="GridCell.Tab.0.bottom" timestamp="1593855552912">
+    <state width="1878" height="365" key="GridCell.Tab.0.bottom" timestamp="1594029085418">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1593855552912" />
-    <state width="1878" height="255" key="GridCell.Tab.0.center" timestamp="1593855552912">
+    <state width="1878" height="365" key="GridCell.Tab.0.bottom/0.0.1920.1200@0.0.1920.1200" timestamp="1594029085418" />
+    <state width="1878" height="365" key="GridCell.Tab.0.center" timestamp="1594029085417">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="255" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1593855552912" />
-    <state width="1878" height="255" key="GridCell.Tab.0.left" timestamp="1593855552912">
+    <state width="1878" height="365" key="GridCell.Tab.0.center/0.0.1920.1200@0.0.1920.1200" timestamp="1594029085417" />
+    <state width="1878" height="365" key="GridCell.Tab.0.left" timestamp="1594029085417">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="255" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1593855552912" />
-    <state width="1878" height="255" key="GridCell.Tab.0.right" timestamp="1593855552912">
+    <state width="1878" height="365" key="GridCell.Tab.0.left/0.0.1920.1200@0.0.1920.1200" timestamp="1594029085417" />
+    <state width="1878" height="365" key="GridCell.Tab.0.right" timestamp="1594029085417">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="255" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1593855552912" />
-    <state x="461" y="239" key="SettingsEditor" timestamp="1591682231268">
+    <state width="1878" height="365" key="GridCell.Tab.0.right/0.0.1920.1200@0.0.1920.1200" timestamp="1594029085417" />
+    <state x="461" y="239" key="SettingsEditor" timestamp="1593921686116">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="461" y="239" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1591682231268" />
+    <state x="461" y="239" key="SettingsEditor/0.0.1920.1200@0.0.1920.1200" timestamp="1593921686116" />
     <state x="737" y="385" key="chooseDestDirectoryDialog" timestamp="1592884142423">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="737" y="385" key="chooseDestDirectoryDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1592884142423" />
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1593855697499">
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog" timestamp="1594103709569">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593855697499" />
-    <state x="698" y="359" key="extract.method.dialog" timestamp="1593853686012">
+    <state x="609" y="432" key="com.intellij.ide.util.TipDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1594103709569" />
+    <state x="698" y="359" key="extract.method.dialog" timestamp="1593940114909">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="698" y="359" key="extract.method.dialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593853686012" />
+    <state x="698" y="359" key="extract.method.dialog/0.0.1920.1200@0.0.1920.1200" timestamp="1593940114909" />
     <state x="613" y="234" width="693" height="732" key="find.popup" timestamp="1592882103358">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
@@ -382,9 +372,9 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="662" y="213" key="refactoring.ChangeSignatureDialog/0.0.1920.1200@0.0.1920.1200" timestamp="1591510727143" />
-    <state x="625" y="251" width="670" height="676" key="search.everywhere.popup" timestamp="1592886733014">
+    <state x="625" y="251" width="670" height="676" key="search.everywhere.popup" timestamp="1593944184002">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state x="625" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1592886733014" />
+    <state x="625" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1920.1200@0.0.1920.1200" timestamp="1593944184002" />
   </component>
 </project>

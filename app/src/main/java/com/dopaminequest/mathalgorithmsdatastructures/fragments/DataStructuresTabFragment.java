@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.dopaminequest.mathalgorithmsdatastructures.R;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.datastructureactivities.QueueActivity;
 import com.dopaminequest.mathalgorithmsdatastructures.activities.datastructureactivities.StackActivity;
+import com.dopaminequest.mathalgorithmsdatastructures.activities.datastructureactivities.HeapActivity;
 
 
 /**
@@ -32,6 +33,7 @@ public class DataStructuresTabFragment extends Fragment {
 
     private Button btn1;
     private Button btn2;
+    private Button btn3;
 
     public DataStructuresTabFragment() {
         // Required empty public constructor
@@ -85,6 +87,15 @@ public class DataStructuresTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(getContext(), QueueActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn3 = (Button) v.findViewById(R.id.third_button);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), HeapActivity.class);
                 startActivity(intent);
             }
         });

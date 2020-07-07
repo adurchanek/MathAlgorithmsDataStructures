@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".activities.datastructureactivities.HeapActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".activities.mathactivities.LagrangeInterpolationActivity"
             android:screenOrientation="portrait">
         </activity>
