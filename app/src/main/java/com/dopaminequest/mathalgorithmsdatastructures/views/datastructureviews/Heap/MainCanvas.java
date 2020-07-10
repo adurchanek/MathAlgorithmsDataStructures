@@ -628,15 +628,38 @@ public class MainCanvas extends Object {
         }
     }
 
+//    public void moveNode(Node node, Point start,  Point end, int direction)
+//    {
+//        if(!node.isAnimating())
+//        {
+//            numberAnimating++;
+//        }
+//        float mid = yRootStartValue;
+//        float height = totalHeight;
+//
+//
+//        curveControlPoints.set(0, new Point(node.getCenterPosition().x, node.getCenterPosition().y));
+//        curveControlPoints.set(1, new Point(end.x + (start.x - end.x)/2, (int) (mid + direction*(height*.35f + 3*((float)P_SIZE/ node.getScale().y) *height*.5f))));
+//        curveControlPoints.set(2, new Point(end.x + (start.x - end.x)/2, (int) (mid + direction*(height*.35f + 3*((float)P_SIZE/ node.getScale().y) *height*.5f))));
+//        curveControlPoints.set(3, new Point(end.x, end.y));
+//
+//        node.followCurve(bc.calculatePoints(NUM_BEZIER_POINTS, curveControlPoints));
+//        node.setCenterDestinationPosition(end.x, end.y);
+//    }
+
     public void moveNode(Node node, Point start,  Point end, int direction)
     {
         if(!node.isAnimating())
         {
             numberAnimating++;
         }
-        float mid = yRootStartValue;
-        float height = totalHeight;
 
+        float mid = node.getCenterPosition().y - levelHeight;
+        if(mid < yRootStartValue)
+        {
+            mid = yRootStartValue + levelHeight;
+        }
+        float height = levelHeight*2.75f;
 
         curveControlPoints.set(0, new Point(node.getCenterPosition().x, node.getCenterPosition().y));
         curveControlPoints.set(1, new Point(end.x + (start.x - end.x)/2, (int) (mid + direction*(height*.35f + 3*((float)P_SIZE/ node.getScale().y) *height*.5f))));

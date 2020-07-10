@@ -41,11 +41,6 @@ public class BubbleSortActivity extends AppCompatActivity {
         findViewById(R.id.auto_sort).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(System.currentTimeMillis() - lastFrameTime < 75)
-//                {
-//                    return;
-//                }
-//                lastFrameTime = System.currentTimeMillis();
                 bubbleSortView.autoSort();
             }
         });
@@ -53,11 +48,6 @@ public class BubbleSortActivity extends AppCompatActivity {
         findViewById(R.id.next_sort).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(System.currentTimeMillis() - lastFrameTime < 75)
-//                {
-//                    return;
-//                }
-//                lastFrameTime = System.currentTimeMillis();
                 bubbleSortView.nextSort();
             }
         });
@@ -74,10 +64,7 @@ public class BubbleSortActivity extends AppCompatActivity {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            // updated continuously as the user slides the thumb
-//                tvProgressLabel.setText("Progress: " + progress);
-            //integralView.setSeekPosition(progress);
-            //viewNumRects.setText(String.valueOf(integralView.getNumRects())+ " Subdivisions");
+
             bubbleSortView.setSortSpeed(progress);
 
             int sortSpeed = bubbleSortView.getSortSpeed();
@@ -94,10 +81,6 @@ public class BubbleSortActivity extends AppCompatActivity {
             {
                 speedString = String.valueOf(sortSpeed) + "%%";
             }
-
-
-            //viewNumTerms.setText(String.valueOf( "Size: " +String.format(speedString)   ));
-
 
             viewsortSpeed.setText(String.valueOf( "Speed: " +String.format(speedString)));
 

@@ -64,7 +64,6 @@ public class AStarActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();  // Always call the superclass method first
         aStarView.pauseThread();
-
     }
 
     @Override
