@@ -9,6 +9,9 @@ import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import java.util.ArrayList;
+
 import androidx.annotation.Nullable;
 
 public class HeapSortView extends View implements Runnable{
@@ -16,13 +19,21 @@ public class HeapSortView extends View implements Runnable{
     private Thread mainThread;
     private long lastFrameTime;
     private int fps;
-    public static MainCanvas mc;
+    public static RectangleCanvas rc;
+    public static CircleCanvas cc;
     private Boolean initialized;
     private Boolean running;
     public static Point dimensions;
     public static Point input;
     public static Boolean actionDown;
     public boolean paused;
+    public boolean modifySortSpeed;
+    public boolean modifyNextSort;
+    public boolean modifyAutoSort;
+    public int progress;
+
+    public static int animationIndex;
+
 
     public HeapSortView(Context context) {
         super(context);
@@ -47,9 +58,15 @@ public class HeapSortView extends View implements Runnable{
 
     private void  init(@Nullable AttributeSet set)
     {
+        rc = null;
+        cc = null;
         paused = false;
         running = true;
         initialized = false;
+        modifySortSpeed = false;
+        modifyNextSort = false;
+        modifyAutoSort = false;
+        progress = 0;
         mainThread = new Thread(this);
         mainThread.start();
     }
@@ -58,7 +75,8 @@ public class HeapSortView extends View implements Runnable{
     protected void onDraw(Canvas canvas) {
         if(initialized)
         {
-                mc.draw(canvas);
+                rc.draw(canvas);
+                cc.draw(canvas);
         }
     }
 
@@ -90,7 +108,8 @@ public class HeapSortView extends View implements Runnable{
                     dimensions.x = getWidth();
                     dimensions.y = getHeight();
 
-                    mc = new MainCanvas((Activity) getContext());
+                    rc = new RectangleCanvas((Activity) getContext());
+                    cc = new CircleCanvas((Activity) getContext());
                     initialized = true;
                     input = new Point();
                     actionDown = false;
@@ -98,8 +117,28 @@ public class HeapSortView extends View implements Runnable{
             }
             else
             {
-                    mc.update();
+
+                    rc.update();
+                    cc.update();
                     controlFPS();
+                if(modifySortSpeed)
+                {
+                    rc.setSortSpeed(progress);
+                    cc.setSortSpeed(progress);
+                    modifySortSpeed = false;
+                }
+                if(modifyAutoSort)
+                {
+                    rc.autoSort();
+                    cc.autoSort();
+                    modifyAutoSort = false;
+                }
+                if(modifyNextSort)
+                {
+                    rc.nextSort();
+                    cc.nextSort();
+                    modifyNextSort = false;
+                }
                     postInvalidate();
 
             }
@@ -126,10 +165,16 @@ public class HeapSortView extends View implements Runnable{
 
     public void resetX()
     {
-        mc.resettingMainCanvas = true;
+        rc.resettingMainCanvas = true;
+        cc.resettingMainCanvas = true;
+        modifySortSpeed = false;
+        modifyNextSort = false;
+        modifyAutoSort = false;
+        progress = 0;
         input = new Point();
         actionDown = false;
-        mc.init();
+        rc.init();
+        cc.init();
     }
 
     @Override
@@ -173,9 +218,13 @@ public class HeapSortView extends View implements Runnable{
         return true;
     }
 
-    public MainCanvas getMainCanvas()
+    public RectangleCanvas getRectangleCanvas()
     {
-        return mc;
+        return rc;
+    }
+    public CircleCanvas getCircleCanvas()
+    {
+        return cc;
     }
     public void terminateThread()
     {
@@ -189,36 +238,74 @@ public class HeapSortView extends View implements Runnable{
     {
         paused = true;
     }
-    public void pause() {
-        mc.pause();
+    public void pause()
+    {
+        if(rc == null || cc == null)
+        {
+            return;
+        }
+        rc.pause();
+        cc.pause();
     }
-    public void toggleAnimation() {
-        mc.toggleAnimation();
+    public void toggleAnimation()
+    {
+        if(rc == null || cc == null)
+        {
+            return;
+        }
+        rc.toggleAnimation();
+        cc.toggleAnimation();
     }
 
     public void nextSort() {
-        mc.nextSort();
+        modifyNextSort = true;
     }
 
     public void autoSort() {
-        mc.autoSort();
-
+        modifyAutoSort = true;
     }
 
-    public void setSortSpeed(int progress) {
-        mc.setSortSpeed(progress);
+    public void setSortSpeed(int p) {
+        progress = p;
+        modifySortSpeed = true;
+
     }
 
     public void setNumNodes(int progress) {
-        mc.setNumNodes(progress);
+
+        if(rc == null || cc == null)
+        {
+            return;
+        }
+        rc.setNumNodes(progress);
+        cc.setNumNodes(progress);
     }
 
-    public int getNumNodes() {
-        return mc.getNumNodes();
+    public int getNumNodes()
+    {
+        if(rc == null)
+        {
+            return 0;
+        }
+        return rc.getNumNodes();
     }
 
-    public int getSortSpeed() {
-        return mc.getSortSpeed();
+    public int getSortSpeed()
+    {
+        if(rc == null)
+        {
+            return -1;
+        }
+        return rc.getSortSpeed();
+    }
+
+    public static ArrayList<Integer> getRandomIntegerArray()
+    {
+        if(rc == null)
+        {
+            return null;
+        }
+        return rc.getRandomIntegerArray();
     }
 
 }

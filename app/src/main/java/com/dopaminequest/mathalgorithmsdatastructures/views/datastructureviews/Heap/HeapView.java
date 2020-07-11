@@ -14,7 +14,7 @@ public class HeapView extends View implements Runnable{
     private Thread mainThread;
     private long lastFrameTime;
     private int fps;
-    public static MainCanvas mc;
+    public static MainCanvasCircles mc;
     private Boolean initialized;
     private Boolean running;
     public static Point dimensions;
@@ -89,7 +89,7 @@ public class HeapView extends View implements Runnable{
                     dimensions.x = getWidth();
                     dimensions.y = getHeight();
 
-                    mc = new MainCanvas((Activity) getContext());
+                    mc = new MainCanvasCircles((Activity) getContext());
                     initialized = true;
                     input = new Point();
                     actionDown = false;
@@ -172,7 +172,7 @@ public class HeapView extends View implements Runnable{
         return true;
     }
 
-    public MainCanvas getMainCanvas()
+    public MainCanvasCircles getMainCanvas()
     {
         return mc;
     }
